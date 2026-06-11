@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { BentoCard } from "../components/BentoCard";
 import { TechMarquee } from "../components/TechMarquee";
 import { UdonLogo } from "../components/UdonLogo";
+import { BentoCard } from "../components/BentoCard";
 import AvatarImg from "../assets/theanh_avt.jpg";
 import {
   ArrowRight, MapPin, GraduationCap,
   Terminal, Cpu, Database, Link2,
-  Brain, Award
+  Brain, Award, Briefcase, Code
 } from "lucide-react";
 
 const roles = [
@@ -477,50 +477,6 @@ export const Home: React.FC = () => {
             </div>
           </div>
         </BentoCard>
-
-        {/* Professional Experience Bento Card */}
-        <Link to="/experience" className="md:col-span-4 block cursor-pointer">
-          <BentoCard className="p-8 flex flex-col md:flex-row items-center justify-between gap-8 group border-none !bg-surface-container-low/60 hover:!bg-surface-container-low transition-all duration-300 relative overflow-hidden" delay={0.5}>
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent z-0 pointer-events-none"></div>
-            <div className="relative z-10 flex-grow max-w-2xl text-left">
-              <span className="font-label-mono text-[10px] text-primary uppercase font-bold tracking-widest block mb-2">Professional Experience</span>
-              <h3 className="font-display text-2xl font-bold text-on-surface mb-2 group-hover:text-primary transition-colors">Data Labeling Intern</h3>
-              <p className="text-sm font-body-md text-on-surface-variant font-semibold mb-4">DevPlus JSC • Apr 2026 — Jul 2026</p>
-              <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mb-4">
-                Enhanced data pipelines for machine learning models (achieving **99.2% validation accuracy**) and automated regression QA checks.
-              </p>
-              <div className="flex gap-2 flex-wrap">
-                <span className="bg-surface px-2.5 py-1.5 rounded-lg border border-outline-variant/30 font-label-mono text-[9px] text-on-surface-variant">ML Pipelines</span>
-                <span className="bg-surface px-2.5 py-1.5 rounded-lg border border-outline-variant/30 font-label-mono text-[9px] text-on-surface-variant">QA Automation</span>
-                <span className="bg-surface px-2.5 py-1.5 rounded-lg border border-outline-variant/30 font-label-mono text-[9px] text-on-surface-variant">Python</span>
-              </div>
-            </div>
-            
-            {/* 99.2% Circular Progress Metric */}
-            <div className="relative w-36 h-36 flex-shrink-0 flex items-center justify-center bg-surface rounded-2xl border border-outline-variant/30 shadow-inner z-10">
-              <svg width="100" height="100" viewBox="0 0 100 100" className="-rotate-90">
-                <circle cx="50" cy="50" r="40" stroke="currentColor" className="text-outline-variant/10" strokeWidth="6" fill="none" />
-                <motion.circle 
-                  cx="50" 
-                  cy="50" 
-                  r="40" 
-                  stroke="#004ac6" 
-                  strokeWidth="6" 
-                  fill="none" 
-                  strokeDasharray="251.2" 
-                  initial={{ strokeDashoffset: 251.2 }}
-                  whileInView={{ strokeDashoffset: 251.2 * (1 - 0.992) }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 1.5, ease: "easeOut" }}
-                />
-              </svg>
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
-                <span className="font-display text-lg font-bold text-on-surface">99.2%</span>
-                <span className="font-label-mono text-[6px] text-on-surface-variant uppercase font-bold tracking-wider">ML Accuracy</span>
-              </div>
-            </div>
-          </BentoCard>
-        </Link>
       </section>
 
       {/* Engineering Domains */}
@@ -788,6 +744,92 @@ export const Home: React.FC = () => {
               </div>
             </div>
           </BentoCard>
+        </div>
+      </section>
+
+      {/* Experience & Achievements Overview Section */}
+      <section className="mb-32">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16 px-4">
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/20 text-primary text-[10px] font-label-mono font-bold mb-4">
+              <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+              TIMELINE & HONORS
+            </div>
+            <h2 className="font-display text-display text-4xl md:text-5xl font-bold tracking-tight text-on-surface">
+              Experience & <span className="text-secondary italic">Achievements</span>
+            </h2>
+          </div>
+          <Link
+            to="/experience"
+            className="group flex items-center gap-2 font-label-mono text-sm font-bold text-primary hover:text-primary-container transition-colors"
+          >
+            VIEW FULL TIMELINE
+            <div className="w-8 h-8 rounded-full border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-all">
+              <ArrowRight className="w-4 h-4" />
+            </div>
+          </Link>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Milestone 1: Data Labeling Intern */}
+          <Link to="/experience" className="block group/card h-full">
+            <BentoCard className="p-8 flex flex-col justify-between h-full border-none !bg-surface-container-low/60 hover:!bg-surface-container-low transition-all duration-300">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-6 group-hover/card:scale-110 transition-transform">
+                  <Briefcase className="w-5 h-5" />
+                </div>
+                <span className="font-label-mono text-[10px] text-primary uppercase font-bold tracking-widest block mb-2">DevPlus JSC</span>
+                <h3 className="font-display text-xl font-bold text-on-surface mb-3 group-hover/card:text-primary transition-colors">Data Labeling Intern</h3>
+                <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mb-6 opacity-80">
+                  Enhanced data intelligence pipelines for ML models with 99.2% accuracy in validation, and automated regression testing.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-outline-variant/30 flex justify-between items-center text-caption font-label-mono text-on-surface-variant/75">
+                <span>04/2026 — 07/2026</span>
+                <span className="text-primary font-bold flex items-center gap-1 group-hover/card:translate-x-1 transition-transform">DETAILS <ArrowRight className="w-3 h-3" /></span>
+              </div>
+            </BentoCard>
+          </Link>
+
+          {/* Milestone 2: Stellar Hackathon Champion */}
+          <Link to="/experience" className="block group/card h-full">
+            <BentoCard className="p-8 flex flex-col justify-between h-full border-none !bg-surface-container-low/60 hover:!bg-surface-container-low transition-all duration-300">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary mb-6 group-hover/card:scale-110 transition-transform">
+                  <Award className="w-5 h-5" />
+                </div>
+                <span className="font-label-mono text-[10px] text-secondary uppercase font-bold tracking-widest block mb-2">Hackathon Champion</span>
+                <h3 className="font-display text-xl font-bold text-on-surface mb-3 group-hover/card:text-secondary transition-colors">Stellar Mini Hackathon</h3>
+                <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mb-6 opacity-80">
+                  First Prize winner. Engineered UdonFi decentralized lending protocol on Soroban using Rust with state storage optimizations.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-outline-variant/30 flex justify-between items-center text-caption font-label-mono text-on-surface-variant/75">
+                <span>05/2026</span>
+                <span className="text-secondary font-bold flex items-center gap-1 group-hover/card:translate-x-1 transition-transform">DETAILS <ArrowRight className="w-3 h-3" /></span>
+              </div>
+            </BentoCard>
+          </Link>
+
+          {/* Milestone 3: VKU ICPC Team */}
+          <Link to="/experience" className="block group/card h-full">
+            <BentoCard className="p-8 flex flex-col justify-between h-full border-none !bg-surface-container-low/60 hover:!bg-surface-container-low transition-all duration-300">
+              <div>
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-6 group-hover/card:scale-110 transition-transform">
+                  <Code className="w-5 h-5" />
+                </div>
+                <span className="font-label-mono text-[10px] text-emerald-600 uppercase font-bold tracking-widest block mb-2">Competitive Coding</span>
+                <h3 className="font-display text-xl font-bold text-on-surface mb-3 group-hover/card:text-emerald-600 transition-colors">VKU ICPC Training Team</h3>
+                <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mb-6 opacity-80">
+                  Actively competing in national-level contests, specializing in graph theory and dynamic programming optimization.
+                </p>
+              </div>
+              <div className="pt-4 border-t border-outline-variant/30 flex justify-between items-center text-caption font-label-mono text-on-surface-variant/75">
+                <span>2024 — Present</span>
+                <span className="text-emerald-600 font-bold flex items-center gap-1 group-hover/card:translate-x-1 transition-transform">DETAILS <ArrowRight className="w-3 h-3" /></span>
+              </div>
+            </BentoCard>
+          </Link>
         </div>
       </section>
 
