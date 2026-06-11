@@ -1,6 +1,9 @@
 import React from "react";
+import { useLanguage } from "../context/LanguageContext";
 
 export const Footer: React.FC = () => {
+  const { lang } = useLanguage();
+
   return (
     <footer className="bg-surface border-t border-outline-variant mt-section-gap">
       <div className="max-w-7xl mx-auto px-8 py-12 flex flex-col md:flex-row justify-between items-center gap-gutter">
@@ -10,7 +13,12 @@ export const Footer: React.FC = () => {
           </div>
           <div className="font-label-mono text-caption text-on-surface-variant flex items-center gap-2">
             <span className="inline-block w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>© 2026 Nguyen The Anh • System v2.4.0 • All systems operational</span>
+            <span>
+              {lang === "EN" 
+                ? "© 2026 Nguyen The Anh • System v2.4.0 • All systems operational"
+                : "© 2026 Nguyễn Thế Anh • Hệ thống v2.4.0 • Mọi hệ thống hoạt động tốt"
+              }
+            </span>
           </div>
         </div>
         <div className="flex gap-6">
@@ -35,14 +43,14 @@ export const Footer: React.FC = () => {
             onClick={(e) => e.preventDefault()}
             className="font-label-mono text-caption text-on-surface-variant hover:text-on-surface transition-colors"
           >
-            Source
+            {lang === "EN" ? "Source" : "Mã nguồn"}
           </a>
           <a
             href="#"
             onClick={(e) => e.preventDefault()}
             className="font-label-mono text-caption text-on-surface-variant hover:text-on-surface transition-colors"
           >
-            Documentation
+            {lang === "EN" ? "Documentation" : "Tài liệu"}
           </a>
         </div>
       </div>

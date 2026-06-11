@@ -6,9 +6,9 @@ import {
   Send, Cloud, Cpu, ArrowUpRight,
   Mail, Phone, MapPin, Globe,
   Layers, Database, Zap,
-  RefreshCcw, Code2, Rocket, Brain,
-  Lightbulb, Target, Heart, Sparkles
+  RefreshCcw, Brain
 } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 // Inline SVG icons for brand logos (not available in lucide-react)
 const GithubIcon: React.FC<{ className?: string }> = ({ className }) => (
@@ -24,6 +24,8 @@ const LinkedinIcon: React.FC<{ className?: string }> = ({ className }) => (
 );
 
 export const Philosophy: React.FC = () => {
+  const { lang } = useLanguage();
+  const tr = (en: string, vi: string) => lang === "EN" ? en : vi;
   const [formState, setFormState] = useState({
     name: "",
     email: "",
@@ -34,14 +36,14 @@ export const Philosophy: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!formState.name || !formState.email || !formState.message) {
-      alert("Please fill out all fields before sending.");
+      alert(tr("Please fill out all fields before sending.", "Vui lòng điền đầy đủ thông tin trước khi gửi."));
       return;
     }
     setSubmitted(true);
     setTimeout(() => {
       setFormState({ name: "", email: "", message: "" });
       setSubmitted(false);
-      alert("Message sent successfully! Nguyen The Anh will reach out shortly.");
+      alert(tr("Message sent successfully! Nguyen The Anh will reach out shortly.", "Tin nhắn đã được gửi! Nguyễn Thế Anh sẽ sớm liên hệ."));
     }, 1500);
   };
 
@@ -49,57 +51,30 @@ export const Philosophy: React.FC = () => {
   const pillars = [
     {
       icon: <Layers className="w-6 h-6" />,
-      title: "Build Real Products",
-      description: "Code without context is just text. Every technical decision must serve the ultimate user goal — from UdonFi's lending protocol to VioTune's recommendation engine.",
+      title: tr("Build Real Products", "Xây dựng Sản phẩm Thực"),
+      description: tr("Code without context is just text. Every technical decision must serve the ultimate user goal - from UdonFi's lending protocol to VioTune's recommendation engine.", "Mã nguồn không có bối cảnh chỉ là văn bản. Mọi quyết định kỹ thuật phải phục vụ mục tiêu người dùng, từ giao thức UdonFi đến hệ gợi ý VioTune."),
       color: "primary",
-      metric: "Product-First Mindset",
+      metric: tr("Product-First Mindset", "Tư duy Ưu tiên Sản phẩm"),
       tags: ["UdonFi", "VioTune", "LaBouffe"]
     },
     {
       icon: <Globe className="w-6 h-6" />,
-      title: "Learn Through Systems",
-      description: "Understanding how a request travels from client to database is essential. This holistic view enables better debugging and architectural foresight across the full stack.",
+      title: tr("Learn Through Systems", "Học qua Hệ thống"),
+      description: tr("Understanding how a request travels from client to database is essential. This holistic view enables better debugging and architectural foresight across the full stack.", "Hiểu cách một yêu cầu đi từ client đến database là điều thiết yếu. Góc nhìn toàn diện giúp gỡ lỗi tốt hơn và định hướng kiến trúc dài hạn."),
       color: "secondary",
-      metric: "Systems Thinking",
+      metric: tr("Systems Thinking", "Tư duy Hệ thống"),
       tags: ["NestJS", "FastAPI", "Soroban"]
     },
     {
       icon: <Brain className="w-6 h-6" />,
-      title: "Focus On Fundamentals",
-      description: "Frameworks fade, but fundamentals endure. Deep understanding of data structures, algorithms, and protocols — sharpened through ICPC training — allows for precise adaptation.",
+      title: tr("Focus On Fundamentals", "Tập trung vào Nền tảng"),
+      description: tr("Frameworks fade, but fundamentals endure. Deep understanding of data structures, algorithms, and protocols - sharpened through ICPC training - allows for precise adaptation.", "Framework có thể thay đổi, nhưng nền tảng luôn bền vững. Hiểu sâu cấu trúc dữ liệu, thuật toán và giao thức qua rèn luyện ICPC giúp thích nghi chính xác."),
       color: "tertiary",
-      metric: "Core Mastery",
+      metric: tr("Core Mastery", "Làm chủ Nền tảng"),
       tags: ["DSA", "Graph Theory", "DP"]
     }
   ];
 
-  // Roadmap items
-  const roadmapItems = [
-    {
-      icon: <Cpu className="w-6 h-6" />,
-      title: "Advanced Containerization",
-      description: "Mastering multi-stage builds, Kubernetes orchestration, and optimizing images for edge deployment and security compliance.",
-      progress: 75,
-      label: "DOCKER & K8S",
-      size: "large"
-    },
-    {
-      icon: <Shield className="w-6 h-6" />,
-      title: "Smart Contract Security",
-      description: "Deepening expertise in formal verification, audit methodologies, and secure DeFi protocol design on Stellar Soroban.",
-      progress: 80,
-      label: "WEB3 SECURITY",
-      size: "medium"
-    },
-    {
-      icon: <Cloud className="w-6 h-6" />,
-      title: "Cloud Infrastructure",
-      description: "Transitioning from monolithic hosting to elastic, distributed cloud architectures. Focusing on serverless compute and global content delivery.",
-      progress: 60,
-      label: "AWS / CLOUD",
-      size: "medium"
-    }
-  ];
 
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-8 pt-32 pb-24">
@@ -114,7 +89,7 @@ export const Philosophy: React.FC = () => {
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-label-mono font-bold mb-6"
           >
-            <Zap className="w-3.5 h-3.5" /> 01 / PRINCIPLES
+            <Zap className="w-3.5 h-3.5" /> {tr("01 / PRINCIPLES", "01 / NGUYÊN TẮC")}
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: -20 }}
@@ -122,7 +97,7 @@ export const Philosophy: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="font-display text-display text-5xl md:text-6xl font-bold tracking-tight mb-8"
           >
-            Engineering <span className="text-primary italic">Philosophy</span>
+            {tr("Engineering ", "Triết lý ")}<span className="text-primary italic">{tr("Philosophy", "Kỹ thuật")}</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}
@@ -130,9 +105,7 @@ export const Philosophy: React.FC = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-body-lg text-body-lg text-on-surface-variant leading-relaxed max-w-2xl"
           >
-            Software engineering is the management of complexity to deliver tangible value.
-            My approach is rooted in three core pillars that define how I architect systems
-            and solve problems.
+            {tr("Software engineering is the management of complexity to deliver tangible value. My approach is rooted in three core pillars that define how I architect systems and solve problems.", "Kỹ thuật phần mềm là quản trị sự phức tạp để tạo ra giá trị thực tế. Cách tiếp cận của tôi dựa trên ba trụ cột định hình việc thiết kế hệ thống và giải quyết vấn đề.")}
           </motion.p>
         </div>
 
@@ -207,7 +180,7 @@ export const Philosophy: React.FC = () => {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary text-[10px] font-label-mono font-bold mb-6"
           >
-            <GitBranch className="w-3.5 h-3.5" /> 02 / EVOLUTION
+            <GitBranch className="w-3.5 h-3.5" /> {tr("02 / EVOLUTION", "02 / PHÁT TRIỂN")}
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: -10 }}
@@ -215,7 +188,7 @@ export const Philosophy: React.FC = () => {
             viewport={{ once: true }}
             className="font-display text-headline-lg text-4xl md:text-5xl font-bold tracking-tight"
           >
-            Technical <span className="text-secondary italic">Vision</span>
+            {tr("Technical ", "Tầm nhìn ")}<span className="text-secondary italic">{tr("Vision", "Kỹ thuật")}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -224,7 +197,7 @@ export const Philosophy: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="text-on-surface-variant max-w-xl mt-4 text-sm font-body-md"
           >
-            Continuously expanding my engineering toolkit — from containerization to cloud-native architectures and smart contract security.
+            {tr("Continuously expanding my engineering toolkit - from containerization to cloud-native architectures and smart contract security.", "Liên tục mở rộng bộ công cụ kỹ thuật, từ container hóa đến kiến trúc cloud-native và bảo mật smart contract.")}
           </motion.p>
         </div>
 
@@ -239,11 +212,11 @@ export const Philosophy: React.FC = () => {
                     <Cpu className="w-6 h-6" />
                   </div>
                   <h3 className="font-headline-md text-headline-md font-bold text-on-surface">
-                    Advanced Containerization
+                    {tr("Advanced Containerization", "Container hóa Nâng cao")}
                   </h3>
                 </div>
                 <p className="text-on-surface-variant text-body-md text-sm leading-relaxed mb-8 max-w-md opacity-85">
-                  Mastering multi-stage builds, orchestration with Kubernetes, and optimizing images for edge deployment and security compliance.
+                  {tr("Mastering multi-stage builds, orchestration with Kubernetes, and optimizing images for edge deployment and security compliance.", "Làm chủ multi-stage build, điều phối Kubernetes và tối ưu image cho triển khai edge cùng yêu cầu bảo mật.")}
                 </p>
               </div>
               <div className="space-y-3 mt-auto">
@@ -275,13 +248,13 @@ export const Philosophy: React.FC = () => {
             <div className="absolute top-0 left-0 w-32 h-32 bg-primary/10 blur-[60px] rounded-full pointer-events-none" />
             <div>
               <span className="font-label-mono text-[10px] text-primary-fixed mb-2 block uppercase font-bold tracking-widest">
-                Automated Pipeline
+                {tr("Automated Pipeline", "Pipeline Tự động")}
               </span>
               <h3 className="font-headline-md text-2xl font-bold mb-4 text-white">
-                Full Spectrum CI/CD
+                {tr("Full Spectrum CI/CD", "CI/CD Toàn diện")}
               </h3>
-              <p className="text-surface-variant text-sm leading-relaxed opacity-70">
-                Architecting zero-downtime deployment pipelines using GitHub Actions and Terraform for Infrastructure as Code (IaC).
+              <p className="text-inverse-on-surface/70 text-sm leading-relaxed">
+                {tr("Architecting zero-downtime deployment pipelines using GitHub Actions and Terraform for Infrastructure as Code (IaC).", "Thiết kế pipeline triển khai không downtime bằng GitHub Actions và Terraform theo mô hình Infrastructure as Code.")}
               </p>
             </div>
             <div className="mt-8 flex gap-4 text-primary-fixed">
@@ -296,18 +269,18 @@ export const Philosophy: React.FC = () => {
               <div className="flex items-center gap-3 mb-4 text-primary">
                 <Cloud className="w-7 h-7" />
                 <h3 className="font-headline-md text-2xl font-bold text-on-surface">
-                  Cloud Infrastructure Scaling
+                  {tr("Cloud Infrastructure Scaling", "Mở rộng Hạ tầng Cloud")}
                 </h3>
               </div>
               <p className="text-on-surface-variant mb-8 text-sm leading-relaxed max-w-2xl">
-                Transitioning from monolithic hosting to elastic, distributed cloud architectures on AWS. Focusing on serverless compute and global content delivery.
+                {tr("Transitioning from monolithic hosting to elastic, distributed cloud architectures on AWS. Focusing on serverless compute and global content delivery.", "Chuyển từ hosting nguyên khối sang kiến trúc cloud phân tán, co giãn trên AWS, tập trung vào serverless compute và phân phối nội dung toàn cầu.")}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {[
                   { icon: <Zap className="w-3.5 h-3.5" />, text: "AWS Lambda / Serverless" },
-                  { icon: <Globe className="w-3.5 h-3.5" />, text: "Global Edge Distribution" },
-                  { icon: <Shield className="w-3.5 h-3.5" />, text: "Infrastructure as Code" },
-                  { icon: <Database className="w-3.5 h-3.5" />, text: "Managed DB Systems" }
+                  { icon: <Globe className="w-3.5 h-3.5" />, text: tr("Global Edge Distribution", "Phân phối Edge Toàn cầu") },
+                  { icon: <Shield className="w-3.5 h-3.5" />, text: tr("Infrastructure as Code", "Hạ tầng dưới dạng Mã") },
+                  { icon: <Database className="w-3.5 h-3.5" />, text: tr("Managed DB Systems", "Hệ CSDL Được quản lý") }
                 ].map((item, i) => (
                   <div key={i} className="flex items-center gap-3 p-3 bg-surface rounded-xl border border-outline-variant/30 font-label-mono text-[11px] text-on-surface font-bold">
                     <div className="text-primary">{item.icon}</div>
@@ -348,7 +321,7 @@ export const Philosophy: React.FC = () => {
             viewport={{ once: true }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-label-mono font-bold mb-6"
           >
-            <Send className="w-3.5 h-3.5" /> 03 / CONNECT
+            <Send className="w-3.5 h-3.5" /> {tr("03 / CONNECT", "03 / KẾT NỐI")}
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: -10 }}
@@ -356,7 +329,7 @@ export const Philosophy: React.FC = () => {
             viewport={{ once: true }}
             className="font-display text-display text-4xl md:text-5xl font-bold tracking-tight"
           >
-            Get In <span className="text-primary italic">Touch</span>
+            {tr("Get In ", "Hãy ")}<span className="text-primary italic">{tr("Touch", "Kết nối")}</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -365,7 +338,7 @@ export const Philosophy: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="text-on-surface-variant max-w-xl mt-4 text-sm font-body-md"
           >
-            Interested in discussing system architecture, DeFi protocols, or potential collaborations? Let's connect.
+            {tr("Interested in discussing system architecture, DeFi protocols, or potential collaborations? Let's connect.", "Bạn muốn trao đổi về kiến trúc hệ thống, giao thức DeFi hoặc cơ hội hợp tác? Hãy kết nối.")}
           </motion.p>
         </div>
 
@@ -381,7 +354,7 @@ export const Philosophy: React.FC = () => {
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="font-label-mono text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Phone</p>
+                    <p className="font-label-mono text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">{tr("Phone", "Điện thoại")}</p>
                     <p className="font-display text-lg font-bold text-on-surface">+84 917 363 528</p>
                   </div>
                 </a>
@@ -403,15 +376,15 @@ export const Philosophy: React.FC = () => {
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="font-label-mono text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">Location</p>
-                    <p className="font-display text-lg font-bold text-on-surface">Da Nang, Vietnam</p>
+                    <p className="font-label-mono text-[10px] text-on-surface-variant uppercase font-bold tracking-widest">{tr("Location", "Địa điểm")}</p>
+                    <p className="font-display text-lg font-bold text-on-surface">{tr("Da Nang, Vietnam", "Đà Nẵng, Việt Nam")}</p>
                   </div>
                 </div>
               </div>
 
               {/* Social Links */}
               <div className="mt-12 pt-8 border-t border-outline-variant/30 relative z-10">
-                <p className="font-label-mono text-[10px] text-on-surface-variant uppercase font-bold mb-5 tracking-widest">Digital Platforms</p>
+                <p className="font-label-mono text-[10px] text-on-surface-variant uppercase font-bold mb-5 tracking-widest">{tr("Digital Platforms", "Nền tảng Số")}</p>
                 <div className="flex gap-4">
                   <a
                     href="https://github.com/TheAnh1404"
@@ -442,16 +415,16 @@ export const Philosophy: React.FC = () => {
           <div className="lg:col-span-7">
             <BentoCard className="p-8 md:p-10 border-none !bg-surface-container-high/30 h-full">
               <div className="mb-6">
-                <h3 className="font-display text-xl font-bold text-on-surface mb-2">Send a Message</h3>
+                <h3 className="font-display text-xl font-bold text-on-surface mb-2">{tr("Send a Message", "Gửi Tin nhắn")}</h3>
                 <p className="text-on-surface-variant text-xs font-body-md">
-                  Fill out the form below and I'll get back to you as soon as possible.
+                  {tr("Fill out the form below and I'll get back to you as soon as possible.", "Điền biểu mẫu dưới đây và tôi sẽ phản hồi sớm nhất có thể.")}
                 </p>
               </div>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2.5">
                     <label className="font-label-mono text-[10px] text-on-surface-variant uppercase font-bold tracking-widest ml-1">
-                      Full Name
+                      {tr("Full Name", "Họ và Tên")}
                     </label>
                     <input
                       type="text"
@@ -459,12 +432,12 @@ export const Philosophy: React.FC = () => {
                       value={formState.name}
                       onChange={(e) => setFormState({ ...formState, name: e.target.value })}
                       className="w-full bg-surface border border-outline-variant/50 rounded-2xl p-4 font-body-md text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/40"
-                      placeholder="Your full name"
+                      placeholder={tr("Your full name", "Họ tên của bạn")}
                     />
                   </div>
                   <div className="space-y-2.5">
                     <label className="font-label-mono text-[10px] text-on-surface-variant uppercase font-bold tracking-widest ml-1">
-                      Work Email
+                      {tr("Work Email", "Email Công việc")}
                     </label>
                     <input
                       type="email"
@@ -478,7 +451,7 @@ export const Philosophy: React.FC = () => {
                 </div>
                 <div className="space-y-2.5">
                   <label className="font-label-mono text-[10px] text-on-surface-variant uppercase font-bold tracking-widest ml-1">
-                    Message
+                    {tr("Message", "Tin nhắn")}
                   </label>
                   <textarea
                     required
@@ -486,7 +459,7 @@ export const Philosophy: React.FC = () => {
                     value={formState.message}
                     onChange={(e) => setFormState({ ...formState, message: e.target.value })}
                     className="w-full bg-surface border border-outline-variant/50 rounded-2xl p-4 font-body-md text-sm focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition-all placeholder:text-on-surface-variant/40 resize-none"
-                    placeholder="Describe your inquiry or collaboration idea..."
+                    placeholder={tr("Describe your inquiry or collaboration idea...", "Mô tả yêu cầu hoặc ý tưởng hợp tác của bạn...")}
                   />
                 </div>
                 <button
@@ -496,12 +469,12 @@ export const Philosophy: React.FC = () => {
                 >
                   {submitted ? (
                     <>
-                      SENDING...
+                      {tr("SENDING...", "ĐANG GỬI...")}
                       <RefreshCcw className="w-4 h-4 animate-spin" />
                     </>
                   ) : (
                     <>
-                      SEND MESSAGE
+                      {tr("SEND MESSAGE", "GỬI TIN NHẮN")}
                       <Send className="w-4 h-4" />
                     </>
                   )}

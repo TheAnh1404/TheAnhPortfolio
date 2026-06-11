@@ -22,7 +22,7 @@ export const BentoCard: React.FC<BentoCardProps> = ({
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay }}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className={`${bgClass} border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-[0px_8px_30px_rgba(0,0,0,0.04)] hover:border-primary/30 transition-all duration-300 ${className}`}
+      className={`${bgClass} border border-outline-variant/70 rounded-xl overflow-hidden shadow-sm hover:border-primary/40 transition-all duration-300 ${className}`}
     >
       {children}
     </motion.div>

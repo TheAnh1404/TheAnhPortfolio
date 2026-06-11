@@ -5,6 +5,7 @@ import { TechMarquee } from "../components/TechMarquee";
 import { UdonLogo } from "../components/UdonLogo";
 import { BentoCard } from "../components/BentoCard";
 import AvatarImg from "../assets/theanh_avt.jpg";
+import { useLanguage } from "../context/LanguageContext";
 import {
   ArrowRight, MapPin, GraduationCap,
   Terminal, Cpu, Database, Link2,
@@ -26,18 +27,15 @@ const LinkedinIcon: React.FC<{ className?: string }> = ({ className }) => (
   </svg>
 );
 
-const roles = [
-  "Software Engineer",
-  "Fullstack Developer",
-  "Blockchain Developer",
-  "AI Enthusiast"
-];
+// roles are handled via useLanguage() dynamically
 
-const techCategories = [
+const getTechCategories = (lang: "EN" | "VI") => [
   {
-    title: "Languages",
-    subtitle: "Core Programming & Logic",
-    description: "Foundational languages for system logic, blockchain contracts, and intelligent platforms.",
+    title: lang === "EN" ? "Languages" : "Ngôn ngữ",
+    subtitle: lang === "EN" ? "Core Programming & Logic" : "Lập trình cốt lõi & Logic",
+    description: lang === "EN" 
+      ? "Foundational languages for system logic, blockchain contracts, and intelligent platforms."
+      : "Các ngôn ngữ nền tảng cho logic hệ thống, hợp đồng blockchain và nền tảng thông minh.",
     visual: (
       <div className="w-full h-40 bg-surface-container-lowest rounded-xl p-4 font-mono text-[9px] text-on-surface/80 border border-outline-variant/30 overflow-hidden relative shadow-inner">
         <div className="flex items-center justify-between border-b border-outline-variant/20 pb-2 mb-2">
@@ -49,7 +47,7 @@ const techCategories = [
           <span className="text-[8px] text-on-surface-variant/60 font-label-mono">Algorithm.cpp</span>
         </div>
         <div className="space-y-1 select-none text-left">
-          <div className="text-on-surface-variant/40">// ICPC Graph Path Optimization</div>
+          <div className="text-on-surface-variant/40">{lang === "EN" ? "// ICPC Graph Path Optimization" : "// Tối ưu hóa đường đi đồ thị ICPC"}</div>
           <div>
             <span className="text-primary font-bold">int</span> <span className="text-secondary font-bold">find_min_path</span>(<span className="text-orange-600">int</span> u, <span className="text-orange-600">int</span> v) {"{"}
           </div>
@@ -73,16 +71,18 @@ const techCategories = [
       </div>
     ),
     skills: [
-      { name: "TypeScript/JavaScript", tooltip: "Primary language for high-fidelity frontends, NestJS backends, and test suites." },
-      { name: "Rust (Smart Contracts)", tooltip: "Used to write smart contracts on Stellar Soroban." },
-      { name: "Python (AI/ML)", tooltip: "Used for AI recommendation models and data pipelines." },
-      { name: "C++ (Algorithms)", tooltip: "Used for VKU ICPC competitive programming training." }
+      { name: "TypeScript/JavaScript", tooltip: lang === "EN" ? "Primary language for high-fidelity frontends, NestJS backends, and test suites." : "Ngôn ngữ chính cho frontend độ tin cậy cao, backend NestJS và các bộ kiểm thử." },
+      { name: "Rust (Smart Contracts)", tooltip: lang === "EN" ? "Used to write smart contracts on Stellar Soroban." : "Sử dụng để viết hợp đồng thông minh trên nền tảng Stellar Soroban." },
+      { name: "Python (AI/ML)", tooltip: lang === "EN" ? "Used for AI recommendation models and data pipelines." : "Sử dụng cho các mô hình gợi ý AI và pipeline dữ liệu." },
+      { name: "C++ (Algorithms)", tooltip: lang === "EN" ? "Used for VKU ICPC competitive programming training." : "Sử dụng cho huấn luyện lập trình thi đấu ICPC tại VKU." }
     ]
   },
   {
-    title: "Backend",
-    subtitle: "Service Architecture",
-    description: "Designing high-throughput microservices, REST & GraphQL endpoints, and routing logic.",
+    title: lang === "EN" ? "Backend" : "Backend",
+    subtitle: lang === "EN" ? "Service Architecture" : "Kiến trúc Dịch vụ",
+    description: lang === "EN" 
+      ? "Designing high-throughput microservices, REST & GraphQL endpoints, and routing logic."
+      : "Thiết kế hệ thống microservices hiệu năng cao, các endpoint REST & GraphQL và logic định tuyến.",
     visual: (
       <div className="w-full h-40 bg-surface-container-lowest rounded-xl border border-outline-variant/30 flex items-center justify-center relative overflow-hidden shadow-inner p-2">
         <svg width="340" height="130" viewBox="0 0 340 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
@@ -117,8 +117,8 @@ const techCategories = [
 
           <g transform="translate(10, 40)">
             <rect width="40" height="50" rx="6" fill="currentColor" className="text-primary/10" stroke="#004ac6" strokeWidth="1" />
-            <text x="20" y="24" textAnchor="middle" className="fill-on-surface font-label-mono text-[8px] font-bold">CLIENT</text>
-            <text x="20" y="38" textAnchor="middle" className="fill-primary font-bold text-[6px] font-label-mono">REQUEST</text>
+            <text x="20" y="24" textAnchor="middle" className="fill-on-surface font-label-mono text-[8px] font-bold">{lang === "EN" ? "CLIENT" : "THIẾT BỊ"}</text>
+            <text x="20" y="38" textAnchor="middle" className="fill-primary font-bold text-[6px] font-label-mono">{lang === "EN" ? "REQUEST" : "YÊU CẦU"}</text>
           </g>
 
           <g transform="translate(135, 30)">
@@ -137,17 +137,19 @@ const techCategories = [
       </div>
     ),
     skills: [
-      { name: "NestJS", tooltip: "Used to build modular, enterprise backends and microservices." },
-      { name: "Express.js", tooltip: "Used for lightweight Node.js API services." },
-      { name: "FastAPI", tooltip: "High-performance Python API framework for ML inference model serving." },
-      { name: "Microservices", tooltip: "Architecting modular, independent systems with clear data contracts." },
-      { name: "RESTful & GraphQL API Design", tooltip: "Designing clean, secure, and well-documented API contracts." }
+      { name: "NestJS", tooltip: lang === "EN" ? "Used to build modular, enterprise backends and microservices." : "Được sử dụng để xây dựng các backend doanh nghiệp dạng mô-đun và microservices." },
+      { name: "Express.js", tooltip: lang === "EN" ? "Used for lightweight Node.js API services." : "Được sử dụng cho các dịch vụ API Node.js gọn nhẹ." },
+      { name: "FastAPI", tooltip: lang === "EN" ? "High-performance Python API framework for ML inference model serving." : "Framework API Python hiệu năng cao phục vụ cho suy luận mô hình ML." },
+      { name: "Microservices", tooltip: lang === "EN" ? "Architecting modular, independent systems with clear data contracts." : "Kiến trúc hệ thống độc lập, dạng mô-đun với hợp đồng dữ liệu rõ ràng." },
+      { name: "RESTful & GraphQL API Design", tooltip: lang === "EN" ? "Designing clean, secure, and well-documented API contracts." : "Thiết kế các hợp đồng API rõ ràng, bảo mật và được tài liệu hóa tốt." }
     ]
   },
   {
-    title: "Web3",
-    subtitle: "Decentralized Finance",
-    description: "Developing gas-efficient decentralized smart contracts, token economies, and secure execution flows.",
+    title: lang === "EN" ? "Web3" : "Web3",
+    subtitle: lang === "EN" ? "Decentralized Finance" : "Tài chính phi tập trung",
+    description: lang === "EN" 
+      ? "Developing gas-efficient decentralized smart contracts, token economies, and secure execution flows."
+      : "Phát triển các hợp đồng thông minh phi tập trung tối ưu hóa gas, nền kinh tế token và luồng thực thi an toàn.",
     visual: (
       <div className="w-full h-40 bg-surface-container-lowest rounded-xl border border-outline-variant/30 flex items-center justify-center relative overflow-hidden shadow-inner p-2">
         <svg width="340" height="130" viewBox="0 0 340 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
@@ -192,15 +194,17 @@ const techCategories = [
       </div>
     ),
     skills: [
-      { name: "Stellar Soroban", tooltip: "WASM-based smart contract execution platform on the Stellar network." },
-      { name: "DeFi Protocol Design", tooltip: "Designing collateralized lending, borrow rate curves, and liquidations." },
-      { name: "Smart Contract Security & Optimization", tooltip: "Enforcing safety checks and state footprint optimizations (e.g. u128 bitmap packing)." }
+      { name: "Stellar Soroban", tooltip: lang === "EN" ? "WASM-based smart contract execution platform on the Stellar network." : "Nền tảng thực thi hợp đồng thông minh dựa trên WASM trên mạng lưới Stellar." },
+      { name: "DeFi Protocol Design", tooltip: lang === "EN" ? "Designing collateralized lending, borrow rate curves, and liquidations." : "Thiết kế cho vay thế chấp, đường cong lãi suất và cơ chế thanh lý." },
+      { name: "Smart Contract Security & Optimization", tooltip: lang === "EN" ? "Enforcing safety checks and state footprint optimizations (e.g. u128 bitmap packing)." : "Đảm bảo các kiểm tra an toàn và tối ưu hóa bộ nhớ lưu trữ (ví dụ: bitmap packing u128)." }
     ]
   },
   {
-    title: "Databases",
-    subtitle: "Data Management Layers",
-    description: "Managing relational schemas, distributed NoSQL storage, and real-time syncing architectures.",
+    title: lang === "EN" ? "Databases" : "Cơ sở dữ liệu",
+    subtitle: lang === "EN" ? "Data Management Layers" : "Lớp Quản lý Dữ liệu",
+    description: lang === "EN" 
+      ? "Managing relational schemas, distributed NoSQL storage, and real-time syncing architectures."
+      : "Quản lý cơ sở dữ liệu quan hệ, lưu trữ NoSQL phân tán và kiến trúc đồng bộ thời gian thực.",
     visual: (
       <div className="w-full h-40 bg-surface-container-lowest rounded-xl border border-outline-variant/30 flex items-center justify-center relative overflow-hidden shadow-inner p-2">
         <svg width="340" height="130" viewBox="0 0 340 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
@@ -231,15 +235,17 @@ const techCategories = [
       </div>
     ),
     skills: [
-      { name: "PostgreSQL (Architecture)", tooltip: "Relational database schema design, transaction indexing, and queries." },
-      { name: "MongoDB", tooltip: "NoSQL document storage for horizontal scaling and flex schemas." },
-      { name: "Firebase Realtime/Firestore", tooltip: "Cloud-hosted NoSQL databases for real-time document syncing." }
+      { name: "PostgreSQL (Architecture)", tooltip: lang === "EN" ? "Relational database schema design, transaction indexing, and queries." : "Thiết kế lược đồ cơ sở dữ liệu quan hệ, lập chỉ mục giao dịch và truy vấn." },
+      { name: "MongoDB", tooltip: lang === "EN" ? "NoSQL document storage for horizontal scaling and flex schemas." : "Lưu trữ tài liệu NoSQL phục vụ mở rộng theo chiều ngang và lược đồ linh hoạt." },
+      { name: "Firebase Realtime/Firestore", tooltip: lang === "EN" ? "Cloud-hosted NoSQL databases for real-time document syncing." : "Cơ sở dữ liệu đám mây NoSQL phục vụ đồng bộ tài liệu thời gian thực." }
     ]
   },
   {
-    title: "DevOps & Tools",
-    subtitle: "Deployment & Integrations",
-    description: "Managing container runtimes, automatic checks, payments gateway, and logging.",
+    title: lang === "EN" ? "DevOps & Tools" : "DevOps & Công cụ",
+    subtitle: lang === "EN" ? "Deployment & Integrations" : "Triển khai & Tích hợp",
+    description: lang === "EN" 
+      ? "Managing container runtimes, automatic checks, payments gateway, and logging."
+      : "Quản lý môi trường container, kiểm tra tự động, cổng thanh toán và ghi nhật ký hệ thống.",
     visual: (
       <div className="w-full h-40 bg-surface-container-lowest rounded-xl border border-outline-variant/30 flex items-center justify-center relative overflow-hidden shadow-inner p-2">
         <svg width="340" height="130" viewBox="0 0 340 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
@@ -257,46 +263,336 @@ const techCategories = [
 
           <g transform="translate(50, 65)">
             <circle r="12" fill="white" stroke="#be123c" strokeWidth="1.5" />
-            <text x="0" y="2.5" textAnchor="middle" className="fill-on-surface font-label-mono text-[6px] font-bold">BUILD</text>
+            <text x="0" y="2.5" textAnchor="middle" className="fill-on-surface font-label-mono text-[6px] font-bold">{lang === "EN" ? "BUILD" : "BUILD"}</text>
           </g>
 
           <g transform="translate(170, 25)">
             <circle r="12" fill="white" stroke="#475569" strokeWidth="1" />
-            <text x="0" y="2.5" textAnchor="middle" className="fill-on-surface font-label-mono text-[6px] font-bold">TEST</text>
+            <text x="0" y="2.5" textAnchor="middle" className="fill-on-surface font-label-mono text-[6px] font-bold">{lang === "EN" ? "TEST" : "TEST"}</text>
           </g>
 
           <g transform="translate(290, 65)">
             <circle r="12" fill="white" stroke="#475569" strokeWidth="1" />
-            <text x="0" y="2.5" textAnchor="middle" className="fill-on-surface font-label-mono text-[6px] font-bold">DEPLOY</text>
+            <text x="0" y="2.5" textAnchor="middle" className="fill-on-surface font-label-mono text-[6px] font-bold">{lang === "EN" ? "DEPLOY" : "DEPLOY"}</text>
           </g>
 
           <g transform="translate(170, 105)">
             <circle r="12" fill="white" stroke="#0f766e" strokeWidth="1" />
-            <text x="0" y="2.5" textAnchor="middle" className="fill-on-surface font-label-mono text-[6px] font-bold">MONITOR</text>
+            <text x="0" y="2.5" textAnchor="middle" className="fill-on-surface font-label-mono text-[6px] font-bold">{lang === "EN" ? "MONITOR" : "MONITOR"}</text>
           </g>
         </svg>
       </div>
     ),
     skills: [
-      { name: "Docker", tooltip: "Packaging applications and microservices into consistent, isolated container runtimes." },
-      { name: "Git/GitHub", tooltip: "Version control and collaborative workflow automation." },
-      { name: "Postman", tooltip: "API client for designing, building, and testing HTTP requests." },
-      { name: "CI/CD", tooltip: "Automated testing, lint checking, and preview deployment pipelines." },
-      { name: "Stripe", tooltip: "Integrating online payment portals and secure webhooks." },
-      { name: "Sentry", tooltip: "Real-time application error tracking and performance profiling." }
+      { name: "Docker", tooltip: lang === "EN" ? "Packaging applications and microservices into consistent, isolated container runtimes." : "Đóng gói ứng dụng và microservices vào container chạy cô lập và nhất quán." },
+      { name: "Git/GitHub", tooltip: lang === "EN" ? "Version control and collaborative workflow automation." : "Quản lý phiên bản mã nguồn và tự động hóa cộng tác phát triển." },
+      { name: "Postman", tooltip: lang === "EN" ? "API client for designing, building, and testing HTTP requests." : "Công cụ thiết kế, xây dựng và kiểm thử các yêu cầu HTTP." },
+      { name: "CI/CD", tooltip: lang === "EN" ? "Automated testing, lint checking, and preview deployment pipelines." : "Tự động hóa kiểm thử, kiểm tra cú pháp và pipeline triển khai bản xem trước." },
+      { name: "Stripe", tooltip: lang === "EN" ? "Integrating online payment portals and secure webhooks." : "Tích hợp cổng thanh toán trực tuyến và webhook bảo mật." },
+      { name: "Sentry", tooltip: lang === "EN" ? "Real-time application error tracking and performance profiling." : "Theo dõi lỗi ứng dụng thời gian thực và phân tích hồ sơ hiệu năng." }
     ]
   }
 ];
 
 export const Home: React.FC = () => {
   const [roleIndex, setRoleIndex] = useState(0);
+  const { lang, t } = useLanguage();
+  const roles = t("roles") as string[];
+  const techCategories = getTechCategories(lang);
+
+  const content = {
+    EN: {
+      cta_explore: "Explore Projects",
+      cta_download: "Download CV",
+      core_focus: {
+        tag: "Fullstack Ecosystem",
+        title: "System Architecture",
+        desc: "Bridging high-fidelity frontends with resilient backend infrastructures and real-time data pipelines.",
+        live: "LIVE SYSTEMS"
+      },
+      web3_focus: {
+        tag: "Web3 Protocol",
+        title: "Smart Contract",
+        subtitle: "Soroban/Rust Security",
+        audit: "Audit Status: SECURE"
+      },
+      hackathon: {
+        rank: "Champion",
+        event: "MINI STELLAR HACKATHON",
+        winner: "Global #1 Winner"
+      },
+      algo: {
+        title: "Algorithmic Core",
+        desc: "Applying advanced discrete optimizations and complex problem-solving strategies to real-world engineering bottlenecks."
+      },
+      domains: {
+        title: "Engineering Domains",
+        subtitle: "Deep technical expertise across the modern engineering stack.",
+        fullstack: {
+          title: "Fullstack Development",
+          tag: "End-to-End Solutions",
+          desc: "Engineering comprehensive digital ecosystems from high-performance microservices to responsive, accessible user interfaces.",
+          focus: "Production-grade system design & seamless frontend-backend integration."
+        },
+        blockchain: {
+          title: "Web3 & Blockchain",
+          tag: "Smart Contracts",
+          desc: "Designing decentralized finance (DeFi) protocols, smart contract execution models, and auditing cryptography systems.",
+          focus: "Smart contract gas optimization & state bitmap packing."
+        },
+        ai: {
+          title: "AI Systems & Data",
+          tag: "Machine Learning",
+          desc: "Developing intelligent recommendation systems and high-throughput data intelligence pipelines with real-time inference.",
+          focus: "ML validation pipelines built with 99.2% accuracy."
+        }
+      },
+      projects: {
+        tag: "SELECTED WORK",
+        title: "Featured Projects",
+        cta_archive: "SEE ALL ARCHIVE",
+        udonfi: {
+          tag: "1st Prize Winner • Stellar Hackathon",
+          desc: "A high-performance lending protocol on Stellar Soroban. Optimized via u128 bitmap packing and 2-step liquidation flows.",
+          cta: "Explore Case Study"
+        },
+        viotune: {
+          tag: "AI & MACHINE LEARNING",
+          desc: "Developing hybrid recommendation systems using SVD Matrix Factorization and KNN models. Bridging FastAPI backends with real-time inference.",
+          cta: "READ MORE"
+        },
+        labouffe: {
+          tag: "FULLSTACK ECOSYSTEM",
+          desc: "Architecting high-concurrency food delivery systems with real-time tracking and automated order management pipelines.",
+          cta: "READ MORE"
+        }
+      },
+      experience: {
+        tag: "TIMELINE & HONORS",
+        title: "Experience & Achievements",
+        cta: "VIEW FULL TIMELINE",
+        devplus: {
+          tag: "DevPlus JSC",
+          title: "Data Labeling Intern",
+          desc: "Enhanced data intelligence pipelines for ML models with 99.2% accuracy in validation, and automated regression testing."
+        },
+        hackathon: {
+          tag: "Hackathon Champion",
+          title: "Stellar Mini Hackathon",
+          desc: "First Prize winner. Engineered UdonFi decentralized lending protocol on Soroban using Rust with state storage optimizations."
+        },
+        icpc: {
+          tag: "Competitive Coding",
+          title: "VKU ICPC Training Team",
+          desc: "Actively competing in national-level contests, specializing in graph theory and dynamic programming optimization."
+        },
+        details: "DETAILS"
+      },
+      ecosystem: {
+        title: "Technology Ecosystem",
+        desc: "Deep technical core and architecture pillars compiled from real-world systems and competitive challenges. Hover over technologies to see where they are applied.",
+        key: "Key Technologies"
+      },
+      academic: {
+        tag: "ACADEMIC FOUNDATION",
+        title: "Education & Academy",
+        cta: "VIEW ACADEMIC RECORD",
+        vku: {
+          tag: "University",
+          name: "Vietnam - Korea University of ICT",
+          desc: "A premier public university specializing in digital technology and innovation, fostering an elite academic environment through a strategic partnership between Vietnam and South Korea.",
+          location: "Da Nang, Vietnam",
+          degree: "Bachelor of Software Engineering"
+        },
+        faculty: {
+          tag: "Department",
+          name: "Faculty of CS",
+          desc: "The academic heart of VKU, focusing on excellence in algorithmic logic, decentralized systems, and AI-driven architectures.",
+          core_tag: "Academic Core",
+          core: "ICPC Training Team • AI Intelligence"
+        }
+      },
+      philosophy: {
+        tag: "ENGINEERING MINDSET",
+        title: "Philosophy & Vision",
+        cta: "EXPLORE PHILOSOPHY",
+        pillar1: {
+          title: "Build Real Products",
+          desc: "Engineering excellence is measured by the utility of the product. Every technical decision must serve the ultimate user goal."
+        },
+        pillar2: {
+          title: "Systems Thinking",
+          desc: "Understanding how a request travels from client to database enables better debugging and architectural foresight."
+        },
+        pillar3: {
+          title: "Fundamentals Focus",
+          desc: "Frameworks fade, but fundamentals endure. Deep understanding of DSA and protocols allows for precise adaptation."
+        }
+      },
+      contact: {
+        tag: "GET IN TOUCH",
+        title: "Let's Connect",
+        desc: "Interested in discussing system architecture, DeFi protocols, or potential collaborations? Reach out through any channel below.",
+        phone: "Phone",
+        email: "Email",
+        location: "Location",
+        platform_tag: "Open for Collaboration",
+        collab_title: "Let's Build Something Amazing Together",
+        collab_desc: "Whether it's a DeFi protocol, an AI-powered platform, or a fullstack application — I'm ready to contribute and create impact.",
+        cta_msg: "SEND MESSAGE"
+      }
+    },
+    VI: {
+      cta_explore: "Khám phá Dự án",
+      cta_download: "Tải CV Cá nhân",
+      core_focus: {
+        tag: "Hệ sinh thái Fullstack",
+        title: "Kiến trúc Hệ thống",
+        desc: "Kết nối frontend độ tin cậy cao với hạ tầng backend linh hoạt và pipeline dữ liệu thời gian thực.",
+        live: "HỆ THỐNG THỰC TẾ"
+      },
+      web3_focus: {
+        tag: "Giao thức Web3",
+        title: "Hợp đồng Thông minh",
+        subtitle: "Bảo mật Soroban/Rust",
+        audit: "Trạng thái Kiểm thử: AN TOÀN"
+      },
+      hackathon: {
+        rank: "Quán quân",
+        event: "MINI STELLAR HACKATHON",
+        winner: "Hạng 1"
+      },
+      algo: {
+        title: "Cốt lõi Thuật toán",
+        desc: "Áp dụng tối ưu hóa rời rạc nâng cao và chiến lược giải quyết vấn đề phức tạp vào các điểm nghẽn kỹ thuật thực tế."
+      },
+      domains: {
+        title: "Lĩnh vực Kỹ thuật",
+        subtitle: "Chuyên môn kỹ thuật sâu rộng trên toàn bộ stack công nghệ hiện đại.",
+        fullstack: {
+          title: "Phát triển Fullstack",
+          tag: "Giải pháp Toàn diện",
+          desc: "Xây dựng hệ sinh thái kỹ thuật số toàn diện từ microservices hiệu năng cao đến giao diện người dùng mượt mà.",
+          focus: "Thiết kế hệ thống cấp độ production & tích hợp frontend-backend liền mạch."
+        },
+        blockchain: {
+          title: "Web3 & Blockchain",
+          tag: "Hợp đồng Thông minh",
+          desc: "Thiết kế giao thức tài chính phi tập trung (DeFi), mô hình thực thi hợp đồng thông minh và kiểm thử hệ thống mật mã.",
+          focus: "Tối ưu hóa gas hợp đồng thông minh & bitmap packing trạng thái."
+        },
+        ai: {
+          title: "Hệ thống AI & Dữ liệu",
+          tag: "Học máy (ML)",
+          desc: "Phát triển hệ thống gợi ý thông minh và pipeline dữ liệu hiệu suất cao với khả năng suy luận thời gian thực.",
+          focus: "Pipeline kiểm chứng ML được xây dựng với độ chính xác 99.2%."
+        }
+      },
+      projects: {
+        tag: "CÁC DỰ ÁN TIÊU BIỂU",
+        title: "Dự án Nổi bật",
+        cta_archive: "XEM TẤT CẢ KHO LƯU TRỮ",
+        udonfi: {
+          tag: "Giải Nhất • Stellar Hackathon",
+          desc: "Giao thức cho vay hiệu năng cao trên Stellar Soroban. Tối ưu hóa qua u128 bitmap packing và luồng thanh lý 2 bước.",
+          cta: "Khám phá Case Study"
+        },
+        viotune: {
+          tag: "AI & HỌC MÁY (ML)",
+          desc: "Phát triển hệ thống gợi ý kết hợp sử dụng SVD Matrix Factorization và KNN. Kết nối FastAPI với suy luận thời gian thực.",
+          cta: "XEM CHI TIẾT"
+        },
+        labouffe: {
+          tag: "HỆ SINH THÁI FULLSTACK",
+          desc: "Kiến trúc hệ thống giao đồ ăn đồng thời cao với theo dõi thời gian thực và pipeline quản lý đơn hàng tự động.",
+          cta: "XEM CHI TIẾT"
+        }
+      },
+      experience: {
+        tag: "LỘ TRÌNH & THÀNH TỰU",
+        title: "Kinh nghiệm & Thành tích",
+        cta: "XEM TOÀN BỘ LỘ TRÌNH",
+        devplus: {
+          tag: "DevPlus JSC",
+          title: "Thực tập sinh Dữ liệu",
+          desc: "Nâng cấp pipeline dữ liệu cho các mô hình ML với độ chính xác 99.2%, và tự động hóa kiểm thử hồi quy."
+        },
+        hackathon: {
+          tag: "Quán quân Hackathon",
+          title: "Stellar Mini Hackathon",
+          desc: "Đạt giải Nhất. Xây dựng giao thức DeFi UdonFi trên Soroban bằng Rust với các tối ưu hóa lưu trữ trạng thái."
+        },
+        icpc: {
+          tag: "Lập trình Thi đấu",
+          title: "Đội tuyển ICPC VKU",
+          desc: "Đang thi đấu tại các giải quốc gia, chuyên sâu về lý thuyết đồ thị và tối ưu hóa quy hoạch động."
+        },
+        details: "CHI TIẾT"
+      },
+      ecosystem: {
+        title: "Hệ sinh thái Công nghệ",
+        desc: "Cốt lõi kỹ thuật sâu và các trụ cột kiến trúc được tổng hợp từ các hệ thống thực tế và thử thách thi đấu. Di chuột vào công nghệ để xem nơi chúng được áp dụng.",
+        key: "Công nghệ Trọng tâm"
+      },
+      academic: {
+        tag: "NỀN TẢNG HỌC THUẬT",
+        title: "Giáo dục & Học viện",
+        cta: "XEM HỒ SƠ HỌC THUẬT",
+        vku: {
+          tag: "Trường Đại học",
+          name: "Trường Đại học Công nghệ TT & TT Việt - Hàn",
+          desc: "Trường đại học công lập hàng đầu chuyên về công nghệ số và đổi mới sáng tạo, thúc đẩy môi trường học thuật ưu tú qua quan hệ đối tác chiến lược giữa Việt Nam và Hàn Quốc.",
+          location: "Đà Nẵng, Việt Nam",
+          degree: "Cử nhân Kỹ thuật Phần mềm"
+        },
+        faculty: {
+          tag: "Khoa đào tạo",
+          name: "Khoa Khoa học Máy tính",
+          desc: "Trung tâm học thuật của VKU, tập trung vào sự xuất sắc trong logic thuật toán, hệ thống phi tập trung và kiến trúc AI.",
+          core_tag: "Trọng tâm Học thuật",
+          core: "Đội tuyển ICPC • Trí tuệ Nhân tạo AI"
+        }
+      },
+      philosophy: {
+        tag: "TƯ DUY KỸ THUẬT",
+        title: "Triết lý & Tầm nhìn",
+        cta: "KHÁM PHÁ TRIẾT LÝ",
+        pillar1: {
+          title: "Xây dựng Sản phẩm Thực",
+          desc: "Sự xuất sắc trong kỹ thuật được đo lường bằng giá trị sản phẩm. Mọi quyết định kỹ thuật phải phục vụ mục tiêu người dùng."
+        },
+        pillar2: {
+          title: "Tư duy Hệ thống",
+          desc: "Hiểu cách một yêu cầu di chuyển từ client đến database giúp xử lý lỗi tốt hơn và có tầm nhìn kiến trúc dài hạn."
+        },
+        pillar3: {
+          title: "Tập trung vào Cốt lõi",
+          desc: "Framework có thể lỗi thời, nhưng kiến thức cốt lõi thì trường tồn. Hiểu sâu về CTDL&GT giúp thích nghi chính xác."
+        }
+      },
+      contact: {
+        tag: "LIÊN HỆ",
+        title: "Kết nối với tôi",
+        desc: "Bạn muốn thảo luận về kiến trúc hệ thống, giao thức DeFi hoặc các cơ hội hợp tác? Hãy liên hệ qua các kênh dưới đây.",
+        phone: "Số điện thoại",
+        email: "Email",
+        location: "Địa điểm",
+        platform_tag: "Sẵn sàng hợp tác",
+        collab_title: "Hãy cùng nhau xây dựng điều gì đó tuyệt vời",
+        collab_desc: "Cho dù đó là giao thức DeFi, nền tảng AI hay ứng dụng fullstack — tôi luôn sẵn sàng đóng góp và tạo ra tác động.",
+        cta_msg: "GỬI TIN NHẮN"
+      }
+    }
+  };
+
+  const s = content[lang];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setRoleIndex((prev) => (prev + 1) % roles.length);
     }, 3000);
     return () => clearInterval(interval);
-  }, []);
+  }, [roles.length]);
 
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-8 pt-32 pb-16">
@@ -311,16 +607,16 @@ export const Home: React.FC = () => {
           <div className="mb-6 inline-flex items-center gap-2 px-3 py-1 bg-surface-container-low border border-outline-variant rounded-full w-fit">
             <span className="w-2.5 h-2.5 bg-primary rounded-full animate-pulse"></span>
             <span className="font-label-mono text-caption text-on-surface-variant">
-              Available for Q3 Internships
+              {t("home.hero.status")}
             </span>
           </div>
 
-          <h1 className="font-display text-display text-5xl md:text-6xl font-bold tracking-tight mb-4">
-            Nguyen The Anh
+          <h1 className="font-display text-display text-5xl md:text-6xl font-bold tracking-tight mb-4 text-on-surface">
+            {t("home.hero.title")}
           </h1>
 
           <div className="font-headline-md text-headline-md text-primary mb-6 flex items-center gap-2">
-            <span className="text-on-surface-variant font-medium">I am a</span>
+            <span className="text-on-surface-variant font-medium">{lang === "EN" ? "I am a" : "Tôi là"}</span>
             <div className="h-[1.5em] overflow-hidden relative w-64 inline-block align-bottom">
               <AnimatePresence mode="wait">
                 <motion.span
@@ -338,15 +634,15 @@ export const Home: React.FC = () => {
           </div>
 
           <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-8 leading-relaxed">
-            Software Engineering student at VKU focused on building comprehensive fullstack systems, secure blockchain protocols, and intelligent AI applications. Bridging the gap between robust architecture and data-driven intelligence.
+            {t("home.hero.subtitle")}
           </p>
 
           <div className="flex flex-wrap gap-6 mb-10">
             <div className="flex items-center gap-2 text-on-surface-variant font-label-mono text-caption">
-              <MapPin className="w-4.5 h-4.5 text-primary" /> Da Nang, Vietnam
+              <MapPin className="w-4.5 h-4.5 text-primary" /> {t("home.hero.location")}
             </div>
             <div className="flex items-center gap-2 text-on-surface-variant font-label-mono text-caption">
-              <GraduationCap className="w-4.5 h-4.5 text-primary" /> VKU IT Student
+              <GraduationCap className="w-4.5 h-4.5 text-primary" /> {lang === "EN" ? "VKU IT Student" : "Sinh viên IT VKU"}
             </div>
           </div>
 
@@ -355,13 +651,13 @@ export const Home: React.FC = () => {
               to="/projects"
               className="px-8 py-4 bg-primary text-on-primary rounded-xl font-bold flex items-center gap-2 hover:bg-primary-container transition-all hover:scale-[1.02] shadow-lg shadow-primary/10"
             >
-              Explore Projects <ArrowRight className="w-5 h-5" />
+              {s.cta_explore} <ArrowRight className="w-5 h-5" />
             </Link>
             <a
               href="https://drive.google.com/uc?export=download&id=1RgdhZxllueFuDsXPVMjNxhsveV4OKRj8"
               className="px-8 py-4 bg-surface border border-outline text-on-surface rounded-xl font-bold hover:bg-surface-container-low transition-colors"
             >
-              Download CV
+              {s.cta_download}
             </a>
           </div>
         </motion.div>
@@ -397,11 +693,11 @@ export const Home: React.FC = () => {
           <div className="relative z-10">
             <h3 className="font-label-mono text-primary mb-6 uppercase tracking-widest text-caption font-bold flex items-center gap-2">
               <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
-              Fullstack Ecosystem
+              {s.core_focus.tag}
             </h3>
             <div className="flex flex-col gap-2">
-              <h2 className="font-headline-lg text-headline-lg text-3xl font-bold text-on-surface">System Architecture</h2>
-              <p className="text-on-surface-variant font-body-md max-sm:text-sm">Bridging high-fidelity frontends with resilient backend infrastructures and real-time data pipelines.</p>
+              <h2 className="font-headline-lg text-headline-lg text-3xl font-bold text-on-surface">{s.core_focus.title}</h2>
+              <p className="text-on-surface-variant font-body-md max-sm:text-sm">{s.core_focus.desc}</p>
             </div>
           </div>
 
@@ -409,9 +705,9 @@ export const Home: React.FC = () => {
           <div className="h-64 relative flex items-center justify-center">
             <svg width="400" height="200" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full max-w-md">
               <rect x="40" y="70" width="60" height="60" rx="12" fill="currentColor" className="text-primary/10" stroke="currentColor" strokeWidth="2" />
-              <text x="70" y="105" textAnchor="middle" className="fill-primary font-bold text-[10px] font-label-mono">CLIENT</text>
+              <text x="70" y="105" textAnchor="middle" className="fill-primary font-bold text-[10px] font-label-mono">{lang === "EN" ? "CLIENT" : "THIẾT BỊ"}</text>
               <rect x="300" y="70" width="60" height="60" rx="12" fill="currentColor" className="text-secondary/10" stroke="currentColor" strokeWidth="2" />
-              <text x="330" y="105" textAnchor="middle" className="fill-secondary font-bold text-[10px] font-label-mono">SERVER</text>
+              <text x="330" y="105" textAnchor="middle" className="fill-secondary font-bold text-[10px] font-label-mono">{lang === "EN" ? "SERVER" : "MÁY CHỦ"}</text>
               <path d="M110 100 H290" stroke="currentColor" className="text-outline-variant" strokeWidth="2" strokeDasharray="4 4" />
               <motion.circle r="4" fill="#004ac6" initial={{ cx: 110, cy: 100 }} animate={{ cx: [110, 290, 110] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} />
               <motion.circle r="4" fill="#004ac6" className="opacity-20" initial={{ cx: 110, cy: 100 }} animate={{ cx: [110, 290, 110], scale: [1, 1.5, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} />
@@ -425,16 +721,16 @@ export const Home: React.FC = () => {
               <span className="font-label-mono text-[9px] uppercase font-bold text-on-surface-variant bg-surface-container px-2 py-1 rounded">NestJS</span>
               <span className="font-label-mono text-[9px] uppercase font-bold text-on-surface-variant bg-surface-container px-2 py-1 rounded">PostgreSQL</span>
             </div>
-            <p className="font-label-mono text-[10px] text-primary font-bold">LIVE SYSTEMS</p>
+            <p className="font-label-mono text-[10px] text-primary font-bold">{s.core_focus.live}</p>
           </div>
         </BentoCard>
 
         {/* Blockchain Security Card */}
         <BentoCard className="p-8 flex flex-col justify-between group overflow-hidden" delay={0.2}>
           <div>
-            <h3 className="font-label-mono text-secondary mb-4 uppercase tracking-widest text-[11px] font-bold">Web3 Protocol</h3>
-            <h4 className="font-headline-md text-headline-md font-bold text-on-surface mb-1">Smart Contract</h4>
-            <p className="text-caption text-on-surface-variant">Soroban/Rust Security</p>
+            <h3 className="font-label-mono text-secondary mb-4 uppercase tracking-widest text-[11px] font-bold">{s.web3_focus.tag}</h3>
+            <h4 className="font-headline-md text-headline-md font-bold text-on-surface mb-1">{s.web3_focus.title}</h4>
+            <p className="text-caption text-on-surface-variant">{s.web3_focus.subtitle}</p>
           </div>
           <div className="h-32 relative flex items-center justify-center my-4">
             <div className="relative">
@@ -446,7 +742,7 @@ export const Home: React.FC = () => {
             </div>
           </div>
           <div className="bg-secondary/5 rounded-lg p-3 border border-secondary/10">
-            <p className="font-label-mono text-[10px] text-secondary font-bold text-center tracking-tighter uppercase">Audit Status: SECURE</p>
+            <p className="font-label-mono text-[10px] text-secondary font-bold text-center tracking-tighter uppercase">{s.web3_focus.audit}</p>
           </div>
         </BentoCard>
 
@@ -458,10 +754,10 @@ export const Home: React.FC = () => {
               <motion.div animate={{ rotate: [0, -10, 10, -10, 0] }} transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}>
                 <Award className="w-14 h-14 text-primary-fixed mb-3 mx-auto drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
               </motion.div>
-              <div className="font-label-mono text-[11px] uppercase font-bold tracking-[0.2em] text-primary-fixed mb-1">Champion</div>
-              <div className="text-display font-display text-3xl font-black mb-1 tracking-tighter leading-tight">MINI STELLAR<br />HACKATHON</div>
+              <div className="font-label-mono text-[11px] uppercase font-bold tracking-[0.2em] text-primary-fixed mb-1">{s.hackathon.rank}</div>
+              <div className="text-display font-display text-3xl font-black mb-1 tracking-tighter leading-tight">{s.hackathon.event}</div>
               <div className="mt-4 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/20 inline-block">
-                <p className="font-label-mono text-[9px] uppercase font-bold text-white tracking-widest">Global #1 Winner</p>
+                <p className="font-label-mono text-[9px] uppercase font-bold text-white tracking-widest">{s.hackathon.winner}</p>
               </div>
             </div>
           </BentoCard>
@@ -485,8 +781,8 @@ export const Home: React.FC = () => {
             </svg>
           </div>
           <div>
-            <h4 className="font-headline-md text-headline-md font-bold text-on-surface mb-2">Algorithmic Core</h4>
-            <p className="font-body-md text-on-surface-variant leading-relaxed text-sm">Applying advanced discrete optimizations and complex problem-solving strategies to real-world engineering bottlenecks.</p>
+            <h4 className="font-headline-md text-headline-md font-bold text-on-surface mb-2">{s.algo.title}</h4>
+            <p className="font-body-md text-on-surface-variant leading-relaxed text-sm">{s.algo.desc}</p>
             <div className="flex gap-4 mt-4 font-label-mono text-[10px] font-bold text-tertiary">
               <span>DP</span> <span>GRAPH THEORY</span> <span>CONCURRENCY</span>
             </div>
@@ -497,8 +793,8 @@ export const Home: React.FC = () => {
       {/* Engineering Domains */}
       <section className="mb-20">
         <div className="mb-12">
-          <h2 className="font-display text-headline-lg text-3xl font-bold mb-2">Engineering Domains</h2>
-          <p className="text-on-surface-variant max-w-xl">Deep technical expertise across the modern engineering stack.</p>
+          <h2 className="font-display text-headline-lg text-3xl font-bold mb-2">{s.domains.title}</h2>
+          <p className="text-on-surface-variant max-w-xl">{s.domains.subtitle}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
           {/* Fullstack */}
@@ -513,7 +809,7 @@ export const Home: React.FC = () => {
                   <h3 className="font-display text-xl font-bold text-on-surface">
                     Fullstack Development
                   </h3>
-                  <span className="font-label-mono text-[10px] text-primary uppercase font-bold tracking-wider">End-to-End Solutions</span>
+                  <span className="font-label-mono text-[10px] text-primary uppercase font-bold tracking-wider">{s.domains.fullstack.tag}</span>
                 </div>
               </div>
 
@@ -523,14 +819,14 @@ export const Home: React.FC = () => {
 
               {/* Metric/Highlight Box */}
               <div className="mb-6 p-3 bg-surface-container rounded-lg border border-outline-variant/30">
-                <span className="font-label-mono text-[9px] uppercase font-bold text-on-surface-variant block mb-1">Key Focus</span>
-                <p className="text-[12px] text-on-surface font-semibold">Production-grade system design & seamless frontend-backend integration.</p>
+                <span className="font-label-mono text-[9px] uppercase font-bold text-on-surface-variant block mb-1">{lang === "EN" ? "Key Focus" : "Trọng tâm"}</span>
+	                <p className="text-[12px] text-on-surface font-semibold">{s.domains.fullstack.focus}</p>
               </div>
             </div>
 
             {/* Tech Badges */}
             <div>
-              <span className="font-label-mono text-[10px] text-on-surface-variant/80 uppercase font-bold tracking-wide block mb-3">Tech Stack</span>
+              <span className="font-label-mono text-[10px] text-on-surface-variant/80 uppercase font-bold tracking-wide block mb-3">{lang === "EN" ? "Tech Stack" : "Công nghệ"}</span>
               <div className="flex flex-wrap gap-2">
                 <span className="px-2.5 py-1 text-[11px] font-label-mono font-bold rounded-lg border bg-blue-500/10 text-blue-700 border-blue-500/20 hover:scale-105 transition-transform">React 19</span>
                 <span className="px-2.5 py-1 text-[11px] font-label-mono font-bold rounded-lg border bg-cyan-500/10 text-cyan-700 border-cyan-500/20 hover:scale-105 transition-transform">Tailwind 4</span>
@@ -555,7 +851,7 @@ export const Home: React.FC = () => {
                   <h3 className="font-display text-xl font-bold text-on-surface">
                     Web3 & Blockchain
                   </h3>
-                  <span className="font-label-mono text-[10px] text-secondary uppercase font-bold tracking-wider">Smart Contracts</span>
+                  <span className="font-label-mono text-[10px] text-secondary uppercase font-bold tracking-wider">{s.domains.blockchain.tag}</span>
                 </div>
               </div>
 
@@ -565,8 +861,8 @@ export const Home: React.FC = () => {
 
               {/* Metric/Highlight Box */}
               <div className="mb-6 p-3 bg-surface-container rounded-lg border border-outline-variant/30">
-                <span className="font-label-mono text-[9px] uppercase font-bold text-on-surface-variant block mb-1">Hackathon Metric</span>
-                <p className="text-[12px] text-on-surface font-semibold">Smart contract gas optimization & state bitmap packing.</p>
+                <span className="font-label-mono text-[9px] uppercase font-bold text-on-surface-variant block mb-1">{lang === "EN" ? "Hackathon Metric" : "Chỉ số Hackathon"}</span>
+	                <p className="text-[12px] text-on-surface font-semibold">{s.domains.blockchain.focus}</p>
               </div>
             </div>
 
@@ -578,7 +874,7 @@ export const Home: React.FC = () => {
                 <span className="px-2.5 py-1 text-[11px] font-label-mono font-bold rounded-lg border bg-violet-500/10 text-violet-700 border-violet-500/20 hover:scale-105 transition-transform">Soroban</span>
                 <span className="px-2.5 py-1 text-[11px] font-label-mono font-bold rounded-lg border bg-blue-500/10 text-blue-700 border-blue-500/20 hover:scale-105 transition-transform">Stellar</span>
                 <span className="px-2.5 py-1 text-[11px] font-label-mono font-bold rounded-lg border bg-pink-500/10 text-pink-700 border-pink-500/20 hover:scale-105 transition-transform">DeFi Design</span>
-                <span className="px-2.5 py-1 text-[11px] font-label-mono font-bold rounded-lg border bg-cyan-500/10 text-cyan-700 border-cyan-500/20 hover:scale-105 transition-transform">Security Auditing</span>
+                <span className="px-2.5 py-1 text-[11px] font-label-mono font-bold rounded-lg border bg-cyan-500/10 text-cyan-700 border-cyan-500/20 hover:scale-105 transition-transform">{lang === "EN" ? "Security Auditing" : "Kiểm toán Bảo mật"}</span>
               </div>
             </div>
           </BentoCard>
@@ -595,7 +891,7 @@ export const Home: React.FC = () => {
                   <h3 className="font-display text-xl font-bold text-on-surface">
                     AI Systems & Data
                   </h3>
-                  <span className="font-label-mono text-[10px] text-tertiary uppercase font-bold tracking-wider">Machine Learning</span>
+                  <span className="font-label-mono text-[10px] text-tertiary uppercase font-bold tracking-wider">{s.domains.ai.tag}</span>
                 </div>
               </div>
 
@@ -605,8 +901,8 @@ export const Home: React.FC = () => {
 
               {/* Metric/Highlight Box */}
               <div className="mb-6 p-3 bg-surface-container rounded-lg border border-outline-variant/30">
-                <span className="font-label-mono text-[9px] uppercase font-bold text-on-surface-variant block mb-1">Model Accuracy</span>
-                <p className="text-[12px] text-on-surface font-semibold">ML validation pipelines built with 99.2% accuracy.</p>
+                <span className="font-label-mono text-[9px] uppercase font-bold text-on-surface-variant block mb-1">{lang === "EN" ? "Model Accuracy" : "Độ chính xác Mô hình"}</span>
+	                <p className="text-[12px] text-on-surface font-semibold">{s.domains.ai.focus}</p>
               </div>
             </div>
 
@@ -630,17 +926,17 @@ export const Home: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-16 px-4">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary-fixed-dim text-on-secondary-fixed text-[10px] font-label-mono font-bold mb-4">
-              <Award className="w-3 h-3" /> SELECTED WORK
+	              <Award className="w-3 h-3" /> {s.projects.tag}
             </div>
             <h2 className="font-display text-display text-4xl md:text-5xl font-bold tracking-tight">
-              Featured <span className="text-primary italic">Projects</span>
+	              {s.projects.title}
             </h2>
           </div>
           <Link
             to="/projects"
             className="group flex items-center gap-2 font-label-mono text-sm font-bold text-primary hover:text-primary-container transition-colors"
           >
-            SEE ALL ARCHIVE
+	            {s.projects.cta_archive}
             <div className="w-8 h-8 rounded-full border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-all">
               <ArrowRight className="w-4 h-4" />
             </div>
@@ -661,13 +957,13 @@ export const Home: React.FC = () => {
                 <UdonLogo className="!bg-white/90 backdrop-blur-md shadow-lg scale-90 origin-top-left border border-white/20 !rounded-2xl !py-3 !px-4 hover:scale-100 transition-transform" />
               </div>
             </div>
-            <div className="lg:w-2/5 p-8 md:p-12 flex flex-col justify-center relative bg-white lg:bg-transparent">
+            <div className="lg:w-2/5 p-8 md:p-12 flex flex-col justify-center relative bg-surface-container-lowest lg:bg-transparent">
               <div className="mb-4">
-                <span className="font-label-mono text-[11px] font-bold text-amber-600 uppercase tracking-widest mb-2 block">1st Prize Winner • Stellar Hackathon</span>
+	                <span className="font-label-mono text-[11px] font-bold text-amber-600 uppercase tracking-widest mb-2 block">{s.projects.udonfi.tag}</span>
                 <h3 className="font-display text-4xl font-bold text-on-surface mb-4 leading-tight">UdonFi Protocol</h3>
               </div>
               <p className="text-on-surface-variant mb-8 font-body-md leading-relaxed">
-                A high-performance lending protocol on Stellar Soroban. Optimized via u128 bitmap packing and 2-step liquidation flows to bypass VM constraints and minimize storage costs.
+	                {s.projects.udonfi.desc}
               </p>
               <div className="flex flex-wrap gap-2 mb-10">
                 <span className="px-3 py-1 bg-surface-container text-[11px] font-label-mono font-bold text-on-surface-variant rounded-md border border-outline-variant/30">SOROBAN</span>
@@ -678,7 +974,7 @@ export const Home: React.FC = () => {
                 to="/projects/udonfi"
                 className="w-fit px-8 py-3 bg-on-surface text-surface rounded-xl font-bold flex items-center gap-3 hover:bg-primary transition-all group/btn"
               >
-                Explore Case Study
+	                {s.projects.udonfi.cta}
                 <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
               </Link>
             </div>
@@ -695,7 +991,7 @@ export const Home: React.FC = () => {
               />
               <div className="absolute bottom-4 left-4 z-20">
                 <span className="px-3 py-1.5 bg-black/60 backdrop-blur-md text-white font-label-mono text-[10px] font-bold rounded-lg border border-white/10">
-                  AI & MACHINE LEARNING
+	                  {s.projects.viotune.tag}
                 </span>
               </div>
             </div>
@@ -703,7 +999,7 @@ export const Home: React.FC = () => {
               <div className="flex-grow">
                 <h3 className="font-display text-2xl font-bold text-on-surface mb-3 group-hover:text-secondary transition-colors">VioTune AI</h3>
                 <p className="text-on-surface-variant text-sm leading-relaxed mb-6 font-body-md opacity-80">
-                  Developing hybrid recommendation systems using SVD Matrix Factorization and KNN models. Bridging FastAPI backends with real-time inference for hyper-personalized discovery.
+	                  {s.projects.viotune.desc}
                 </p>
               </div>
               <div className="pt-6 border-t border-outline-variant/30 flex justify-between items-center">
@@ -716,7 +1012,7 @@ export const Home: React.FC = () => {
                   </div>
                 </div>
                 <Link to="/projects/viotune" className="font-label-mono text-xs font-bold text-on-surface hover:text-primary transition-colors flex items-center gap-2">
-                  READ MORE <ArrowRight className="w-3 h-3" />
+		                  {s.projects.viotune.cta} <ArrowRight className="w-3 h-3" />
                 </Link>
               </div>
             </div>
@@ -733,7 +1029,7 @@ export const Home: React.FC = () => {
               />
               <div className="absolute bottom-4 left-4 z-20">
                 <span className="px-3 py-1.5 bg-black/60 backdrop-blur-md text-white font-label-mono text-[10px] font-bold rounded-lg border border-white/10">
-                  FULLSTACK ECOSYSTEM
+	                  {s.projects.labouffe.tag}
                 </span>
               </div>
             </div>
@@ -741,7 +1037,7 @@ export const Home: React.FC = () => {
               <div className="flex-grow">
                 <h3 className="font-display text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">LaBouffe Platform</h3>
                 <p className="text-on-surface-variant text-sm leading-relaxed mb-6 font-body-md opacity-80">
-                  Architecting high-concurrency food delivery systems with real-time tracking and automated order management pipelines. Built for scale and reliability.
+	                  {s.projects.labouffe.desc}
                 </p>
               </div>
               <div className="pt-6 border-t border-outline-variant/30 flex justify-between items-center">
@@ -754,7 +1050,7 @@ export const Home: React.FC = () => {
                   </div>
                 </div>
                 <Link to="/projects/labouffe" className="font-label-mono text-xs font-bold text-on-surface hover:text-primary transition-colors flex items-center gap-2">
-                  READ MORE <ArrowRight className="w-3 h-3" />
+	                  {s.projects.labouffe.cta} <ArrowRight className="w-3 h-3" />
                 </Link>
               </div>
             </div>
@@ -768,17 +1064,17 @@ export const Home: React.FC = () => {
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-container/20 text-primary text-[10px] font-label-mono font-bold mb-4">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
-              TIMELINE & HONORS
+	              {s.experience.tag}
             </div>
             <h2 className="font-display text-display text-4xl md:text-5xl font-bold tracking-tight text-on-surface">
-              Experience & <span className="text-secondary italic">Achievements</span>
+	              {s.experience.title}
             </h2>
           </div>
           <Link
             to="/experience"
             className="group flex items-center gap-2 font-label-mono text-sm font-bold text-primary hover:text-primary-container transition-colors"
           >
-            VIEW FULL TIMELINE
+	            {s.experience.cta}
             <div className="w-8 h-8 rounded-full border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-all">
               <ArrowRight className="w-4 h-4" />
             </div>
@@ -794,14 +1090,14 @@ export const Home: React.FC = () => {
                   <Briefcase className="w-5 h-5" />
                 </div>
                 <span className="font-label-mono text-[10px] text-primary uppercase font-bold tracking-widest block mb-2">DevPlus JSC</span>
-                <h3 className="font-display text-xl font-bold text-on-surface mb-3 group-hover/card:text-primary transition-colors">Data Labeling Intern</h3>
+	                <h3 className="font-display text-xl font-bold text-on-surface mb-3 group-hover/card:text-primary transition-colors">{s.experience.devplus.title}</h3>
                 <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mb-6 opacity-80">
-                  Enhanced data intelligence pipelines for ML models with 99.2% accuracy in validation, and automated regression testing.
+	                  {s.experience.devplus.desc}
                 </p>
               </div>
               <div className="pt-4 border-t border-outline-variant/30 flex justify-between items-center text-caption font-label-mono text-on-surface-variant/75">
                 <span>04/2026 — 07/2026</span>
-                <span className="text-primary font-bold flex items-center gap-1 group-hover/card:translate-x-1 transition-transform">DETAILS <ArrowRight className="w-3 h-3" /></span>
+                <span className="text-primary font-bold flex items-center gap-1 group-hover/card:translate-x-1 transition-transform">{s.experience.details} <ArrowRight className="w-3 h-3" /></span>
               </div>
             </BentoCard>
           </Link>
@@ -813,15 +1109,15 @@ export const Home: React.FC = () => {
                 <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary mb-6 group-hover/card:scale-110 transition-transform">
                   <Award className="w-5 h-5" />
                 </div>
-                <span className="font-label-mono text-[10px] text-secondary uppercase font-bold tracking-widest block mb-2">Hackathon Champion</span>
-                <h3 className="font-display text-xl font-bold text-on-surface mb-3 group-hover/card:text-secondary transition-colors">Stellar Mini Hackathon</h3>
+                <span className="font-label-mono text-[10px] text-secondary uppercase font-bold tracking-widest block mb-2">{s.experience.hackathon.tag}</span>
+	                <h3 className="font-display text-xl font-bold text-on-surface mb-3 group-hover/card:text-secondary transition-colors">{s.experience.hackathon.title}</h3>
                 <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mb-6 opacity-80">
-                  First Prize winner. Engineered UdonFi decentralized lending protocol on Soroban using Rust with state storage optimizations.
+	                  {s.experience.hackathon.desc}
                 </p>
               </div>
               <div className="pt-4 border-t border-outline-variant/30 flex justify-between items-center text-caption font-label-mono text-on-surface-variant/75">
                 <span>05/2026</span>
-                <span className="text-secondary font-bold flex items-center gap-1 group-hover/card:translate-x-1 transition-transform">DETAILS <ArrowRight className="w-3 h-3" /></span>
+                <span className="text-secondary font-bold flex items-center gap-1 group-hover/card:translate-x-1 transition-transform">{s.experience.details} <ArrowRight className="w-3 h-3" /></span>
               </div>
             </BentoCard>
           </Link>
@@ -833,15 +1129,15 @@ export const Home: React.FC = () => {
                 <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600 mb-6 group-hover/card:scale-110 transition-transform">
                   <Code className="w-5 h-5" />
                 </div>
-                <span className="font-label-mono text-[10px] text-emerald-600 uppercase font-bold tracking-widest block mb-2">Competitive Coding</span>
-                <h3 className="font-display text-xl font-bold text-on-surface mb-3 group-hover/card:text-emerald-600 transition-colors">VKU ICPC Training Team</h3>
+                <span className="font-label-mono text-[10px] text-emerald-600 uppercase font-bold tracking-widest block mb-2">{s.experience.icpc.tag}</span>
+	                <h3 className="font-display text-xl font-bold text-on-surface mb-3 group-hover/card:text-emerald-600 transition-colors">{s.experience.icpc.title}</h3>
                 <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mb-6 opacity-80">
-                  Actively competing in national-level contests, specializing in graph theory and dynamic programming optimization.
+	                  {s.experience.icpc.desc}
                 </p>
               </div>
               <div className="pt-4 border-t border-outline-variant/30 flex justify-between items-center text-caption font-label-mono text-on-surface-variant/75">
                 <span>2024 — Present</span>
-                <span className="text-emerald-600 font-bold flex items-center gap-1 group-hover/card:translate-x-1 transition-transform">DETAILS <ArrowRight className="w-3 h-3" /></span>
+                <span className="text-emerald-600 font-bold flex items-center gap-1 group-hover/card:translate-x-1 transition-transform">{s.experience.details} <ArrowRight className="w-3 h-3" /></span>
               </div>
             </BentoCard>
           </Link>
@@ -851,10 +1147,10 @@ export const Home: React.FC = () => {
       {/* Technology Ecosystem */}
       <section className="mb-24">
         <div className="text-center mb-16">
-          <h2 className="font-display text-headline-lg text-3xl font-bold mb-4">Technology Ecosystem</h2>
+          <h2 className="font-display text-headline-lg text-3xl font-bold mb-4">{s.ecosystem.title}</h2>
           <div className="h-1 w-12 bg-primary mx-auto rounded-full mb-4"></div>
           <p className="text-on-surface-variant max-w-xl mx-auto text-sm font-body-md">
-            Deep technical core and architecture pillars compiled from real-world systems and competitive challenges. Hover over technologies to see where they are applied.
+            {s.ecosystem.desc}
           </p>
         </div>
 
@@ -875,7 +1171,7 @@ export const Home: React.FC = () => {
                 </div>
 
                 <div>
-                  <span className="font-label-mono text-[10px] text-on-surface-variant/80 uppercase font-bold tracking-wide block mb-3">Key Technologies</span>
+                  <span className="font-label-mono text-[10px] text-on-surface-variant/80 uppercase font-bold tracking-wide block mb-3">{s.ecosystem.key}</span>
                   <div className="flex flex-wrap gap-2.5">
                     {category.skills.map((skill, sIdx) => (
                       <div key={sIdx} className="relative group/tooltip">
@@ -904,17 +1200,17 @@ export const Home: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 px-4">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-label-mono font-bold mb-4">
-              <GraduationCap className="w-3.5 h-3.5" /> ACADEMIC FOUNDATION
+	              <GraduationCap className="w-3.5 h-3.5" /> {s.academic.tag}
             </div>
             <h2 className="font-display text-display text-4xl md:text-5xl font-bold tracking-tight">
-              Education & <span className="text-primary italic">Academy</span>
+	              {s.academic.title}
             </h2>
           </div>
           <Link
             to="/education"
             className="group flex items-center gap-2 font-label-mono text-sm font-bold text-primary hover:text-primary-container transition-colors"
           >
-            VIEW ACADEMIC RECORD
+	            {s.academic.cta}
             <div className="w-8 h-8 rounded-full border border-primary/20 flex items-center justify-center group-hover:bg-primary group-hover:text-on-primary transition-all">
               <ArrowRight className="w-4 h-4" />
             </div>
@@ -927,24 +1223,24 @@ export const Home: React.FC = () => {
             <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full blur-3xl -mr-16 -mt-16 group-hover:bg-primary/10 transition-colors duration-500"></div>
             <div>
               <div className="flex gap-4 items-center mb-6">
-                <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center p-2.5 flex-shrink-0 shadow-sm border border-outline-variant/20 group-hover:scale-105 transition-transform">
+                <div className="brand-logo-surface w-14 h-14 rounded-xl flex items-center justify-center p-2.5 flex-shrink-0 shadow-sm border group-hover:scale-105 transition-transform">
                   <img src="/Infor/Logo_school.png" alt="VKU Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <span className="font-label-mono text-[10px] text-primary uppercase font-bold tracking-widest block">
-                    University
+	                    {s.academic.vku.tag}
                   </span>
                   <h3 className="font-display text-2xl font-bold text-on-surface">
-                    Vietnam - Korea University of ICT
+	                    {s.academic.vku.name}
                   </h3>
                 </div>
               </div>
               <p className="font-body-md text-on-surface-variant leading-relaxed text-sm mb-6 max-w-xl">
-                A premier public university specializing in digital technology and innovation, fostering an elite academic environment through a strategic partnership between Vietnam and South Korea.
+	                {s.academic.vku.desc}
               </p>
               <div className="flex flex-wrap gap-4 text-[11px] font-label-mono text-on-surface-variant font-bold">
-                <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-red-500" /> Da Nang, Vietnam</span>
-                <span className="flex items-center gap-1.5 text-primary">Bachelor of Software Engineering</span>
+	                <span className="flex items-center gap-1.5"><MapPin className="w-3.5 h-3.5 text-red-500" /> {s.academic.vku.location}</span>
+	                <span className="flex items-center gap-1.5 text-primary">{s.academic.vku.degree}</span>
               </div>
             </div>
           </BentoCard>
@@ -954,25 +1250,25 @@ export const Home: React.FC = () => {
             <div className="absolute bottom-0 right-0 w-48 h-48 bg-secondary/5 rounded-full blur-2xl -mr-12 -mb-12 group-hover:bg-secondary/10 transition-colors duration-500"></div>
             <div>
               <div className="flex gap-4 items-center mb-6">
-                <div className="w-14 h-14 bg-white rounded-xl flex items-center justify-center p-2.5 flex-shrink-0 shadow-sm border border-outline-variant/20 group-hover:scale-105 transition-transform">
+                <div className="brand-logo-surface w-14 h-14 rounded-xl flex items-center justify-center p-2.5 flex-shrink-0 shadow-sm border group-hover:scale-105 transition-transform">
                   <img src="/Infor/Logo_CS.png" alt="Faculty of CS Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <span className="font-label-mono text-[10px] text-secondary uppercase font-bold tracking-widest block">
-                    Department
+	                    {s.academic.faculty.tag}
                   </span>
                   <h3 className="font-display text-xl font-bold text-on-surface">
-                    Faculty of CS
+	                    {s.academic.faculty.name}
                   </h3>
                 </div>
               </div>
               <p className="font-body-md text-on-surface-variant leading-relaxed text-sm opacity-90">
-                The academic heart of VKU, focusing on excellence in algorithmic logic, decentralized systems, and AI-driven architectures.
+	                {s.academic.faculty.desc}
               </p>
             </div>
             <div className="mt-6 pt-4 border-t border-outline-variant/30">
-              <span className="font-label-mono text-[9px] uppercase font-bold text-secondary block mb-1">Academic Core</span>
-              <p className="text-[11px] text-on-surface font-semibold">ICPC Training Team • AI Intelligence</p>
+              <span className="font-label-mono text-[9px] uppercase font-bold text-secondary block mb-1">{s.academic.faculty.core_tag}</span>
+	              <p className="text-[11px] text-on-surface font-semibold">{s.academic.faculty.core}</p>
             </div>
           </BentoCard>
         </div>
@@ -983,17 +1279,17 @@ export const Home: React.FC = () => {
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12 px-4">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary text-[10px] font-label-mono font-bold mb-4">
-              <Zap className="w-3.5 h-3.5" /> ENGINEERING MINDSET
+	              <Zap className="w-3.5 h-3.5" /> {s.philosophy.tag}
             </div>
             <h2 className="font-display text-display text-4xl md:text-5xl font-bold tracking-tight">
-              Philosophy & <span className="text-secondary italic">Vision</span>
+	              {s.philosophy.title}
             </h2>
           </div>
           <Link
             to="/philosophy"
             className="group flex items-center gap-2 font-label-mono text-sm font-bold text-secondary hover:text-secondary-container transition-colors"
           >
-            EXPLORE PHILOSOPHY
+	            {s.philosophy.cta}
             <div className="w-8 h-8 rounded-full border border-secondary/20 flex items-center justify-center group-hover:bg-secondary group-hover:text-on-secondary transition-all">
               <ArrowRight className="w-4 h-4" />
             </div>
@@ -1010,10 +1306,10 @@ export const Home: React.FC = () => {
                   <Layers className="w-5 h-5" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-on-surface mb-3 group-hover/pillar:text-primary transition-colors">
-                  Build Real Products
+	                  {s.philosophy.pillar1.title}
                 </h3>
                 <p className="text-on-surface-variant text-sm font-body-md leading-relaxed opacity-85">
-                  Engineering excellence is measured by the utility of the product. Every technical decision must serve the ultimate user goal.
+	                  {s.philosophy.pillar1.desc}
                 </p>
               </div>
               <div className="pt-5 mt-5 border-t border-outline-variant/30 flex justify-between items-center relative z-10">
@@ -1038,10 +1334,10 @@ export const Home: React.FC = () => {
                   <Globe className="w-5 h-5" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-on-surface mb-3 group-hover/pillar:text-secondary transition-colors">
-                  Systems Thinking
+	                  {s.philosophy.pillar2.title}
                 </h3>
                 <p className="text-on-surface-variant text-sm font-body-md leading-relaxed opacity-85">
-                  Understanding how a request travels from client to database enables better debugging and architectural foresight.
+	                  {s.philosophy.pillar2.desc}
                 </p>
               </div>
               <div className="pt-5 mt-5 border-t border-outline-variant/30 flex justify-between items-center relative z-10">
@@ -1066,10 +1362,10 @@ export const Home: React.FC = () => {
                   <Brain className="w-5 h-5" />
                 </div>
                 <h3 className="font-display text-xl font-bold text-on-surface mb-3 group-hover/pillar:text-tertiary transition-colors">
-                  Fundamentals Focus
+	                  {s.philosophy.pillar3.title}
                 </h3>
                 <p className="text-on-surface-variant text-sm font-body-md leading-relaxed opacity-85">
-                  Frameworks fade, but fundamentals endure. Deep understanding of DSA and protocols allows for precise adaptation.
+	                  {s.philosophy.pillar3.desc}
                 </p>
               </div>
               <div className="pt-5 mt-5 border-t border-outline-variant/30 flex justify-between items-center relative z-10">
@@ -1091,13 +1387,13 @@ export const Home: React.FC = () => {
       <section className="mb-12" id="home-contact">
         <div className="mb-12 px-4">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-label-mono font-bold mb-4">
-            <Send className="w-3.5 h-3.5" /> GET IN TOUCH
+	            <Send className="w-3.5 h-3.5" /> {s.contact.tag}
           </div>
           <h2 className="font-display text-display text-4xl md:text-5xl font-bold tracking-tight">
-            Let's <span className="text-primary italic">Connect</span>
+	            {s.contact.title}
           </h2>
           <p className="text-on-surface-variant max-w-xl mt-4 text-sm font-body-md">
-            Interested in discussing system architecture, DeFi protocols, or potential collaborations? Reach out through any channel below.
+	            {s.contact.desc}
           </p>
         </div>
 
@@ -1111,7 +1407,7 @@ export const Home: React.FC = () => {
                   <Phone className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="font-label-mono text-[9px] text-on-surface-variant uppercase font-bold tracking-widest">Phone</p>
+	                  <p className="font-label-mono text-[9px] text-on-surface-variant uppercase font-bold tracking-widest">{s.contact.phone}</p>
                   <p className="font-display text-base font-bold text-on-surface">+84 917 363 528</p>
                 </div>
               </a>
@@ -1131,8 +1427,8 @@ export const Home: React.FC = () => {
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="font-label-mono text-[9px] text-on-surface-variant uppercase font-bold tracking-widest">Location</p>
-                  <p className="font-display text-base font-bold text-on-surface">Da Nang, Vietnam</p>
+	                  <p className="font-label-mono text-[9px] text-on-surface-variant uppercase font-bold tracking-widest">{s.contact.location}</p>
+	                  <p className="font-display text-base font-bold text-on-surface">{s.academic.vku.location}</p>
                 </div>
               </div>
             </div>
@@ -1144,13 +1440,13 @@ export const Home: React.FC = () => {
             <div className="relative z-10 flex flex-col justify-between h-full">
               <div className="mb-8">
                 <span className="font-label-mono text-[10px] text-primary-fixed mb-3 block uppercase font-bold tracking-widest">
-                  Open for Collaboration
+	                  {s.contact.platform_tag}
                 </span>
                 <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
-                  Let's Build Something <span className="text-primary-fixed">Amazing</span> Together
+	                  {s.contact.collab_title}
                 </h3>
-                <p className="text-surface-variant text-sm leading-relaxed opacity-70 max-w-md">
-                  Whether it's a DeFi protocol, an AI-powered platform, or a fullstack application — I'm ready to contribute and create impact.
+                <p className="text-inverse-on-surface/70 text-sm leading-relaxed max-w-md">
+	                  {s.contact.collab_desc}
                 </p>
               </div>
 
@@ -1180,7 +1476,7 @@ export const Home: React.FC = () => {
                   className="flex-1 flex items-center justify-center gap-3 py-3.5 px-5 bg-primary/80 rounded-xl border border-primary hover:bg-primary transition-all duration-300 group/social"
                 >
                   <Send className="w-4 h-4 text-white" />
-                  <span className="font-label-mono text-[11px] font-bold text-white">SEND MESSAGE</span>
+                  <span className="font-label-mono text-[11px] font-bold text-white">{s.contact.cta_msg}</span>
                 </Link>
               </div>
             </div>

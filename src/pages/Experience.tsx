@@ -5,8 +5,12 @@ import {
   Award, Code, CheckCircle2, 
   Brain, Briefcase
 } from "lucide-react";
+import { useLanguage } from "../context/LanguageContext";
 
 export const Experience: React.FC = () => {
+  const { lang } = useLanguage();
+  const tr = (en: string, vi: string) => lang === "EN" ? en : vi;
+
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-8 pt-32 pb-16">
       {/* Hero Title */}
@@ -21,10 +25,10 @@ export const Experience: React.FC = () => {
             Nguyen The Anh
           </span>
           <h1 className="font-display text-display text-5xl font-bold tracking-tight text-on-surface">
-            Experience & Achievements
+            {tr("Experience & Achievements", "Kinh nghiệm & Thành tích")}
           </h1>
           <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed mt-2">
-            Factual engineering history, blockchain solutions, and competitive algorithmic achievements. Verified by production systems and competition benchmarks.
+            {tr("Factual engineering history, blockchain solutions, and competitive algorithmic achievements. Verified by production systems and competition benchmarks.", "Hành trình kỹ thuật, giải pháp blockchain và thành tích thuật toán thi đấu được kiểm chứng qua hệ thống thực tế và các kỳ thi.")}
           </p>
         </fm.div>
       </section>
@@ -54,16 +58,16 @@ export const Experience: React.FC = () => {
                     </div>
                     <div>
                       <span className="font-label-mono text-[10px] text-primary uppercase tracking-wider font-bold block">
-                        Professional Internship
+                        {tr("Professional Internship", "Thực tập Chuyên môn")}
                       </span>
                       <h3 className="font-display text-2xl font-bold text-on-surface mt-0.5">
-                        Data Labeling Intern
+                        {tr("Data Labeling Intern", "Thực tập sinh Gán nhãn Dữ liệu")}
                       </h3>
                       <p className="text-sm font-body-md text-on-surface-variant font-semibold">DevPlus JSC</p>
                     </div>
                   </div>
                   <span className="font-label-mono text-label-mono bg-surface px-3 py-1 rounded-lg text-on-surface-variant border border-outline-variant/30 font-bold text-caption self-start md:self-center">
-                    Apr 2026 — Jul 2026
+                    {tr("Apr 2026 - Jul 2026", "Tháng 4/2026 - Tháng 7/2026")}
                   </span>
                 </div>
                 
@@ -72,10 +76,10 @@ export const Experience: React.FC = () => {
                     <CheckCircle2 className="text-emerald-500 mt-1 w-5 h-5 flex-shrink-0" />
                     <div>
                       <h4 className="font-headline-md text-headline-md font-bold text-on-surface">
-                        Data Intelligence Pipelines
+                        {tr("Data Intelligence Pipelines", "Pipeline Dữ liệu Thông minh")}
                       </h4>
                       <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mt-1">
-                        Enhanced data intelligence pipelines for ML models, achieving a verified **99.2% accuracy** in validation.
+                        {tr("Enhanced data intelligence pipelines for ML models, achieving a verified 99.2% accuracy in validation.", "Nâng cấp pipeline dữ liệu cho mô hình ML, đạt độ chính xác kiểm chứng 99,2%.")}
                       </p>
                     </div>
                   </div>
@@ -84,10 +88,10 @@ export const Experience: React.FC = () => {
                     <CheckCircle2 className="text-emerald-500 mt-1 w-5 h-5 flex-shrink-0" />
                     <div>
                       <h4 className="font-headline-md text-headline-md font-bold text-on-surface">
-                        QA Automation
+                        {tr("QA Automation", "Tự động hóa QA")}
                       </h4>
                       <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mt-1">
-                        Collaborated on QA automation to reduce regression testing cycles for internal management platforms, optimizing release cycles.
+                        {tr("Collaborated on QA automation to reduce regression testing cycles for internal management platforms, optimizing release cycles.", "Phối hợp tự động hóa QA để rút ngắn chu kỳ kiểm thử hồi quy cho nền tảng quản trị nội bộ và tối ưu quy trình phát hành.")}
                       </p>
                     </div>
                   </div>
@@ -120,16 +124,16 @@ export const Experience: React.FC = () => {
                     </div>
                     <div>
                       <span className="font-label-mono text-[10px] text-secondary uppercase tracking-wider font-bold block">
-                        Hackathon Achievement
+                        {tr("Hackathon Achievement", "Thành tích Hackathon")}
                       </span>
                       <h3 className="font-display text-2xl font-bold text-on-surface mt-0.5">
-                        First Prize — Stellar Mini Hackathon
+                        {tr("First Prize - Stellar Mini Hackathon", "Giải Nhất - Stellar Mini Hackathon")}
                       </h3>
-                      <p className="text-sm font-body-md text-on-surface-variant font-semibold">Building Assets</p>
+                      <p className="text-sm font-body-md text-on-surface-variant font-semibold">{tr("Building Assets", "Xây dựng Tài sản")}</p>
                     </div>
                   </div>
                   <span className="font-label-mono text-label-mono bg-surface px-3 py-1 rounded-lg text-on-surface-variant border border-outline-variant/30 font-bold text-caption self-start md:self-center">
-                    May 2026
+                    {tr("May 2026", "Tháng 5/2026")}
                   </span>
                 </div>
                 
@@ -138,10 +142,10 @@ export const Experience: React.FC = () => {
                     <CheckCircle2 className="text-secondary mt-1 w-5 h-5 flex-shrink-0" />
                     <div>
                       <h4 className="font-headline-md text-headline-md font-bold text-on-surface">
-                        UdonFi Lending Protocol
+                        {tr("UdonFi Lending Protocol", "Giao thức Cho vay UdonFi")}
                       </h4>
                       <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mt-1">
-                        Engineered "UdonFi", a decentralized collateralized lending protocol on Stellar Soroban (Rust / Smart Contracts).
+                        {tr("Engineered UdonFi, a decentralized collateralized lending protocol on Stellar Soroban (Rust / Smart Contracts).", "Phát triển UdonFi, giao thức cho vay thế chấp phi tập trung trên Stellar Soroban bằng Rust và smart contract.")}
                       </p>
                     </div>
                   </div>
@@ -150,10 +154,10 @@ export const Experience: React.FC = () => {
                     <CheckCircle2 className="text-secondary mt-1 w-5 h-5 flex-shrink-0" />
                     <div>
                       <h4 className="font-headline-md text-headline-md font-bold text-on-surface">
-                        Storage & Risk Optimizations
+                        {tr("Storage & Risk Optimizations", "Tối ưu Lưu trữ & Rủi ro")}
                       </h4>
                       <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mt-1">
-                        Implemented sophisticated risk management models (LTV, Health Factor) and optimized state storage footprint via u128 bitmap packing to minimize gas and bypass Soroban VM constraints.
+                        {tr("Implemented sophisticated risk management models (LTV, Health Factor) and optimized state storage footprint via u128 bitmap packing to minimize gas and bypass Soroban VM constraints.", "Triển khai mô hình quản trị rủi ro LTV, Health Factor và tối ưu vùng lưu trữ trạng thái bằng bitmap u128 để giảm gas, vượt qua giới hạn của Soroban VM.")}
                       </p>
                     </div>
                   </div>
@@ -186,16 +190,16 @@ export const Experience: React.FC = () => {
                     </div>
                     <div>
                       <span className="font-label-mono text-[10px] text-emerald-600 uppercase tracking-wider font-bold block">
-                        Competitive Programming
+                        {tr("Competitive Programming", "Lập trình Thi đấu")}
                       </span>
                       <h3 className="font-display text-2xl font-bold text-on-surface mt-0.5">
-                        VKU ICPC Training Team
+                        {tr("VKU ICPC Training Team", "Đội tuyển Huấn luyện ICPC VKU")}
                       </h3>
-                      <p className="text-sm font-body-md text-on-surface-variant font-semibold">Vietnam-Korea University</p>
+                      <p className="text-sm font-body-md text-on-surface-variant font-semibold">{tr("Vietnam-Korea University", "Trường Đại học Việt - Hàn")}</p>
                     </div>
                   </div>
                   <span className="font-label-mono text-label-mono bg-surface px-3 py-1 rounded-lg text-on-surface-variant border border-outline-variant/30 font-bold text-caption self-start md:self-center">
-                    2024 — Present
+                    {tr("2024 - Present", "2024 - Hiện tại")}
                   </span>
                 </div>
                 
@@ -204,10 +208,10 @@ export const Experience: React.FC = () => {
                     <CheckCircle2 className="text-emerald-500 mt-1 w-5 h-5 flex-shrink-0" />
                     <div>
                       <h4 className="font-headline-md text-headline-md font-bold text-on-surface">
-                        National Level Algorithmic Contests
+                        {tr("National Level Algorithmic Contests", "Các kỳ thi Thuật toán Cấp Quốc gia")}
                       </h4>
                       <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mt-1">
-                        Actively competing in national-level algorithmic contests, solving complex discrete problems under rigorous memory and execution speed limits.
+                        {tr("Actively competing in national-level algorithmic contests, solving complex discrete problems under rigorous memory and execution speed limits.", "Tích cực tham gia các kỳ thi thuật toán cấp quốc gia, giải bài toán rời rạc phức tạp dưới giới hạn nghiêm ngặt về bộ nhớ và tốc độ.")}
                       </p>
                     </div>
                   </div>
@@ -216,10 +220,10 @@ export const Experience: React.FC = () => {
                     <CheckCircle2 className="text-emerald-500 mt-1 w-5 h-5 flex-shrink-0" />
                     <div>
                       <h4 className="font-headline-md text-headline-md font-bold text-on-surface">
-                        Algorithmic Specialization
+                        {tr("Algorithmic Specialization", "Chuyên môn Thuật toán")}
                       </h4>
                       <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mt-1">
-                        Specializing in advanced Dynamic Programming, Graph Theory algorithms (Shortest paths, Max Flow), and complex data structure optimizations in C++.
+                        {tr("Specializing in advanced Dynamic Programming, Graph Theory algorithms (Shortest paths, Max Flow), and complex data structure optimizations in C++.", "Chuyên sâu quy hoạch động, thuật toán đồ thị như đường đi ngắn nhất và luồng cực đại, cùng tối ưu cấu trúc dữ liệu phức tạp bằng C++.")}
                       </p>
                     </div>
                   </div>
@@ -243,12 +247,12 @@ export const Experience: React.FC = () => {
           <BentoCard className="p-6 border-none !bg-surface-container-high">
             <h4 className="font-label-mono text-xs mb-6 text-on-surface-variant font-bold uppercase tracking-wider flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
-              Engineering Benchmarks
+              {tr("Engineering Benchmarks", "Chỉ số Kỹ thuật")}
             </h4>
             <div className="space-y-6">
               <div>
                 <div className="flex justify-between text-xs font-label-mono mb-2 font-bold text-on-surface">
-                  <span>ML Data Pipeline Accuracy</span>
+                  <span>{tr("ML Data Pipeline Accuracy", "Độ chính xác Pipeline Dữ liệu ML")}</span>
                   <span className="text-primary">99.2%</span>
                 </div>
                 <div className="w-full bg-surface h-2 rounded-full overflow-hidden border border-outline-variant/20">
@@ -264,7 +268,7 @@ export const Experience: React.FC = () => {
               
               <div>
                 <div className="flex justify-between text-xs font-label-mono mb-2 font-bold text-on-surface">
-                  <span>Soroban Smart Contract Gas Reduction</span>
+                  <span>{tr("Soroban Smart Contract Gas Reduction", "Mức giảm Gas Smart Contract Soroban")}</span>
                   <span className="text-secondary">~40%</span>
                 </div>
                 <div className="w-full bg-surface h-2 rounded-full overflow-hidden border border-outline-variant/20">
@@ -280,8 +284,8 @@ export const Experience: React.FC = () => {
 
               <div>
                 <div className="flex justify-between text-xs font-label-mono mb-2 font-bold text-on-surface">
-                  <span>VKU ICPC Training Cohort</span>
-                  <span className="text-emerald-600">2+ Years</span>
+                  <span>{tr("VKU ICPC Training Cohort", "Thời gian Huấn luyện ICPC VKU")}</span>
+                  <span className="text-emerald-600">{tr("2+ Years", "Hơn 2 năm")}</span>
                 </div>
                 <div className="w-full bg-surface h-2 rounded-full overflow-hidden border border-outline-variant/20">
                   <fm.div 
@@ -356,9 +360,9 @@ export const Experience: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent z-0"></div>
             <div className="relative z-10">
               <Brain className="text-primary-fixed mb-4 w-7 h-7" />
-              <h4 className="font-headline-md text-headline-md font-bold mb-2 text-white">Technical Philosophy</h4>
-              <p className="font-body-md text-surface-variant opacity-90 italic leading-relaxed text-[13px]">
-                "Correctness is not an afterthought; it is the foundation. Whether it's a data label or a competitive edge case, the system only works when every bit is accounted for."
+              <h4 className="font-headline-md text-headline-md font-bold mb-2 text-white">{tr("Technical Philosophy", "Triết lý Kỹ thuật")}</h4>
+              <p className="font-body-md text-inverse-on-surface/75 italic leading-relaxed text-[13px]">
+                {tr("\"Correctness is not an afterthought; it is the foundation. Whether it is a data label or a competitive edge case, the system only works when every bit is accounted for.\"", "\"Tính đúng đắn không phải phần bổ sung, mà là nền tảng. Dù là nhãn dữ liệu hay trường hợp biên trong thi đấu, hệ thống chỉ hoạt động khi từng bit đều được tính đến.\"")}
               </p>
             </div>
           </div>

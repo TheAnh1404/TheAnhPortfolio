@@ -10,39 +10,42 @@ import {
 } from "lucide-react";
 
 import { UdonLogo } from "../../components/UdonLogo";
+import { useLanguage } from "../../context/LanguageContext";
 
 export const UdonFi: React.FC = () => {
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
+  const { lang } = useLanguage();
+  const tr = (en: string, vi: string) => lang === "EN" ? en : vi;
 
   const galleryImages = [
     {
       id: 0,
       src: "/Infor/udonFI/firstPr_img.jpg",
-      alt: "UdonFi Stellar Hackathon Award",
-      tag: "LIVESTREAM & EVENT",
-      title: "Stellar Mini Hackathon Award Ceremony",
-      shortDesc: "Nguyen The Anh receiving the 1st prize at the Stellar Soroban Hackathon, selected out of global submissions.",
-      desc: "Receiving the first prize at the official Stellar Soroban Hackathon. Our solution was selected out of dozens of global submissions for its outstanding gas efficiency, robust mathematical model, and clean Smart Contract implementation.",
+      alt: tr("UdonFi Stellar Hackathon Award", "Giải thưởng Stellar Hackathon của UdonFi"),
+      tag: tr("LIVESTREAM & EVENT", "LIVESTREAM & SỰ KIỆN"),
+      title: tr("Stellar Mini Hackathon Award Ceremony", "Lễ trao giải Stellar Mini Hackathon"),
+      shortDesc: tr("Nguyen The Anh receiving the 1st prize at the Stellar Soroban Hackathon, selected out of global submissions.", "Nguyễn Thế Anh nhận Giải Nhất Stellar Soroban Hackathon, được lựa chọn từ các bài dự thi toàn cầu."),
+      desc: tr("Receiving the first prize at the official Stellar Soroban Hackathon. Our solution was selected out of dozens of global submissions for its outstanding gas efficiency, robust mathematical model, and clean Smart Contract implementation.", "Nhận Giải Nhất tại Stellar Soroban Hackathon chính thức. Giải pháp nổi bật nhờ hiệu quả gas, mô hình toán học vững chắc và triển khai smart contract rõ ràng."),
       filename: "stellar_award_ceremony.jpg"
     },
     {
       id: 1,
       src: "/Infor/udonFI/Function.png",
-      alt: "Smart Contract Logic",
-      tag: "ARCHITECTURE",
-      title: "Smart Contract Execution Flow",
-      shortDesc: "Execution graph mapping the decentralized interaction model between user wallets and the protocol.",
-      desc: "Execution graph mapping the decentralized interaction model between user wallets, the core lending contracts, and Stellar ledger state. Illustrates frontrun-resistant liquidation and repay flows.",
+      alt: tr("Smart Contract Logic", "Logic Smart Contract"),
+      tag: tr("ARCHITECTURE", "KIẾN TRÚC"),
+      title: tr("Smart Contract Execution Flow", "Luồng Thực thi Smart Contract"),
+      shortDesc: tr("Execution graph mapping the decentralized interaction model between user wallets and the protocol.", "Sơ đồ thực thi mô tả tương tác phi tập trung giữa ví người dùng và giao thức."),
+      desc: tr("Execution graph mapping the decentralized interaction model between user wallets, the core lending contracts, and Stellar ledger state. Illustrates frontrun-resistant liquidation and repay flows.", "Sơ đồ mô tả tương tác giữa ví người dùng, hợp đồng cho vay lõi và trạng thái Stellar ledger, bao gồm luồng thanh lý và hoàn trả chống frontrun."),
       filename: "contract_interaction_flow.svg"
     },
     {
       id: 2,
       src: "/Infor/udonFI/128bitMap.png",
-      alt: "Bitmap Packing Logic",
-      tag: "GAS OPTIMIZATION",
-      title: "u128 Storage State Bitmap Packing Matrix",
-      shortDesc: "State bitmap mapping showing how multiple parameters are packed into a single u128 storage slot.",
-      desc: "State bitmap mapping showing how multiple parameters (active status, borrow ratios, timestamps) are packed into a single u128 storage slot to minimize ledger footprint, reducing gas costs by 40%.",
+      alt: tr("Bitmap Packing Logic", "Logic Đóng gói Bitmap"),
+      tag: tr("GAS OPTIMIZATION", "TỐI ƯU GAS"),
+      title: tr("u128 Storage State Bitmap Packing Matrix", "Ma trận Đóng gói Trạng thái u128"),
+      shortDesc: tr("State bitmap mapping showing how multiple parameters are packed into a single u128 storage slot.", "Sơ đồ bitmap cho thấy nhiều tham số được đóng gói vào một ô lưu trữ u128."),
+      desc: tr("State bitmap mapping showing how multiple parameters are packed into a single u128 storage slot to minimize ledger footprint, reducing gas costs by 40%.", "Sơ đồ bitmap cho thấy nhiều tham số được đóng gói vào một ô u128 nhằm giảm vùng lưu trữ ledger và giảm 40% chi phí gas."),
       filename: "state_bitmap_packing.c"
     }
   ];
@@ -73,7 +76,7 @@ export const UdonFi: React.FC = () => {
           to="/projects"
           className="inline-flex items-center gap-2 font-label-mono text-caption text-primary font-bold hover:gap-3 transition-all"
         >
-          <ArrowLeft className="w-4 h-4" /> Back to Engineering Systems
+          <ArrowLeft className="w-4 h-4" /> {tr("Back to Engineering Systems", "Quay lại Hệ thống Kỹ thuật")}
         </Link>
       </motion.div>
 
@@ -94,7 +97,7 @@ export const UdonFi: React.FC = () => {
               Udon<span className="text-primary italic">Fi</span>
             </h1>
             <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed mb-10">
-              A high-performance Web3 lending protocol engineered for the Stellar Soroban ecosystem. Solving capital efficiency and VM constraints via u128 bitmap packing and 2-step liquidation flows.
+              {tr("A high-performance Web3 lending protocol engineered for the Stellar Soroban ecosystem. Solving capital efficiency and VM constraints via u128 bitmap packing and 2-step liquidation flows.", "Giao thức cho vay Web3 hiệu năng cao dành cho hệ sinh thái Stellar Soroban, giải quyết hiệu quả vốn và giới hạn máy ảo bằng bitmap u128 cùng quy trình thanh lý hai bước.")}
             </p>
             
             <div className="flex flex-wrap gap-4">
@@ -105,16 +108,16 @@ export const UdonFi: React.FC = () => {
                 className="flex items-center gap-2 font-label-mono text-label-mono bg-primary text-on-primary px-8 py-4 rounded-xl hover:bg-primary-container transition-all hover:scale-[1.02] font-bold shadow-lg shadow-primary/20"
               >
                 <LinkIcon className="w-4.5 h-4.5" />
-                Live Protocol
+                {tr("Live Protocol", "Giao thức Trực tuyến")}
               </a>
               <a
                 href="https://www.facebook.com/share/p/14fXkQAuFGW/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-2 font-label-mono text-label-mono text-blue-600 border border-blue-200 bg-blue-50 px-8 py-4 rounded-xl hover:bg-blue-100 transition-all hover:scale-[1.02] font-bold"
+                className="flex items-center gap-2 font-label-mono text-label-mono text-blue-600 border border-blue-200 bg-blue-50 px-8 py-4 rounded-xl hover:bg-blue-100 dark:hover:bg-blue-500/20 transition-all hover:scale-[1.02] font-bold"
               >
                 <Sparkles className="w-4.5 h-4.5" />
-                Official Post
+                {tr("Official Post", "Bài viết Chính thức")}
               </a>
               <a
                 href="https://github.com/TheAnh1404/UdonFi"
@@ -123,7 +126,7 @@ export const UdonFi: React.FC = () => {
                 className="flex items-center gap-2 font-label-mono text-label-mono border border-outline px-8 py-4 rounded-xl hover:bg-surface-container transition-all hover:scale-[1.02] font-bold"
               >
                 <CodeIcon className="w-4.5 h-4.5" />
-                View Source
+                {tr("View Source", "Xem Mã nguồn")}
               </a>
             </div>
           </motion.div>
@@ -153,10 +156,10 @@ export const UdonFi: React.FC = () => {
             src="/Infor/udonFI/HomeUdonFi.png"
           />
           <div className="absolute bottom-10 left-10 z-20">
-            <div className="font-label-mono text-surface-bright/70 text-xs font-bold uppercase tracking-[0.3em] mb-3">SYSTEM PREVIEW</div>
+	            <div className="font-label-mono text-surface-bright/70 text-xs font-bold uppercase tracking-[0.3em] mb-3">{tr("SYSTEM PREVIEW", "XEM TRƯỚC HỆ THỐNG")}</div>
             <div className="font-display text-surface-bright text-4xl md:text-5xl font-bold max-w-xl leading-tight">
-              Institutional Liquidity <br />
-              <span className="text-primary-fixed-dim">on Stellar Soroban</span>
+	              {tr("Institutional Liquidity", "Thanh khoản Tổ chức")} <br />
+	              <span className="text-primary-fixed-dim">{tr("on Stellar Soroban", "trên Stellar Soroban")}</span>
             </div>
           </div>
         </motion.div>
@@ -166,9 +169,9 @@ export const UdonFi: React.FC = () => {
       <section className="mb-32">
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-16">
           <div className="max-w-2xl">
-            <h2 className="font-display text-headline-lg text-4xl font-bold mb-4">System Architecture</h2>
+	            <h2 className="font-display text-headline-lg text-4xl font-bold mb-4">{tr("System Architecture", "Kiến trúc Hệ thống")}</h2>
             <p className="text-on-surface-variant font-body-md leading-relaxed">
-              UdonFi integrates high-speed smart contracts with a real-time indexing layer to bridge the gap between blockchain finality and responsive UI.
+	              {tr("UdonFi integrates high-speed smart contracts with a real-time indexing layer to bridge the gap between blockchain finality and responsive UI.", "UdonFi kết hợp smart contract tốc độ cao với lớp indexing thời gian thực để nối blockchain finality với giao diện phản hồi nhanh.")}
             </p>
           </div>
         </div>
@@ -180,7 +183,7 @@ export const UdonFi: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-headline-md font-bold mb-2">Smart Contracts</h3>
-                <p className="text-on-surface-variant text-sm leading-relaxed">Rust-based logic managing lending pools, reserves, and tokenizations (aTokens/debtTokens).</p>
+	                <p className="text-on-surface-variant text-sm leading-relaxed">{tr("Rust-based logic managing lending pools, reserves, and tokenizations (aTokens/debtTokens).", "Logic Rust quản lý pool cho vay, quỹ dự trữ và token hóa aTokens/debtTokens.")}</p>
               </div>
            </BentoCard>
 
@@ -190,7 +193,7 @@ export const UdonFi: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-headline-md font-bold mb-2">Indexer Bot</h3>
-                <p className="text-on-surface-variant text-sm leading-relaxed">Node.js service polling on-chain events via XDR parsing to update Firestore and Socket.io.</p>
+	                <p className="text-on-surface-variant text-sm leading-relaxed">{tr("Node.js service polling on-chain events via XDR parsing to update Firestore and Socket.io.", "Dịch vụ Node.js thăm dò sự kiện on-chain qua phân tích XDR để cập nhật Firestore và Socket.io.")}</p>
               </div>
            </BentoCard>
 
@@ -199,8 +202,8 @@ export const UdonFi: React.FC = () => {
                 <Database className="w-6 h-6" />
               </div>
               <div>
-                <h3 className="font-headline-md font-bold mb-2">Real-time Data</h3>
-                <p className="text-on-surface-variant text-sm leading-relaxed">Global state synchronized across Firestore and client listeners for sub-second UI updates.</p>
+	                <h3 className="font-headline-md font-bold mb-2">{tr("Real-time Data", "Dữ liệu Thời gian thực")}</h3>
+	                <p className="text-on-surface-variant text-sm leading-relaxed">{tr("Global state synchronized across Firestore and client listeners for sub-second UI updates.", "Trạng thái toàn cục được đồng bộ qua Firestore và client listener để cập nhật UI dưới một giây.")}</p>
               </div>
            </BentoCard>
 
@@ -210,7 +213,7 @@ export const UdonFi: React.FC = () => {
               </div>
               <div>
                 <h3 className="font-headline-md font-bold mb-2">Vite Client</h3>
-                <p className="text-on-surface-variant text-sm leading-relaxed">Premium React/TS frontend with Freighter wallet integration and local blockchain simulation.</p>
+	                <p className="text-on-surface-variant text-sm leading-relaxed">{tr("Premium React/TS frontend with Freighter wallet integration and local blockchain simulation.", "Frontend React/TS tích hợp ví Freighter và mô phỏng blockchain cục bộ.")}</p>
               </div>
            </BentoCard>
         </div>
@@ -219,8 +222,8 @@ export const UdonFi: React.FC = () => {
       {/* Financial Models - Mathematical Rigor */}
       <section className="mb-32">
         <div className="mb-16">
-          <h2 className="font-display text-headline-lg text-4xl font-bold mb-4 text-center md:text-left">Financial Engineering</h2>
-          <p className="text-on-surface-variant max-w-2xl font-body-md text-center md:text-left">Strict adherence to DeFi mathematical frameworks to guarantee capital safety.</p>
+	          <h2 className="font-display text-headline-lg text-4xl font-bold mb-4 text-center md:text-left">{tr("Financial Engineering", "Kỹ thuật Tài chính")}</h2>
+	          <p className="text-on-surface-variant max-w-2xl font-body-md text-center md:text-left">{tr("Strict adherence to DeFi mathematical frameworks to guarantee capital safety.", "Tuân thủ chặt chẽ mô hình toán học DeFi để bảo đảm an toàn vốn.")}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
@@ -229,11 +232,11 @@ export const UdonFi: React.FC = () => {
             <div>
               <div className="flex items-center gap-3 mb-8">
                 <ShieldCheck className="w-6 h-6 text-emerald-500" />
-                <h3 className="font-display text-2xl font-bold">Health Factor (HF) Governance</h3>
+	                <h3 className="font-display text-2xl font-bold">{tr("Health Factor (HF) Governance", "Quản trị Health Factor (HF)")}</h3>
               </div>
               
               <p className="text-on-surface-variant mb-10 leading-relaxed font-body-md">
-                UdonFi protects depositors via a real-time risk evaluation engine. Positions are liquidated if the Health Factor falls below the threshold, calculated from total collateral value adjusted by specific risk parameters.
+	                {tr("UdonFi protects depositors via a real-time risk evaluation engine. Positions are liquidated if the Health Factor falls below the threshold, calculated from total collateral value adjusted by specific risk parameters.", "UdonFi bảo vệ người gửi tiền bằng bộ máy đánh giá rủi ro thời gian thực. Vị thế bị thanh lý khi Health Factor thấp hơn ngưỡng được tính từ tổng giá trị tài sản thế chấp và tham số rủi ro.")}
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
@@ -244,12 +247,12 @@ export const UdonFi: React.FC = () => {
                        <span className="text-sm font-bold text-on-surface">70%</span>
                     </div>
                     <div className="flex justify-between items-center">
-                       <span className="text-sm font-medium opacity-60">Liquidation Threshold</span>
+	                       <span className="text-sm font-medium opacity-60">{tr("Liquidation Threshold", "Ngưỡng Thanh lý")}</span>
                        <span className="text-sm font-bold text-on-surface">82.5%</span>
                     </div>
                  </div>
 
-                 <div className="p-5 rounded-2xl bg-inverse-surface text-surface border border-outline-variant/10">
+                 <div className="p-5 rounded-2xl bg-inverse-surface text-inverse-on-surface border border-outline-variant/40">
                     <span className="font-label-mono text-[10px] font-bold text-primary-fixed-dim block mb-3 uppercase tracking-widest">Formula</span>
                     <code className="text-[13px] font-label-mono block leading-relaxed">
                       HF = (Σ Collateral_i * LT_i) <br />
@@ -266,9 +269,9 @@ export const UdonFi: React.FC = () => {
                     <div className="w-[30%] bg-red-500"></div>
                  </div>
                  <div className="flex justify-between font-label-mono text-[9px] font-bold uppercase tracking-tighter opacity-60">
-                    <span>Safe (&gt;1.5)</span>
-                    <span className="text-center">High Risk (1.0-1.5)</span>
-                    <span className="text-right">Liquidatable (&lt;1.0)</span>
+	                    <span>{tr("Safe", "An toàn")} (&gt;1.5)</span>
+	                    <span className="text-center">{tr("High Risk", "Rủi ro Cao")} (1.0-1.5)</span>
+	                    <span className="text-right">{tr("Liquidatable", "Có thể Thanh lý")} (&lt;1.0)</span>
                  </div>
               </div>
             </div>
@@ -279,10 +282,10 @@ export const UdonFi: React.FC = () => {
              <div>
                 <div className="flex items-center gap-3 mb-8">
                   <BarChart3 className="w-6 h-6 text-primary" />
-                  <h3 className="font-display text-2xl font-bold">Kinked APY Curve</h3>
+	                  <h3 className="font-display text-2xl font-bold">{tr("Kinked APY Curve", "Đường cong APY Gấp khúc")}</h3>
                 </div>
                 <p className="text-on-surface-variant text-sm mb-8 leading-relaxed">
-                  Dynamic interest rates optimized for pool utilization. When utilization exceeds 80% (The Kink), borrow rates spike exponentially to restore liquidity.
+	                  {tr("Dynamic interest rates optimized for pool utilization. When utilization exceeds 80% (The Kink), borrow rates spike exponentially to restore liquidity.", "Lãi suất động tối ưu theo mức sử dụng pool. Khi mức sử dụng vượt 80%, lãi vay tăng mạnh để khôi phục thanh khoản.")}
                 </p>
 
                 <div className="h-48 relative mb-8">
@@ -290,14 +293,14 @@ export const UdonFi: React.FC = () => {
                       <path d="M20 100 L220 80 L280 20" fill="none" stroke="currentColor" strokeWidth="3" />
                       <circle cx="220" cy="80" r="5" fill="#4b41e1" className="animate-pulse" />
                       <text x="220" y="95" textAnchor="middle" className="fill-on-surface font-label-mono text-[9px] font-bold">Kink (80%)</text>
-                      <text x="20" y="115" className="fill-on-surface-variant font-label-mono text-[8px]">Utilization %</text>
+	                      <text x="20" y="115" className="fill-on-surface-variant font-label-mono text-[8px]">{tr("Utilization %", "Mức sử dụng %")}</text>
                       <text x="280" y="115" textAnchor="end" className="fill-on-surface-variant font-label-mono text-[8px]">100%</text>
                    </svg>
                 </div>
 
-                <div className="p-4 rounded-xl bg-white/50 border border-outline-variant/30">
+                <div className="p-4 rounded-xl bg-surface-container-high border border-outline-variant/50">
                    <div className="flex items-center justify-between">
-                      <span className="text-xs font-bold opacity-60">Max Borrow APY</span>
+	                      <span className="text-xs font-bold opacity-60">{tr("Max Borrow APY", "APY Vay Tối đa")}</span>
                       <span className="text-lg font-bold text-red-600">90.0%</span>
                    </div>
                 </div>
@@ -309,9 +312,9 @@ export const UdonFi: React.FC = () => {
       {/* Technical Deep Dive - Soroban Optimizations */}
       <section className="mb-32">
         <div className="max-w-3xl mb-16">
-          <h2 className="font-display text-headline-lg text-4xl font-bold mb-4 tracking-tight">Technical Deep Dive</h2>
+	          <h2 className="font-display text-headline-lg text-4xl font-bold mb-4 tracking-tight">{tr("Technical Deep Dive", "Phân tích Kỹ thuật Chuyên sâu")}</h2>
           <p className="text-on-surface-variant font-body-md leading-relaxed">
-            Optimizing for the unique resource constraints of the Soroban VM, from CPU instruction limits to ledger storage costs.
+	            {tr("Optimizing for the unique resource constraints of the Soroban VM, from CPU instruction limits to ledger storage costs.", "Tối ưu theo các giới hạn tài nguyên đặc thù của Soroban VM, từ số lệnh CPU đến chi phí lưu trữ ledger.")}
           </p>
         </div>
 
@@ -321,9 +324,9 @@ export const UdonFi: React.FC = () => {
             <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-8">
               <Layers className="w-6 h-6" />
             </div>
-            <h3 className="font-display text-xl font-bold mb-4">u128 State Bitmap Packing</h3>
+	            <h3 className="font-display text-xl font-bold mb-4">{tr("u128 State Bitmap Packing", "Đóng gói Bitmap Trạng thái u128")}</h3>
             <p className="text-on-surface-variant text-sm leading-relaxed mb-8">
-              Replacing expensive dynamic Maps with bitwise state-packing. Reduces ledger storage footprint by 95%, significantly lowering on-chain gas costs for active users.
+	              {tr("Replacing expensive dynamic Maps with bitwise state-packing. Reduces ledger storage footprint by 95%, significantly lowering on-chain gas costs for active users.", "Thay Map động tốn kém bằng đóng gói trạng thái bitwise, giảm 95% vùng lưu trữ ledger và hạ đáng kể chi phí gas on-chain.")}
             </p>
             <div className="aspect-video bg-inverse-surface rounded-xl p-4 flex flex-col gap-2 overflow-hidden border border-white/5">
                <div className="grid grid-cols-8 gap-1 opacity-50">
@@ -331,7 +334,7 @@ export const UdonFi: React.FC = () => {
                     <div key={i} className={`h-2 rounded-full ${i % 3 === 0 ? 'bg-primary shadow-[0_0_8px_#004ac6]' : 'bg-surface/20'}`}></div>
                   ))}
                </div>
-               <div className="mt-auto font-label-mono text-[10px] text-primary font-bold">BITWISE STATE STORAGE</div>
+	               <div className="mt-auto font-label-mono text-[10px] text-primary font-bold">{tr("BITWISE STATE STORAGE", "LƯU TRỮ TRẠNG THÁI BITWISE")}</div>
             </div>
           </BentoCard>
 
@@ -340,18 +343,18 @@ export const UdonFi: React.FC = () => {
             <div className="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center mb-8">
               <RefreshCcw className="w-6 h-6" />
             </div>
-            <h3 className="font-display text-xl font-bold mb-4">2-Step Liquidation Flow</h3>
+	            <h3 className="font-display text-xl font-bold mb-4">{tr("2-Step Liquidation Flow", "Quy trình Thanh lý Hai bước")}</h3>
             <p className="text-on-surface-variant text-sm leading-relaxed mb-8">
-              Bypassing the 100M CPU instruction limit by splitting intensive liquidation cycles into cryptographically linked 2-step transactions.
+	              {tr("Bypassing the 100M CPU instruction limit by splitting intensive liquidation cycles into cryptographically linked 2-step transactions.", "Vượt giới hạn 100 triệu lệnh CPU bằng cách chia chu kỳ thanh lý nặng thành hai giao dịch liên kết bằng mật mã.")}
             </p>
             <div className="space-y-3">
                <div className="flex items-center gap-3 p-3 rounded-lg bg-surface-container-high border border-outline-variant/30">
                   <div className="w-6 h-6 rounded bg-primary/20 flex items-center justify-center text-[10px] font-bold">1</div>
-                  <span className="text-[11px] font-bold opacity-80 uppercase font-label-mono">Evaluate & Lock</span>
+	                  <span className="text-[11px] font-bold opacity-80 uppercase font-label-mono">{tr("Evaluate & Lock", "Đánh giá & Khóa")}</span>
                </div>
                <div className="flex items-center gap-3 p-3 rounded-lg bg-surface-container-high border border-outline-variant/30">
                   <div className="w-6 h-6 rounded bg-secondary/20 flex items-center justify-center text-[10px] font-bold">2</div>
-                  <span className="text-[11px] font-bold opacity-80 uppercase font-label-mono">Execute & Bonus</span>
+	                  <span className="text-[11px] font-bold opacity-80 uppercase font-label-mono">{tr("Execute & Bonus", "Thực thi & Thưởng")}</span>
                </div>
             </div>
           </BentoCard>
@@ -361,13 +364,13 @@ export const UdonFi: React.FC = () => {
             <div className="w-12 h-12 rounded-2xl bg-tertiary/10 text-tertiary flex items-center justify-center mb-8">
               <Clock className="w-6 h-6" />
             </div>
-            <h3 className="font-display text-xl font-bold mb-4">Automated TTL Management</h3>
+	            <h3 className="font-display text-xl font-bold mb-4">{tr("Automated TTL Management", "Quản lý TTL Tự động")}</h3>
             <p className="text-on-surface-variant text-sm leading-relaxed mb-8">
-              Ensuring ledger data persistence through automated TTL extensions on every protocol interaction, preventing ledger eviction of critical account state.
+	              {tr("Ensuring ledger data persistence through automated TTL extensions on every protocol interaction, preventing ledger eviction of critical account state.", "Đảm bảo dữ liệu ledger tồn tại bằng cách tự động gia hạn TTL ở mỗi tương tác, ngăn trạng thái tài khoản quan trọng bị loại khỏi ledger.")}
             </p>
             <div className="p-4 rounded-xl bg-surface-container-high border border-dashed border-outline-variant flex items-center justify-center gap-2">
                <RefreshCcw className="w-4 h-4 text-tertiary animate-spin-slow" />
-               <span className="font-label-mono text-[10px] font-bold uppercase text-on-surface-variant">Persistent Lifecycle</span>
+	               <span className="font-label-mono text-[10px] font-bold uppercase text-on-surface-variant">{tr("Persistent Lifecycle", "Vòng đời Bền vững")}</span>
             </div>
           </BentoCard>
         </div>
@@ -375,7 +378,7 @@ export const UdonFi: React.FC = () => {
 
       {/* Artifact Gallery */}
       <section className="mb-32">
-        <h2 className="font-display text-headline-lg text-4xl font-bold mb-16 px-4">Artifact Gallery</h2>
+	        <h2 className="font-display text-headline-lg text-4xl font-bold mb-16 px-4">{tr("Artifact Gallery", "Thư viện Sản phẩm")}</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
           {/* Card 1: Award Image */}
@@ -386,9 +389,9 @@ export const UdonFi: React.FC = () => {
             <div className="flex items-center justify-between px-6 py-4 border-b border-outline-variant bg-surface-container-high/50 select-none">
               <div className="flex items-center gap-2">
                 <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse" />
-                <span className="font-label-mono text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">LIVESTREAM & EVENT</span>
+	                <span className="font-label-mono text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">{tr("LIVESTREAM & EVENT", "LIVESTREAM & SỰ KIỆN")}</span>
               </div>
-              <span className="font-label-mono text-[10px] text-outline font-bold">EVENT PREVIEW</span>
+	              <span className="font-label-mono text-[10px] text-outline font-bold">{tr("EVENT PREVIEW", "XEM TRƯỚC SỰ KIỆN")}</span>
             </div>
 
             <div className="relative aspect-video overflow-hidden bg-black flex items-center justify-center">
@@ -399,7 +402,7 @@ export const UdonFi: React.FC = () => {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-10">
                 <span className="px-4 py-1.5 bg-amber-500 text-white font-label-mono text-xs font-bold rounded-full w-fit mb-2 shadow-lg shadow-amber-500/20">
-                  🏆 GLOBAL FIRST PRIZE
+	                  {tr("GLOBAL FIRST PRIZE", "GIẢI NHẤT TOÀN CẦU")}
                 </span>
                 <h3 className="text-white text-3xl font-bold font-display">Stellar Mini Hackathon</h3>
               </div>
@@ -414,28 +417,28 @@ export const UdonFi: React.FC = () => {
             
             <div className="p-6 bg-surface-container-low/40 border-t border-outline-variant/30">
               <p className="text-on-surface-variant text-[13px] leading-relaxed opacity-85 font-body-md">
-                Receiving the first prize at the Stellar Soroban Hackathon. Recognised for gas footprint reductions and mathematical liquidation models.
+	                {tr("Receiving the first prize at the Stellar Soroban Hackathon. Recognised for gas footprint reductions and mathematical liquidation models.", "Nhận Giải Nhất tại Stellar Soroban Hackathon nhờ giảm vùng sử dụng gas và mô hình thanh lý toán học.")}
               </p>
             </div>
           </div>
 
           {/* Card 2: High Tech Metric Card (No lightbox, static content) */}
-          <div className="col-span-12 md:col-span-4 rounded-[32px] bg-inverse-surface p-10 flex flex-col justify-between border border-white/5 relative overflow-hidden group shadow-2xl">
+          <div className="col-span-12 md:col-span-4 rounded-[32px] bg-inverse-surface text-inverse-on-surface p-10 flex flex-col justify-between border border-white/10 relative overflow-hidden group shadow-2xl">
              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[80px] rounded-full"></div>
              <div>
                 <Terminal className="text-primary w-12 h-12 mb-8 group-hover:rotate-12 transition-transform" />
-                <h4 className="text-surface font-display text-2xl font-bold mb-4">Core Performance</h4>
-                <p className="text-surface-variant text-sm leading-relaxed mb-10 opacity-70">
-                   Optimized for low-latency execution and minimal on-chain footprint. 
+	                <h4 className="text-surface font-display text-2xl font-bold mb-4">{tr("Core Performance", "Hiệu năng Cốt lõi")}</h4>
+                <p className="text-inverse-on-surface/70 text-sm leading-relaxed mb-10">
+	                   {tr("Optimized for low-latency execution and minimal on-chain footprint.", "Tối ưu thực thi độ trễ thấp và giảm tối đa vùng dữ liệu on-chain.")}
                 </p>
              </div>
              <div className="mt-auto space-y-4">
                 <div className="flex justify-between items-center py-3 border-b border-white/10">
-                   <span className="text-surface/40 text-xs font-label-mono">GAS EFFICIENCY</span>
+	                   <span className="text-inverse-on-surface/50 text-xs font-label-mono">{tr("GAS EFFICIENCY", "HIỆU QUẢ GAS")}</span>
                    <span className="text-emerald-400 font-bold">+95%</span>
                 </div>
                 <div className="flex justify-between items-center py-3 border-b border-white/10">
-                   <span className="text-surface/40 text-xs font-label-mono">FINALITY</span>
+	                   <span className="text-inverse-on-surface/50 text-xs font-label-mono">{tr("FINALITY", "THỜI GIAN CHỐT")}</span>
                    <span className="text-primary-fixed-dim font-bold">&lt;1.0s</span>
                 </div>
              </div>
@@ -462,7 +465,7 @@ export const UdonFi: React.FC = () => {
               
               <div className="absolute bottom-6 left-6 z-20">
                 <span className="px-3 py-1.5 bg-on-surface/90 backdrop-blur-md text-surface font-label-mono text-[10px] font-bold rounded-lg border border-white/10">
-                  CONTRACT FLOW ARCHITECTURE
+	                  {tr("CONTRACT FLOW ARCHITECTURE", "KIẾN TRÚC LUỒNG HỢP ĐỒNG")}
                 </span>
               </div>
               
@@ -476,7 +479,7 @@ export const UdonFi: React.FC = () => {
             
             <div className="p-6 bg-surface-container-low/40 border-t border-outline-variant/30 flex-grow">
               <p className="text-on-surface-variant text-[13px] leading-relaxed opacity-85 font-body-md">
-                Execution flow mapping user transactions, borrowing pools, and cross-contract Soroban smart contract transition states.
+	                {tr("Execution flow mapping user transactions, borrowing pools, and cross-contract Soroban smart contract transition states.", "Luồng thực thi mô tả giao dịch người dùng, pool vay và trạng thái chuyển tiếp giữa các smart contract Soroban.")}
               </p>
             </div>
           </div>
@@ -502,7 +505,7 @@ export const UdonFi: React.FC = () => {
               
               <div className="absolute bottom-6 left-6 z-20">
                 <span className="px-3 py-1.5 bg-on-surface/90 backdrop-blur-md text-surface font-label-mono text-[10px] font-bold rounded-lg border border-white/10">
-                  u128 BITMAP PACKING MATRIX
+	                  {tr("u128 BITMAP PACKING MATRIX", "MA TRẬN ĐÓNG GÓI BITMAP u128")}
                 </span>
               </div>
               
@@ -516,7 +519,7 @@ export const UdonFi: React.FC = () => {
             
             <div className="p-6 bg-surface-container-low/40 border-t border-outline-variant/30 flex-grow">
               <p className="text-on-surface-variant text-[13px] leading-relaxed opacity-85 font-body-md">
-                State bitmap layout packing user configurations, active state markers, and interest rate points into a single u128 storage cell.
+	                {tr("State bitmap layout packing user configurations, active state markers, and interest rate points into a single u128 storage cell.", "Bố cục bitmap đóng gói cấu hình người dùng, cờ trạng thái và điểm lãi suất vào một ô lưu trữ u128.")}
               </p>
             </div>
           </div>
@@ -604,15 +607,15 @@ export const UdonFi: React.FC = () => {
            whileInView={{ opacity: 1, y: 0 }}
            viewport={{ once: true }}
          >
-           <h3 className="font-display text-4xl font-bold mb-8">Ready to explore UdonFi?</h3>
+	           <h3 className="font-display text-4xl font-bold mb-8">{tr("Ready to explore UdonFi?", "Sẵn sàng khám phá UdonFi?")}</h3>
            <div className="flex flex-wrap justify-center gap-6">
              <a
                href="https://github.com/TheAnh1404/UdonFi"
                target="_blank"
                rel="noopener noreferrer"
-               className="px-10 py-5 bg-on-surface text-surface rounded-2xl font-bold flex items-center gap-3 hover:bg-inverse-surface transition-all shadow-xl"
+               className="px-10 py-5 bg-on-surface text-surface rounded-2xl font-bold flex items-center gap-3 hover:bg-inverse-surface hover:text-inverse-on-surface transition-all shadow-xl"
              >
-               <CodeIcon className="w-5 h-5" /> Start Building
+	               <CodeIcon className="w-5 h-5" /> {tr("Start Building", "Bắt đầu Xây dựng")}
              </a>
              <a
                href="https://udonfi-1404.web.app/"
@@ -620,7 +623,7 @@ export const UdonFi: React.FC = () => {
                rel="noopener noreferrer"
                className="px-10 py-5 border border-outline text-on-surface rounded-2xl font-bold hover:bg-surface-container transition-all"
              >
-               Launch Protocol
+	               {tr("Launch Protocol", "Khởi chạy Giao thức")}
              </a>
            </div>
          </motion.div>

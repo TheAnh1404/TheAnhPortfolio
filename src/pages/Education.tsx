@@ -3,26 +3,29 @@ import { motion } from "framer-motion";
 import { BentoCard } from "../components/BentoCard";
 import { 
   GraduationCap, 
-  Trophy, Code, Sparkles, School, 
+  Trophy, Sparkles, 
   CheckCircle, MapPin, ArrowRight 
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useLanguage } from "../context/LanguageContext";
 
 export const Education: React.FC = () => {
+  const { lang } = useLanguage();
+  const tr = (en: string, vi: string) => lang === "EN" ? en : vi;
 
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-8 pt-32 pb-24">
       {/* Hero Title */}
       <section className="mb-20">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-label-mono font-bold mb-4">
-          <GraduationCap className="w-3.5 h-3.5" /> ACADEMIC FOUNDATION
+          <GraduationCap className="w-3.5 h-3.5" /> {tr("ACADEMIC FOUNDATION", "NỀN TẢNG HỌC THUẬT")}
         </div>
         <motion.h1 
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           className="font-display text-display text-5xl md:text-6xl font-bold tracking-tight mb-4"
         >
-          Education & <span className="text-primary italic">Academy</span>
+          {tr("Education & ", "Giáo dục & ")}<span className="text-primary italic">{tr("Academy", "Học viện")}</span>
         </motion.h1>
         <motion.p 
           initial={{ opacity: 0, y: 10 }}
@@ -30,7 +33,7 @@ export const Education: React.FC = () => {
           transition={{ delay: 0.1 }}
           className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed"
         >
-          Deep theoretical foundations in computer science, system engineering, and competitive algorithmic optimization at Vietnam's premier digital technology university.
+          {tr("Deep theoretical foundations in computer science, system engineering, and competitive algorithmic optimization at Vietnam's premier digital technology university.", "Nền tảng lý thuyết chuyên sâu về khoa học máy tính, kỹ thuật hệ thống và tối ưu thuật toán thi đấu tại một trong những trường công nghệ số hàng đầu Việt Nam.")}
         </motion.p>
       </section>
 
@@ -42,45 +45,45 @@ export const Education: React.FC = () => {
           <div>
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex gap-4 items-center">
-                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center p-2 flex-shrink-0 shadow-sm border border-outline-variant/20">
+                <div className="brand-logo-surface w-12 h-12 rounded-xl flex items-center justify-center p-2 flex-shrink-0 shadow-sm border">
                   <img src="/Infor/Logo_school.png" alt="VKU Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <span className="font-label-mono text-[10px] text-primary uppercase font-bold tracking-widest block">
-                    Higher Education
+                    {tr("Higher Education", "Giáo dục Đại học")}
                   </span>
                   <h3 className="font-display text-2xl font-bold mt-0.5 text-on-surface">
-                    Vietnam - Korea University of ICT
+                    {tr("Vietnam - Korea University of ICT", "Trường Đại học CNTT & TT Việt - Hàn")}
                   </h3>
                 </div>
               </div>
               <div className="flex items-center gap-1.5 px-3 py-1 bg-surface-container rounded-full text-[10px] font-label-mono font-bold text-on-surface-variant border border-outline-variant/30">
-                <MapPin className="w-3 h-3 text-red-500" /> Da Nang, Vietnam
+                <MapPin className="w-3 h-3 text-red-500" /> {tr("Da Nang, Vietnam", "Đà Nẵng, Việt Nam")}
               </div>
             </div>
             
             <p className="font-body-md text-on-surface-variant leading-relaxed mb-6">
-              Vietnam - Korea University of Information and Communication Technology (VKU) is a premier public university specializing in digital technology and innovation. Through a strategic partnership between "Vietnam" and "South Korea", VKU provides an elite academic environment for the next generation of global software engineers.
+              {tr("Vietnam - Korea University of Information and Communication Technology (VKU) is a premier public university specializing in digital technology and innovation. Through a strategic partnership between Vietnam and South Korea, VKU provides an elite academic environment for the next generation of global software engineers.", "Trường Đại học Công nghệ Thông tin và Truyền thông Việt - Hàn (VKU) là trường đại học công lập chuyên về công nghệ số và đổi mới sáng tạo. Quan hệ hợp tác chiến lược Việt Nam - Hàn Quốc tạo nên môi trường học thuật chất lượng cho thế hệ kỹ sư phần mềm toàn cầu.")}
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-2">
               <div className="p-4 bg-surface rounded-xl border border-outline-variant/40 hover:border-primary/20 transition-colors">
-                <span className="font-label-mono text-[9px] uppercase font-bold text-primary block mb-1">Degree Program</span>
-                <p className="text-sm font-semibold text-on-surface">Bachelor of Software Engineering</p>
-                <p className="text-[11px] text-on-surface-variant mt-0.5 font-label-mono">Sep 2024 — Present</p>
+                <span className="font-label-mono text-[9px] uppercase font-bold text-primary block mb-1">{tr("Degree Program", "Chương trình Đào tạo")}</span>
+                <p className="text-sm font-semibold text-on-surface">{tr("Bachelor of Software Engineering", "Cử nhân Kỹ thuật Phần mềm")}</p>
+                <p className="text-[11px] text-on-surface-variant mt-0.5 font-label-mono">{tr("Sep 2024 - Present", "Tháng 9/2024 - Hiện tại")}</p>
               </div>
               <div className="p-4 bg-surface rounded-xl border border-outline-variant/40 hover:border-primary/20 transition-colors">
-                <span className="font-label-mono text-[9px] uppercase font-bold text-primary block mb-1">Key Focus Areas</span>
-                <p className="text-sm font-semibold text-on-surface">High-Performance Backend & AI</p>
-                <p className="text-[11px] text-on-surface-variant mt-0.5 font-label-mono">Active Student Researcher</p>
+                <span className="font-label-mono text-[9px] uppercase font-bold text-primary block mb-1">{tr("Key Focus Areas", "Lĩnh vực Trọng tâm")}</span>
+                <p className="text-sm font-semibold text-on-surface">{tr("High-Performance Backend & AI", "Backend Hiệu năng cao & AI")}</p>
+                <p className="text-[11px] text-on-surface-variant mt-0.5 font-label-mono">{tr("Active Student Researcher", "Sinh viên Nghiên cứu Tích cực")}</p>
               </div>
             </div>
           </div>
 
           <div className="pt-6 border-t border-outline-variant/30 flex flex-wrap gap-4 text-xs font-label-mono text-on-surface-variant/80">
-            <span className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-primary" /> Joint Vietnam-Korea Partnership</span>
-            <span className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-primary" /> Top-Tier IT Faculty</span>
-            <span className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-primary" /> Advanced Software Engineering Track</span>
+            <span className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-primary" /> {tr("Joint Vietnam-Korea Partnership", "Hợp tác Việt Nam - Hàn Quốc")}</span>
+            <span className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-primary" /> {tr("Top-Tier IT Faculty", "Đội ngũ CNTT Chất lượng cao")}</span>
+            <span className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-primary" /> {tr("Advanced Software Engineering Track", "Chuyên ngành Kỹ thuật Phần mềm Nâng cao")}</span>
           </div>
         </BentoCard>
 
@@ -88,26 +91,26 @@ export const Education: React.FC = () => {
         <BentoCard className="lg:col-span-4 p-8 flex flex-col justify-between relative overflow-hidden group" delay={0.2}>
           <div className="absolute bottom-0 right-0 w-48 h-48 bg-secondary/5 rounded-full blur-2xl -mr-12 -mb-12 group-hover:bg-secondary/10 transition-colors duration-500"></div>
           <div>
-            <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center p-2 mb-6 group-hover:scale-105 transition-transform shadow-sm border border-outline-variant/20">
+            <div className="brand-logo-surface w-12 h-12 rounded-xl flex items-center justify-center p-2 mb-6 group-hover:scale-105 transition-transform shadow-sm border">
               <img src="/Infor/Logo_CS.png" alt="Faculty of CS Logo" className="w-full h-full object-contain" />
             </div>
             <span className="font-label-mono text-[10px] text-secondary uppercase font-bold tracking-widest block">
-              Department
+              {tr("Department", "Khoa đào tạo")}
             </span>
             <h3 className="font-display text-xl font-bold mt-1 text-on-surface">
-              Faculty of Computer Science
+              {tr("Faculty of Computer Science", "Khoa Khoa học Máy tính")}
             </h3>
             <p className="font-label-mono text-[11px] text-secondary-container-outline font-bold mt-0.5 mb-4 uppercase">
             </p>
             
             <p className="font-body-md text-on-surface-variant text-[13px] leading-relaxed mb-6">
-              The Faculty of Computer Science is the academic heart of VKU, fostering excellence in algorithmic logic, software architecture, and advanced computing systems. We dedicate to training elite engineers who will drive the global tech landscape.
+              {tr("The Faculty of Computer Science is the academic heart of VKU, fostering excellence in algorithmic logic, software architecture, and advanced computing systems. We dedicate to training elite engineers who will drive the global tech landscape.", "Khoa Khoa học Máy tính là trung tâm học thuật của VKU, phát triển năng lực về logic thuật toán, kiến trúc phần mềm và hệ thống tính toán nâng cao, hướng tới đào tạo kỹ sư chất lượng cao.")}
             </p>
           </div>
 
           <div className="p-3 bg-secondary/5 rounded-lg border border-secondary/15">
-            <span className="font-label-mono text-[9px] uppercase font-bold text-secondary block mb-1">Academic Core</span>
-            <p className="text-[11px] text-on-surface font-semibold leading-relaxed">Focusing on competitive programming (ICPC), decentralized systems, and AI-driven architectures.</p>
+            <span className="font-label-mono text-[9px] uppercase font-bold text-secondary block mb-1">{tr("Academic Core", "Trọng tâm Học thuật")}</span>
+            <p className="text-[11px] text-on-surface font-semibold leading-relaxed">{tr("Focusing on competitive programming (ICPC), decentralized systems, and AI-driven architectures.", "Tập trung vào lập trình thi đấu ICPC, hệ thống phi tập trung và kiến trúc ứng dụng AI.")}</p>
           </div>
         </BentoCard>
       </section>
@@ -116,11 +119,11 @@ export const Education: React.FC = () => {
       <section className="mb-20">
         <div className="mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-secondary/10 text-secondary text-[10px] font-label-mono font-bold mb-4">
-            <Trophy className="w-3.5 h-3.5" /> REWARDS & TIMELINE
+            <Trophy className="w-3.5 h-3.5" /> {tr("REWARDS & TIMELINE", "GIẢI THƯỞNG & CỘT MỐC")}
           </div>
-          <h2 className="font-display text-headline-lg text-3xl font-bold mb-2">Timeline of Honors & Achievements</h2>
+          <h2 className="font-display text-headline-lg text-3xl font-bold mb-2">{tr("Timeline of Honors & Achievements", "Dòng thời gian Danh hiệu & Thành tích")}</h2>
           <p className="text-on-surface-variant max-w-xl text-sm font-body-md">
-            Verified academic milestones and competitive developer achievements, strictly aligned with personal engineering records.
+            {tr("Verified academic milestones and competitive developer achievements, strictly aligned with personal engineering records.", "Các cột mốc học thuật và thành tích thi đấu được xác thực theo hồ sơ kỹ thuật cá nhân.")}
           </p>
         </div>
 
@@ -136,7 +139,7 @@ export const Education: React.FC = () => {
             <BentoCard className="p-8 border-none !bg-surface-container-high/40 group-hover/milestone:!bg-surface-container-high/60 transition-all duration-300 relative overflow-hidden" delay={0.1}>
               {/* Highlight Tag */}
               <div className="absolute top-4 right-4 bg-amber-500/10 text-amber-700 border border-amber-500/20 px-3 py-1 rounded-full text-[10px] font-label-mono font-bold uppercase tracking-wider flex items-center gap-1.5">
-                <Sparkles className="w-3 h-3 text-amber-500 animate-pulse" /> GLOBAL #1 CHAMPION
+                <Sparkles className="w-3 h-3 text-amber-500 animate-pulse" /> {tr("GLOBAL #1 CHAMPION", "QUÁN QUÂN TOÀN CẦU")}
               </div>
 
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
@@ -145,15 +148,15 @@ export const Education: React.FC = () => {
                 <div className="lg:col-span-7 space-y-4">
                   <div className="flex items-center gap-3">
                     <span className="font-label-mono text-xs font-bold text-amber-600 uppercase tracking-widest bg-amber-500/5 px-2.5 py-1 rounded border border-amber-500/10">May 2026</span>
-                    <span className="font-label-mono text-xs text-on-surface-variant">Stellar Developer Event</span>
+                    <span className="font-label-mono text-xs text-on-surface-variant">{tr("Stellar Developer Event", "Sự kiện Nhà phát triển Stellar")}</span>
                   </div>
                   
                   <h3 className="font-display text-2xl md:text-3xl font-bold text-on-surface leading-tight">
-                    First Prize – Stellar Mini Hackathon: Building Assets
+                    {tr("First Prize - Stellar Mini Hackathon: Building Assets", "Giải Nhất - Stellar Mini Hackathon: Building Assets")}
                   </h3>
 
                   <p className="font-body-md text-on-surface-variant leading-relaxed">
-                    Designed and engineered **UdonFi**, a decentralized collateralized lending protocol on Stellar Soroban. Bypassed the virtual machine's stack constraints and gas limitations by implementing a custom **u128 bitmap packing algorithm** for state storage and structuring a robust **two-step liquidation system** to optimize transaction throughput.
+                    {tr("Designed and engineered UdonFi, a decentralized collateralized lending protocol on Stellar Soroban. Bypassed the virtual machine's stack constraints and gas limitations by implementing a custom u128 bitmap packing algorithm for state storage and structuring a robust two-step liquidation system to optimize transaction throughput.", "Thiết kế và phát triển UdonFi, giao thức cho vay thế chấp phi tập trung trên Stellar Soroban. Giải quyết giới hạn stack và gas của máy ảo bằng thuật toán đóng gói bitmap u128 cùng hệ thống thanh lý hai bước để tối ưu thông lượng giao dịch.")}
                   </p>
 
                   <div className="pt-2 flex flex-wrap gap-2.5">
@@ -167,7 +170,7 @@ export const Education: React.FC = () => {
                       to="/projects/udonfi" 
                       className="inline-flex items-center gap-2 text-xs font-label-mono font-bold text-primary hover:text-primary-container transition-colors group/link"
                     >
-                      EXPLORE UDONFI CASE STUDY 
+                      {tr("EXPLORE UDONFI CASE STUDY", "KHÁM PHÁ CASE STUDY UDONFI")} 
                       <ArrowRight className="w-3.5 h-3.5 group-hover/link:translate-x-1 transition-transform" />
                     </Link>
                   </div>
@@ -183,7 +186,7 @@ export const Education: React.FC = () => {
                       className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute bottom-4 left-4 right-4 z-20 text-white select-none">
-                      <div className="text-[10px] font-label-mono uppercase tracking-widest text-amber-400 font-bold">Award Ceremony Photo</div>
+                      <div className="text-[10px] font-label-mono uppercase tracking-widest text-amber-400 font-bold">{tr("Award Ceremony Photo", "Ảnh Lễ Trao giải")}</div>
                       <h4 className="text-sm font-bold mt-0.5 drop-shadow">Stellar Mini Hackathon: Building Assets 2026</h4>
                     </div>
                   </div>
@@ -207,15 +210,15 @@ export const Education: React.FC = () => {
                 <div className="lg:col-span-8 space-y-4">
                   <div className="flex items-center gap-3">
                     <span className="font-label-mono text-xs font-bold text-emerald-600 uppercase tracking-widest bg-emerald-500/5 px-2.5 py-1 rounded border border-emerald-500/10">2024 — Present</span>
-                    <span className="font-label-mono text-xs text-on-surface-variant">Competitive Programming</span>
+                    <span className="font-label-mono text-xs text-on-surface-variant">{tr("Competitive Programming", "Lập trình Thi đấu")}</span>
                   </div>
 
                   <h3 className="font-display text-2xl font-bold text-on-surface leading-tight">
-                    VKU ICPC Training Team Member
+                    {tr("VKU ICPC Training Team Member", "Thành viên Đội tuyển Huấn luyện ICPC VKU")}
                   </h3>
 
                   <p className="font-body-md text-on-surface-variant leading-relaxed">
-                    Representing the university in national-level algorithmic contests (ICPC Vietnam). Actively practicing and specializing in advanced data structures, complex dynamic programming, graph theory, and discrete optimization models.
+                    {tr("Representing the university in national-level algorithmic contests (ICPC Vietnam). Actively practicing and specializing in advanced data structures, complex dynamic programming, graph theory, and discrete optimization models.", "Đại diện trường tham gia các kỳ thi thuật toán cấp quốc gia như ICPC Việt Nam. Tích cực rèn luyện cấu trúc dữ liệu nâng cao, quy hoạch động, lý thuyết đồ thị và mô hình tối ưu rời rạc.")}
                   </p>
 
                   <div className="pt-2 flex flex-wrap gap-2.5">
@@ -293,13 +296,13 @@ export const Education: React.FC = () => {
                 <div>
                   <div className="flex items-center gap-3 mb-2">
                     <span className="font-label-mono text-[11px] font-bold text-primary uppercase tracking-widest bg-primary/5 px-2 py-0.5 rounded border border-primary/10">Dec 2022</span>
-                    <span className="font-label-mono text-caption text-on-surface-variant">Quang Binh University</span>
+	                    <span className="font-label-mono text-caption text-on-surface-variant">{tr("Quang Binh University", "Trường Đại học Quảng Bình")}</span>
                   </div>
                   <h3 className="font-display text-lg font-bold text-on-surface">
-                    Encouragement Prize – Young Informatics Competition
+                    {tr("Encouragement Prize - Young Informatics Competition", "Giải Khuyến khích - Hội thi Tin học Trẻ")}
                   </h3>
                   <p className="font-body-md text-on-surface-variant text-[13px] leading-relaxed mt-2">
-                    Honored at the Young Informatics Competition hosted by Quang Binh University for showcasing exceptional problem-solving and rapid debugging skills under competitive conditions.
+                    {tr("Honored at the Young Informatics Competition hosted by Quang Binh University for showcasing exceptional problem-solving and rapid debugging skills under competitive conditions.", "Đạt giải tại Hội thi Tin học Trẻ do Đại học Quảng Bình tổ chức nhờ kỹ năng giải quyết vấn đề và gỡ lỗi nhanh trong môi trường thi đấu.")}
                   </p>
                 </div>
               </div>
@@ -321,10 +324,10 @@ export const Education: React.FC = () => {
                     <span className="font-label-mono text-caption text-on-surface-variant">Provincial Level</span>
                   </div>
                   <h3 className="font-display text-lg font-bold text-on-surface">
-                    Second Prize – Informatics Excellent Student Competition
+                    {tr("Second Prize - Informatics Excellent Student Competition", "Giải Nhì - Kỳ thi Học sinh Giỏi Tin học")}
                   </h3>
                   <p className="font-body-md text-on-surface-variant text-[13px] leading-relaxed mt-2">
-                    Achieved Second Prize in the Provincial Informatics Examination for High School Students, demonstrating strong computational logic and algorithm implementation.
+                    {tr("Achieved Second Prize in the Provincial Informatics Examination for High School Students, demonstrating strong computational logic and algorithm implementation.", "Đạt Giải Nhì kỳ thi Học sinh Giỏi Tin học cấp tỉnh, thể hiện tư duy tính toán và năng lực triển khai thuật toán vững chắc.")}
                   </p>
                 </div>
               </div>
@@ -346,10 +349,10 @@ export const Education: React.FC = () => {
                     <span className="font-label-mono text-caption text-on-surface-variant">Provincial Level</span>
                   </div>
                   <h3 className="font-display text-lg font-bold text-on-surface">
-                    Third Prize – Informatics Excellent Student Competition
+                    {tr("Third Prize - Informatics Excellent Student Competition", "Giải Ba - Kỳ thi Học sinh Giỏi Tin học")}
                   </h3>
                   <p className="font-body-md text-on-surface-variant text-[13px] leading-relaxed mt-2">
-                    Ranked third in the Provincial Excellent Student Competition, specializing in programming foundations and computational discrete mathematics.
+                    {tr("Ranked third in the Provincial Excellent Student Competition, specializing in programming foundations and computational discrete mathematics.", "Đạt Giải Ba kỳ thi Học sinh Giỏi cấp tỉnh với thế mạnh về nền tảng lập trình và toán rời rạc tính toán.")}
                   </p>
                 </div>
               </div>
