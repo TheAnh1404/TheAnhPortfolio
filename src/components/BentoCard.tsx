@@ -12,6 +12,9 @@ export const BentoCard: React.FC<BentoCardProps> = ({
   className = "",
   delay = 0,
 }) => {
+  const hasBg = className.split(" ").some(c => c.startsWith("bg-"));
+  const bgClass = hasBg ? "" : "bg-surface-container-lowest";
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -19,7 +22,7 @@ export const BentoCard: React.FC<BentoCardProps> = ({
       viewport={{ once: true, margin: "-50px" }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay }}
       whileHover={{ y: -4, transition: { duration: 0.2 } }}
-      className={`bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-[0px_8px_30px_rgba(0,0,0,0.04)] hover:border-primary/30 transition-all duration-300 ${className}`}
+      className={`${bgClass} border border-outline-variant rounded-xl overflow-hidden shadow-sm hover:shadow-[0px_8px_30px_rgba(0,0,0,0.04)] hover:border-primary/30 transition-all duration-300 ${className}`}
     >
       {children}
     </motion.div>

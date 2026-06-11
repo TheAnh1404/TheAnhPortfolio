@@ -36,12 +36,10 @@ export const Navbar: React.FC = () => {
           </NavLink>
         ))}
         <a
-          href="#/download-cv"
+          href="https://drive.google.com/uc?export=download&id=1RgdhZxllueFuDsXPVMjNxhsveV4OKRj8"
+          target="_blank"
+          rel="noopener noreferrer"
           className="scale-95 active:scale-90 transition-transform px-5 py-2 bg-on-background text-surface rounded-full text-label-mono font-bold hover:bg-on-background/90"
-          onClick={(e) => {
-            e.preventDefault();
-            alert("Curriculum Vitae download initiated (Placeholder).");
-          }}
         >
           Download CV
         </a>
@@ -74,13 +72,11 @@ export const Navbar: React.FC = () => {
             </NavLink>
           ))}
           <a
-            href="#/download-cv"
+            href="https://drive.google.com/uc?export=download&id=1RgdhZxllueFuDsXPVMjNxhsveV4OKRj8"
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full text-center py-3 bg-on-background text-surface rounded-full text-label-mono font-bold hover:bg-on-background/90 block mt-2"
-            onClick={(e) => {
-              e.preventDefault();
-              setIsOpen(false);
-              alert("Curriculum Vitae download initiated (Placeholder).");
-            }}
+            onClick={() => setIsOpen(false)}
           >
             Download CV
           </a>

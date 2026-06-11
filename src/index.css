@@ -121,6 +121,20 @@ html {
   animation: float 6s ease-in-out infinite;
 }
 
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 40s linear infinite;
+}
+
 /* Timeline elements styling */
 .timeline-line {
   background: linear-gradient(180deg, #004ac6 0%, #c3c6d7 100%);

@@ -15,7 +15,7 @@ export const Footer: React.FC = () => {
         </div>
         <div className="flex gap-6">
           <a
-            href="https://github.com"
+            href="https://github.com/TheAnh1404"
             target="_blank"
             rel="noopener noreferrer"
             className="font-label-mono text-caption text-on-surface-variant hover:text-on-surface transition-colors"
@@ -23,7 +23,7 @@ export const Footer: React.FC = () => {
             GitHub
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://www.linkedin.com/in/theanh1404/"
             target="_blank"
             rel="noopener noreferrer"
             className="font-label-mono text-caption text-on-surface-variant hover:text-on-surface transition-colors"

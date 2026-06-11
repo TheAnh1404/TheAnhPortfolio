@@ -46,28 +46,28 @@ export const Experience: React.FC = () => {
                 <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
                   <div>
                     <span className="font-label-mono text-caption text-primary uppercase tracking-wider font-bold">
-                      Industrial Internship
+                      Internship
                     </span>
                     <h3 className="font-headline-lg text-headline-lg text-2xl font-bold text-on-surface mt-1">
                       DevPlus JSC
                     </h3>
                   </div>
                   <span className="font-label-mono text-label-mono bg-surface-container px-3 py-1 rounded-lg text-on-surface font-bold text-caption self-start md:self-center">
-                    Jun 2023 — Sep 2023
+                    Apr 2026 — Jul 2026
                   </span>
                 </div>
                 <p className="font-body-md text-on-surface-variant mb-6 leading-relaxed">
-                  Focused on the structural integrity of large-scale datasets and software reliability within the Data Intelligence department.
+                  Data Labeling Intern: Annotated and validated datasets used for machine learning model training, ensuring high data consistency and accuracy.
                 </p>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
                     <CheckCircle className="text-primary mt-1 w-5 h-5 flex-shrink-0" />
                     <div>
                       <h4 className="font-headline-md text-headline-md font-semibold text-on-surface">
-                        Data Labeling & Processing
+                        Dataset Annotation & Validation
                       </h4>
                       <p className="text-on-surface-variant text-body-md leading-relaxed mt-0.5">
-                        Engineered systematic pipelines for labeling high-dimensional data used in computer vision models, ensuring 99% accuracy rates.
+                        Performed quality assurance on labeled data to ensure consistency and accuracy across computer vision and NLP datasets.
                       </p>
                     </div>
                   </div>
@@ -75,16 +75,16 @@ export const Experience: React.FC = () => {
                     <Bug className="text-primary mt-1 w-5 h-5 flex-shrink-0" />
                     <div>
                       <h4 className="font-headline-md text-headline-md font-semibold text-on-surface">
-                        Quality Assurance
+                        Collaboration & Guidelines
                       </h4>
                       <p className="text-on-surface-variant text-body-md leading-relaxed mt-0.5">
-                        Conducted rigorous regression testing and documented edge-case anomalies for internal project management platforms.
+                        Collaborated with team members to follow strict annotation guidelines and improve overall dataset quality for ML training.
                       </p>
                     </div>
                   </div>
                 </div>
                 <div className="mt-8 flex flex-wrap gap-2">
-                  {["QA Automation", "Data Sanitization", "SQL", "Jira"].map((t) => (
+                  {["Machine Learning", "Data Labeling", "QA", "Python"].map((t) => (
                     <span key={t} className="bg-surface-variant px-3 py-1 rounded border border-outline-variant font-label-mono text-caption text-on-surface-variant">
                       {t}
                     </span>
@@ -109,11 +109,11 @@ export const Experience: React.FC = () => {
                       Competitive Programming
                     </span>
                     <h3 className="font-headline-lg text-headline-lg text-2xl font-bold text-on-surface mt-1">
-                      VKU Training Team
+                      VKU ICPC Training Team
                     </h3>
                   </div>
                   <span className="font-label-mono text-label-mono bg-surface-container px-3 py-1 rounded-lg text-on-surface font-bold text-caption self-start md:self-center">
-                    2022 — Present
+                    2024 — Present
                   </span>
                 </div>
                 <p className="font-body-md text-on-surface-variant mb-6 leading-relaxed">
@@ -162,18 +162,18 @@ export const Experience: React.FC = () => {
           {/* Performance Metrics Card */}
           <BentoCard className="p-6 bg-surface-container-high">
             <h4 className="font-label-mono text-label-mono mb-6 text-on-surface-variant font-bold uppercase tracking-wider">
-              Performance Metrics
+              Algorithmics Dashboard
             </h4>
             <div className="space-y-6">
               <div>
                 <div className="flex justify-between text-caption font-label-mono mb-1.5 font-bold">
-                  <span>Codeforces Max Rating</span>
-                  <span>1400+</span>
+                  <span>VKU Coding Cup Rank</span>
+                  <span>Top 5</span>
                 </div>
                 <div className="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
                   <fm.div 
                     initial={{ width: 0 }}
-                    whileInView={{ width: "65%" }}
+                    whileInView={{ width: "95%" }}
                     viewport={{ once: true }}
                     className="bg-primary h-full rounded-full"
                   />
@@ -181,7 +181,7 @@ export const Experience: React.FC = () => {
               </div>
               <div>
                 <div className="flex justify-between text-caption font-label-mono mb-1.5 font-bold">
-                  <span>Problems Solved</span>
+                  <span>Problems Solved (All Platforms)</span>
                   <span>500+</span>
                 </div>
                 <div className="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
@@ -195,13 +195,13 @@ export const Experience: React.FC = () => {
               </div>
               <div>
                 <div className="flex justify-between text-caption font-label-mono mb-1.5 font-bold">
-                  <span>QA Accuracy</span>
-                  <span>99.2%</span>
+                  <span>ICPC Training Intensity</span>
+                  <span>95%</span>
                 </div>
                 <div className="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
                   <fm.div 
                     initial={{ width: 0 }}
-                    whileInView={{ width: "99.2%" }}
+                    whileInView={{ width: "95%" }}
                     viewport={{ once: true }}
                     className="bg-secondary h-full rounded-full"
                   />
@@ -240,25 +240,25 @@ export const Experience: React.FC = () => {
       <section className="mt-20">
         <h2 className="font-headline-lg text-headline-lg text-3xl font-bold mb-8">Achievements</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <BentoCard className="p-6 hover:bg-surface-container transition-colors" delay={0.1}>
-            <span className="font-label-mono text-primary text-caption font-bold">2023</span>
-            <h4 className="font-headline-md text-headline-md font-bold mt-2">Excellent Intern Award</h4>
+          <BentoCard className="p-6 bg-primary-container/10 border-primary/20 hover:bg-primary-container/20 transition-colors" delay={0.1}>
+            <span className="font-label-mono text-primary text-caption font-bold">May 2026</span>
+            <h4 className="font-headline-md text-headline-md font-bold mt-2">First Prize — Stellar Mini Hackathon</h4>
             <p className="text-caption text-on-surface-variant mt-2 leading-relaxed">
-              DevPlus JSC — Recognition for highest QA accuracy in the summer cohort.
+              Led the development of UdonFi, a decentralized lending protocol on Stellar Soroban.
             </p>
           </BentoCard>
           <BentoCard className="p-6 hover:bg-surface-container transition-colors" delay={0.2}>
-            <span className="font-label-mono text-primary text-caption font-bold">2022</span>
-            <h4 className="font-headline-md text-headline-md font-bold mt-2">ICPC National Finalist</h4>
+            <span className="font-label-mono text-primary text-caption font-bold">2024 — Present</span>
+            <h4 className="font-headline-md text-headline-md font-bold mt-2">VKU ICPC Training Team</h4>
             <p className="text-caption text-on-surface-variant mt-2 leading-relaxed">
-              Represented VKU at the Vietnam ICPC National Contest.
+              Selected member for national-level competitive programming and algorithmic optimization.
             </p>
           </BentoCard>
           <BentoCard className="p-6 hover:bg-surface-container transition-colors" delay={0.3}>
-            <span className="font-label-mono text-primary text-caption font-bold">2024</span>
-            <h4 className="font-headline-md text-headline-md font-bold mt-2">Top 5 VKU Coding Cup</h4>
+            <span className="font-label-mono text-primary text-caption font-bold">2020 — 2022</span>
+            <h4 className="font-headline-md text-headline-md font-bold mt-2">National Informatics Awards</h4>
             <p className="text-caption text-on-surface-variant mt-2 leading-relaxed">
-              Demonstrated exceptional proficiency in Dynamic Programming challenges.
+              Multiple prizes in Excellent Student Competitions and Young Informatics at provincial levels.
             </p>
           </BentoCard>
         </div>

@@ -1,0 +1,31 @@
+NGUYEN THE ANH
++84 917 363 528 ⋄ Da Nang, Vietnam
+anhnt.24ite@vku.udn.vn ⋄ Linkedintheanh1404 ⋄ GithubTheAnh1404
+
+PROFESSIONAL SUMMARY
+Highly motivated Software Engineering student at Vietnam-Korea University (VKU) with a specialized focus on High-Performance Backend Architecture, Decentralized Finance (DeFi), and AI-Driven Systems. Demonstrated expertise in building production-ready protocols on Stellar Soroban and architecting scalable microservices using NestJS and FastAPI. Proven problem-solver with a strong foundation in competitive programming (ICPC) and a winner of global blockchain hackathons.
+
+TECHNICAL CORE
+- Languages: TypeScript/JavaScript (Expert), Rust (Smart Contracts), Python (AI/ML), C++ (Algorithms).
+- Backend: NestJS, Express.js, FastAPI, Microservices, RESTful & GraphQL API Design.
+- Web3: Stellar Soroban, DeFi Protocol Design, Smart Contract Security & Optimization.
+- Databases: PostgreSQL (Architecture), MongoDB, Firebase Realtime/Firestore.
+- DevOps & Tools: Docker, Git/GitHub, Postman, CI/CD, Stripe, Sentry.
+
+KEY ACHIEVEMENTS & PROJECTS
+First Prize – Stellar Mini Hackathon: Building Assets (May 2026)
+- Engineered "UdonFi", a decentralized collateralized lending protocol on Stellar Soroban.
+- Implemented sophisticated risk management models (LTV, Health Factor) and optimized state storage via bitmap packing to minimize gas costs and maximize transaction throughput.
+
+VioTune – AI-Powered Recommendation Engine
+- Developed a hybrid recommendation system utilizing SVD collaborative filtering and KNN content-based analysis.
+- Designed a high-concurrency architecture bridging React frontends with FastAPI model services for real-time inference.
+
+VKU ICPC Training Team (2024 – Present)
+- Actively competing in national-level algorithmic contests.
+- Specializing in dynamic programming, graph theory, and complex data structure optimization.
+
+EXPERIENCE
+Software Engineering Intern | DevPlus JSC (Apr 2026 – Jul 2026)
+- Enhanced data intelligence pipelines for ML models with 99.2% accuracy in validation.
+- Collaborated on QA automation to reduce regression testing cycles for internal management platforms.

@@ -53,7 +53,7 @@ export const Education: React.FC = () => {
                   Vietnam - Korea University of Information and Communication Technology (VKU)
                 </p>
                 <div className="flex items-center gap-2 mt-4 font-label-mono text-caption text-on-surface-variant">
-                  <Clock className="w-4 h-4 text-primary" /> 2021 — 2025 (Expected)
+                  <Clock className="w-4 h-4 text-primary" /> Sep 2024 — Present
                 </div>
               </div>
             </div>
