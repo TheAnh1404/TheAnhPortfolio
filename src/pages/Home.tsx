@@ -477,6 +477,50 @@ export const Home: React.FC = () => {
             </div>
           </div>
         </BentoCard>
+
+        {/* Professional Experience Bento Card */}
+        <Link to="/experience" className="md:col-span-4 block cursor-pointer">
+          <BentoCard className="p-8 flex flex-col md:flex-row items-center justify-between gap-8 group border-none !bg-surface-container-low/60 hover:!bg-surface-container-low transition-all duration-300 relative overflow-hidden" delay={0.5}>
+            <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent z-0 pointer-events-none"></div>
+            <div className="relative z-10 flex-grow max-w-2xl text-left">
+              <span className="font-label-mono text-[10px] text-primary uppercase font-bold tracking-widest block mb-2">Professional Experience</span>
+              <h3 className="font-display text-2xl font-bold text-on-surface mb-2 group-hover:text-primary transition-colors">Data Labeling Intern</h3>
+              <p className="text-sm font-body-md text-on-surface-variant font-semibold mb-4">DevPlus JSC • Apr 2026 — Jul 2026</p>
+              <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mb-4">
+                Enhanced data pipelines for machine learning models (achieving **99.2% validation accuracy**) and automated regression QA checks.
+              </p>
+              <div className="flex gap-2 flex-wrap">
+                <span className="bg-surface px-2.5 py-1.5 rounded-lg border border-outline-variant/30 font-label-mono text-[9px] text-on-surface-variant">ML Pipelines</span>
+                <span className="bg-surface px-2.5 py-1.5 rounded-lg border border-outline-variant/30 font-label-mono text-[9px] text-on-surface-variant">QA Automation</span>
+                <span className="bg-surface px-2.5 py-1.5 rounded-lg border border-outline-variant/30 font-label-mono text-[9px] text-on-surface-variant">Python</span>
+              </div>
+            </div>
+            
+            {/* 99.2% Circular Progress Metric */}
+            <div className="relative w-36 h-36 flex-shrink-0 flex items-center justify-center bg-surface rounded-2xl border border-outline-variant/30 shadow-inner z-10">
+              <svg width="100" height="100" viewBox="0 0 100 100" className="-rotate-90">
+                <circle cx="50" cy="50" r="40" stroke="currentColor" className="text-outline-variant/10" strokeWidth="6" fill="none" />
+                <motion.circle 
+                  cx="50" 
+                  cy="50" 
+                  r="40" 
+                  stroke="#004ac6" 
+                  strokeWidth="6" 
+                  fill="none" 
+                  strokeDasharray="251.2" 
+                  initial={{ strokeDashoffset: 251.2 }}
+                  whileInView={{ strokeDashoffset: 251.2 * (1 - 0.992) }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.5, ease: "easeOut" }}
+                />
+              </svg>
+              <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                <span className="font-display text-lg font-bold text-on-surface">99.2%</span>
+                <span className="font-label-mono text-[6px] text-on-surface-variant uppercase font-bold tracking-wider">ML Accuracy</span>
+              </div>
+            </div>
+          </BentoCard>
+        </Link>
       </section>
 
       {/* Engineering Domains */}

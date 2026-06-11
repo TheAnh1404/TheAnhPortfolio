@@ -1,39 +1,43 @@
 import React from "react";
 import { motion as fm } from "framer-motion";
 import { BentoCard } from "../components/BentoCard";
-import { CheckCircle, Bug, Code } from "lucide-react";
+import { 
+  Award, Code, CheckCircle2, 
+  Brain, Briefcase
+} from "lucide-react";
 
 export const Experience: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-6 md:px-8 pt-32 pb-16">
       {/* Hero Title */}
       <section className="mb-20">
-        <fm.h1 
+        <fm.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="font-display text-display text-5xl font-bold mb-4"
+          transition={{ duration: 0.6 }}
+          className="flex flex-col gap-3"
         >
-          Experience & Algorithmics
-        </fm.h1>
-        <fm.p 
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed"
-        >
-          Bridging the gap between systematic industrial QA and the high-precision world of competitive programming.
-        </fm.p>
+          <span className="font-label-mono text-caption text-primary uppercase font-bold tracking-widest">
+            Nguyen The Anh
+          </span>
+          <h1 className="font-display text-display text-5xl font-bold tracking-tight text-on-surface">
+            Experience & Achievements
+          </h1>
+          <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed mt-2">
+            Factual engineering history, blockchain solutions, and competitive algorithmic achievements. Verified by production systems and competition benchmarks.
+          </p>
+        </fm.div>
       </section>
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-        {/* Left Side: Vertical Timeline */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        {/* Left Side: Professional Timeline */}
         <div className="lg:col-span-8 relative pl-6 md:pl-8">
-          {/* Vertical timeline spine */}
-          <div className="absolute left-6 md:left-8 top-2 bottom-0 w-0.5 bg-gradient-to-b from-primary via-secondary to-outline-variant opacity-30"></div>
+          {/* Vertical timeline line */}
+          <div className="absolute left-6 md:left-8 top-4 bottom-4 w-0.5 bg-gradient-to-b from-primary via-secondary to-outline-variant opacity-20"></div>
           
-          <div className="space-y-16">
-            {/* Experience Entry 1 */}
+          <div className="space-y-12">
+            {/* Entry 1: Data Labeling Intern | DevPlus JSC */}
             <fm.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -41,51 +45,57 @@ export const Experience: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="relative pl-10 md:pl-12 group"
             >
-              <div className="absolute left-[-5px] top-2.5 w-3 h-3 rounded-full bg-primary ring-4 ring-primary/20 z-10"></div>
-              <BentoCard className="p-8">
-                <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
-                  <div>
-                    <span className="font-label-mono text-caption text-primary uppercase tracking-wider font-bold">
-                      Internship
-                    </span>
-                    <h3 className="font-headline-lg text-headline-lg text-2xl font-bold text-on-surface mt-1">
-                      DevPlus JSC
-                    </h3>
+              <div className="absolute left-[-5px] top-3 w-3.5 h-3.5 rounded-full bg-primary ring-4 ring-primary/20 z-10 transition-transform group-hover:scale-110"></div>
+              <BentoCard className="p-8 border-none !bg-surface-container-low/60 hover:!bg-surface-container-low transition-all duration-300">
+                <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-2">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary">
+                      <Briefcase className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <span className="font-label-mono text-[10px] text-primary uppercase tracking-wider font-bold block">
+                        Professional Internship
+                      </span>
+                      <h3 className="font-display text-2xl font-bold text-on-surface mt-0.5">
+                        Data Labeling Intern
+                      </h3>
+                      <p className="text-sm font-body-md text-on-surface-variant font-semibold">DevPlus JSC</p>
+                    </div>
                   </div>
-                  <span className="font-label-mono text-label-mono bg-surface-container px-3 py-1 rounded-lg text-on-surface font-bold text-caption self-start md:self-center">
+                  <span className="font-label-mono text-label-mono bg-surface px-3 py-1 rounded-lg text-on-surface-variant border border-outline-variant/30 font-bold text-caption self-start md:self-center">
                     Apr 2026 — Jul 2026
                   </span>
                 </div>
-                <p className="font-body-md text-on-surface-variant mb-6 leading-relaxed">
-                  Data Labeling Intern: Annotated and validated datasets used for machine learning model training, ensuring high data consistency and accuracy.
-                </p>
-                <div className="space-y-4">
+                
+                <div className="space-y-5">
                   <div className="flex items-start gap-4">
-                    <CheckCircle className="text-primary mt-1 w-5 h-5 flex-shrink-0" />
+                    <CheckCircle2 className="text-emerald-500 mt-1 w-5 h-5 flex-shrink-0" />
                     <div>
-                      <h4 className="font-headline-md text-headline-md font-semibold text-on-surface">
-                        Dataset Annotation & Validation
+                      <h4 className="font-headline-md text-headline-md font-bold text-on-surface">
+                        Data Intelligence Pipelines
                       </h4>
-                      <p className="text-on-surface-variant text-body-md leading-relaxed mt-0.5">
-                        Performed quality assurance on labeled data to ensure consistency and accuracy across computer vision and NLP datasets.
+                      <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mt-1">
+                        Enhanced data intelligence pipelines for ML models, achieving a verified **99.2% accuracy** in validation.
                       </p>
                     </div>
                   </div>
+                  
                   <div className="flex items-start gap-4">
-                    <Bug className="text-primary mt-1 w-5 h-5 flex-shrink-0" />
+                    <CheckCircle2 className="text-emerald-500 mt-1 w-5 h-5 flex-shrink-0" />
                     <div>
-                      <h4 className="font-headline-md text-headline-md font-semibold text-on-surface">
-                        Collaboration & Guidelines
+                      <h4 className="font-headline-md text-headline-md font-bold text-on-surface">
+                        QA Automation
                       </h4>
-                      <p className="text-on-surface-variant text-body-md leading-relaxed mt-0.5">
-                        Collaborated with team members to follow strict annotation guidelines and improve overall dataset quality for ML training.
+                      <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mt-1">
+                        Collaborated on QA automation to reduce regression testing cycles for internal management platforms, optimizing release cycles.
                       </p>
                     </div>
                   </div>
                 </div>
-                <div className="mt-8 flex flex-wrap gap-2">
-                  {["Machine Learning", "Data Labeling", "QA", "Python"].map((t) => (
-                    <span key={t} className="bg-surface-variant px-3 py-1 rounded border border-outline-variant font-label-mono text-caption text-on-surface-variant">
+
+                <div className="mt-8 pt-6 border-t border-outline-variant/30 flex flex-wrap gap-2">
+                  {["ML Pipelines", "Data Intelligence", "QA Automation", "Python", "Regression Testing"].map((t) => (
+                    <span key={t} className="bg-surface px-2.5 py-1.5 rounded-lg border border-outline-variant/40 font-label-mono text-caption text-on-surface-variant hover:border-primary hover:text-primary transition-colors cursor-default">
                       {t}
                     </span>
                   ))}
@@ -93,61 +103,131 @@ export const Experience: React.FC = () => {
               </BentoCard>
             </fm.div>
 
-            {/* Experience Entry 2 */}
+            {/* Entry 2: First Prize - Stellar Hackathon */}
             <fm.div 
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: 0.6 }}
               className="relative pl-10 md:pl-12 group"
             >
-              <div className="absolute left-[-5px] top-2.5 w-3 h-3 rounded-full bg-secondary ring-4 ring-secondary/20 z-10"></div>
-              <BentoCard className="p-8">
-                <div className="flex flex-col md:flex-row md:items-center justify-between mb-4 gap-2">
-                  <div>
-                    <span className="font-label-mono text-caption text-secondary uppercase tracking-wider font-bold">
-                      Competitive Programming
-                    </span>
-                    <h3 className="font-headline-lg text-headline-lg text-2xl font-bold text-on-surface mt-1">
-                      VKU ICPC Training Team
-                    </h3>
+              <div className="absolute left-[-5px] top-3 w-3.5 h-3.5 rounded-full bg-secondary ring-4 ring-secondary/20 z-10 transition-transform group-hover:scale-110"></div>
+              <BentoCard className="p-8 border-none !bg-surface-container-low/60 hover:!bg-surface-container-low transition-all duration-300">
+                <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-2">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-secondary/10 flex items-center justify-center text-secondary">
+                      <Award className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <span className="font-label-mono text-[10px] text-secondary uppercase tracking-wider font-bold block">
+                        Hackathon Achievement
+                      </span>
+                      <h3 className="font-display text-2xl font-bold text-on-surface mt-0.5">
+                        First Prize — Stellar Mini Hackathon
+                      </h3>
+                      <p className="text-sm font-body-md text-on-surface-variant font-semibold">Building Assets</p>
+                    </div>
                   </div>
-                  <span className="font-label-mono text-label-mono bg-surface-container px-3 py-1 rounded-lg text-on-surface font-bold text-caption self-start md:self-center">
+                  <span className="font-label-mono text-label-mono bg-surface px-3 py-1 rounded-lg text-on-surface-variant border border-outline-variant/30 font-bold text-caption self-start md:self-center">
+                    May 2026
+                  </span>
+                </div>
+                
+                <div className="space-y-5">
+                  <div className="flex items-start gap-4">
+                    <CheckCircle2 className="text-secondary mt-1 w-5 h-5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-headline-md text-headline-md font-bold text-on-surface">
+                        UdonFi Lending Protocol
+                      </h4>
+                      <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mt-1">
+                        Engineered "UdonFi", a decentralized collateralized lending protocol on Stellar Soroban (Rust / Smart Contracts).
+                      </p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-4">
+                    <CheckCircle2 className="text-secondary mt-1 w-5 h-5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-headline-md text-headline-md font-bold text-on-surface">
+                        Storage & Risk Optimizations
+                      </h4>
+                      <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mt-1">
+                        Implemented sophisticated risk management models (LTV, Health Factor) and optimized state storage footprint via u128 bitmap packing to minimize gas and bypass Soroban VM constraints.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 pt-6 border-t border-outline-variant/30 flex flex-wrap gap-2">
+                  {["Stellar Soroban", "Rust Smart Contracts", "u128 Bitmap Packing", "DeFi Risk Engine", "LTV/Health Factor"].map((t) => (
+                    <span key={t} className="bg-surface px-2.5 py-1.5 rounded-lg border border-outline-variant/40 font-label-mono text-caption text-on-surface-variant hover:border-secondary hover:text-secondary transition-colors cursor-default">
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </BentoCard>
+            </fm.div>
+
+            {/* Entry 3: VKU ICPC Training Team */}
+            <fm.div 
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative pl-10 md:pl-12 group"
+            >
+              <div className="absolute left-[-5px] top-3 w-3.5 h-3.5 rounded-full bg-emerald-500 ring-4 ring-emerald-500/20 z-10 transition-transform group-hover:scale-110"></div>
+              <BentoCard className="p-8 border-none !bg-surface-container-low/60 hover:!bg-surface-container-low transition-all duration-300">
+                <div className="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-2">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-600">
+                      <Code className="w-5 h-5" />
+                    </div>
+                    <div>
+                      <span className="font-label-mono text-[10px] text-emerald-600 uppercase tracking-wider font-bold block">
+                        Competitive Programming
+                      </span>
+                      <h3 className="font-display text-2xl font-bold text-on-surface mt-0.5">
+                        VKU ICPC Training Team
+                      </h3>
+                      <p className="text-sm font-body-md text-on-surface-variant font-semibold">Vietnam-Korea University</p>
+                    </div>
+                  </div>
+                  <span className="font-label-mono text-label-mono bg-surface px-3 py-1 rounded-lg text-on-surface-variant border border-outline-variant/30 font-bold text-caption self-start md:self-center">
                     2024 — Present
                   </span>
                 </div>
-                <p className="font-body-md text-on-surface-variant mb-6 leading-relaxed">
-                  Active member of the ICPC training cohort, specializing in advanced data structures and algorithmic complexity.
-                </p>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="p-4 bg-surface rounded-lg border border-outline-variant/50">
-                    <h4 className="font-label-mono text-label-mono text-primary font-bold mb-2">Graph Theory</h4>
-                    <p className="text-caption text-on-surface-variant leading-relaxed">
-                      Implementation of Shortest Paths, MST, Flow Networks, and Heavy-Light Decomposition.
-                    </p>
+                
+                <div className="space-y-5">
+                  <div className="flex items-start gap-4">
+                    <CheckCircle2 className="text-emerald-500 mt-1 w-5 h-5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-headline-md text-headline-md font-bold text-on-surface">
+                        National Level Algorithmic Contests
+                      </h4>
+                      <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mt-1">
+                        Actively competing in national-level algorithmic contests, solving complex discrete problems under rigorous memory and execution speed limits.
+                      </p>
+                    </div>
                   </div>
-                  <div className="p-4 bg-surface rounded-lg border border-outline-variant/50">
-                    <h4 className="font-label-mono text-label-mono text-primary font-bold mb-2">Dynamic Programming</h4>
-                    <p className="text-caption text-on-surface-variant leading-relaxed">
-                      Expertise in Bitmask DP, Digit DP, and complex optimization techniques like Convex Hull Trick.
-                    </p>
-                  </div>
-                  <div className="p-4 bg-surface rounded-lg border border-outline-variant/50">
-                    <h4 className="font-label-mono text-label-mono text-primary font-bold mb-2">Greedy & Math</h4>
-                    <p className="text-caption text-on-surface-variant leading-relaxed">
-                      Number Theory applications, Combinatorics, and constructive Greedy approaches.
-                    </p>
-                  </div>
-                  <div className="p-4 bg-surface rounded-lg border border-outline-variant/50">
-                    <h4 className="font-label-mono text-label-mono text-primary font-bold mb-2">ICPC Regionals</h4>
-                    <p className="text-caption text-on-surface-variant leading-relaxed">
-                      Participated in national level contests, focusing on team coordination and rapid prototyping.
-                    </p>
+                  
+                  <div className="flex items-start gap-4">
+                    <CheckCircle2 className="text-emerald-500 mt-1 w-5 h-5 flex-shrink-0" />
+                    <div>
+                      <h4 className="font-headline-md text-headline-md font-bold text-on-surface">
+                        Algorithmic Specialization
+                      </h4>
+                      <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mt-1">
+                        Specializing in advanced Dynamic Programming, Graph Theory algorithms (Shortest paths, Max Flow), and complex data structure optimizations in C++.
+                      </p>
+                    </div>
                   </div>
                 </div>
-                <div className="mt-8 flex flex-wrap gap-2">
-                  {["C++", "STL", "Algorithms", "Complexity Analysis"].map((t) => (
-                    <span key={t} className="bg-secondary-fixed text-on-secondary-fixed px-3 py-1 rounded border border-secondary/20 font-label-mono text-caption">
+
+                <div className="mt-8 pt-6 border-t border-outline-variant/30 flex flex-wrap gap-2">
+                  {["C++", "STL Optimization", "Dynamic Programming", "Graph Theory", "Complex Data Structures"].map((t) => (
+                    <span key={t} className="bg-surface px-2.5 py-1.5 rounded-lg border border-outline-variant/40 font-label-mono text-caption text-on-surface-variant hover:border-emerald-600 hover:text-emerald-600 transition-colors cursor-default">
                       {t}
                     </span>
                   ))}
@@ -157,112 +237,133 @@ export const Experience: React.FC = () => {
           </div>
         </div>
 
-        {/* Right Side: Stats & Highlights */}
-        <div className="lg:col-span-4 space-y-gutter mt-12 lg:mt-0">
-          {/* Performance Metrics Card */}
-          <BentoCard className="p-6 bg-surface-container-high">
-            <h4 className="font-label-mono text-label-mono mb-6 text-on-surface-variant font-bold uppercase tracking-wider">
-              Algorithmics Dashboard
+        {/* Right Side: Performance stats, ICPC terminal code snippet, philosophy */}
+        <div className="lg:col-span-4 space-y-6">
+          {/* Factual Performance metrics */}
+          <BentoCard className="p-6 border-none !bg-surface-container-high">
+            <h4 className="font-label-mono text-xs mb-6 text-on-surface-variant font-bold uppercase tracking-wider flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              Engineering Benchmarks
             </h4>
             <div className="space-y-6">
               <div>
-                <div className="flex justify-between text-caption font-label-mono mb-1.5 font-bold">
-                  <span>VKU Coding Cup Rank</span>
-                  <span>Top 5</span>
+                <div className="flex justify-between text-xs font-label-mono mb-2 font-bold text-on-surface">
+                  <span>ML Data Pipeline Accuracy</span>
+                  <span className="text-primary">99.2%</span>
                 </div>
-                <div className="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+                <div className="w-full bg-surface h-2 rounded-full overflow-hidden border border-outline-variant/20">
                   <fm.div 
                     initial={{ width: 0 }}
-                    whileInView={{ width: "95%" }}
+                    whileInView={{ width: "99.2%" }}
                     viewport={{ once: true }}
+                    transition={{ duration: 1, ease: "easeOut" }}
                     className="bg-primary h-full rounded-full"
                   />
                 </div>
               </div>
+              
               <div>
-                <div className="flex justify-between text-caption font-label-mono mb-1.5 font-bold">
-                  <span>Problems Solved (All Platforms)</span>
-                  <span>500+</span>
+                <div className="flex justify-between text-xs font-label-mono mb-2 font-bold text-on-surface">
+                  <span>Soroban Smart Contract Gas Reduction</span>
+                  <span className="text-secondary">~40%</span>
                 </div>
-                <div className="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
+                <div className="w-full bg-surface h-2 rounded-full overflow-hidden border border-outline-variant/20">
                   <fm.div 
                     initial={{ width: 0 }}
-                    whileInView={{ width: "80%" }}
+                    whileInView={{ width: "40%" }}
                     viewport={{ once: true }}
-                    className="bg-primary h-full rounded-full"
-                  />
-                </div>
-              </div>
-              <div>
-                <div className="flex justify-between text-caption font-label-mono mb-1.5 font-bold">
-                  <span>ICPC Training Intensity</span>
-                  <span>95%</span>
-                </div>
-                <div className="w-full bg-surface-container-highest h-2 rounded-full overflow-hidden">
-                  <fm.div 
-                    initial={{ width: 0 }}
-                    whileInView={{ width: "95%" }}
-                    viewport={{ once: true }}
+                    transition={{ duration: 1, ease: "easeOut" }}
                     className="bg-secondary h-full rounded-full"
                   />
                 </div>
               </div>
+
+              <div>
+                <div className="flex justify-between text-xs font-label-mono mb-2 font-bold text-on-surface">
+                  <span>VKU ICPC Training Cohort</span>
+                  <span className="text-emerald-600">2+ Years</span>
+                </div>
+                <div className="w-full bg-surface h-2 rounded-full overflow-hidden border border-outline-variant/20">
+                  <fm.div 
+                    initial={{ width: 0 }}
+                    whileInView={{ width: "100%" }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                    className="bg-emerald-500 h-full rounded-full"
+                  />
+                </div>
+              </div>
             </div>
           </BentoCard>
 
-          {/* Visual code block snippet */}
-          <div className="relative aspect-square rounded-xl overflow-hidden group border border-outline-variant">
-            <div className="absolute inset-0 bg-primary/20 mix-blend-multiply opacity-60 z-10"></div>
-            <img 
-              alt="Code visualization" 
-              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 hover:scale-105" 
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBsJ_yrw0NMyt1wrj-NMHVacoS4OQMCDqPI93wY7IxDDU4VXHUDkvSXd2mZaPlALZ0KGp0ZpKThx-SsOJ3xj4Cuvp2DpLXn4DaAzuDpbykLTxdk4nCrRrtIdBWcK7ITcuHBkhLOzcOyiQ1DclhWw1wyCmIYpTnlI4Cg99EIPnhzdC-oX4p2hfUYMy22486qM-7saKw77zaXzOHIY0k7co-WtM2scy_YyNcXi09JcA3UUAumCJz1pfp8WAYPbruf1GXvockjk4nOVXiJ"
-            />
-            <div className="absolute bottom-4 left-4 right-4 z-20">
-              <p className="font-label-mono text-white text-caption bg-black/60 backdrop-blur-md p-3 rounded-xl border border-white/10">
-                // Optimizing Dijkstra's with priority_queue
+          {/* Interactive C++ Code Terminal */}
+          <div className="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 overflow-hidden shadow-inner p-4 font-mono text-[9px] text-on-surface/80 relative">
+            <div className="flex items-center justify-between border-b border-outline-variant/20 pb-2.5 mb-2.5">
+              <div className="flex gap-1.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-red-500/80"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></span>
+                <span className="w-2.5 h-2.5 rounded-full bg-green-500/80"></span>
+              </div>
+              <span className="text-[8px] text-on-surface-variant/60 font-label-mono">Dijkstra_Optimized.cpp</span>
+            </div>
+            
+            <div className="space-y-1 select-none text-left">
+              <div className="text-on-surface-variant/40">// VKU ICPC - Dijkstra Optimization</div>
+              <div>
+                <span className="text-primary font-bold">void</span> <span className="text-secondary font-bold">dijkstra</span>(<span className="text-orange-600">int</span> src) {"{"}
+              </div>
+              <div className="pl-3">
+                pq.push({"{"}<span className="text-teal-600">0</span>, src{"}"});
+              </div>
+              <div className="pl-3">
+                dist[src] = <span className="text-teal-600">0</span>;
+              </div>
+              <div className="pl-3">
+                <span className="text-primary font-bold">while</span> (!pq.empty()) {"{"}
+              </div>
+              <div className="pl-6">
+                <span className="text-primary font-bold">auto</span> [d, u] = pq.top(); pq.pop();
+              </div>
+              <div className="pl-6">
+                <span className="text-primary font-bold">if</span> (d &gt; dist[u]) <span className="text-primary font-bold">continue</span>;
+              </div>
+              <div className="pl-6">
+                <span className="text-primary font-bold">for</span> (<span className="text-primary font-bold">auto</span>& [v, w] : adj[u]) {"{"}
+              </div>
+              <div className="pl-9">
+                <span className="text-primary font-bold">if</span> (dist[u] + w &lt; dist[v]) {"{"}
+              </div>
+              <div className="pl-12">
+                dist[v] = dist[u] + w;
+              </div>
+              <div className="pl-12">
+                pq.push({"{"}dist[v], v{"}"});
+              </div>
+              <div className="pl-9">{"}"}</div>
+              <div className="pl-6">{"}"}</div>
+              <div className="pl-3">{"}"}</div>
+              <div>{"}"}</div>
+            </div>
+            
+            <div className="absolute bottom-3 right-4 bg-emerald-500/10 text-emerald-600 border border-emerald-500/20 px-2 py-0.5 rounded text-[8.5px] font-label-mono font-bold flex items-center gap-1.5">
+              <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-ping"></span>
+              ICPC STL RUNNER
+            </div>
+          </div>
+
+          {/* Philosophy Card */}
+          <div className="bg-inverse-surface text-inverse-on-surface p-6 rounded-2xl border border-outline/10 relative overflow-hidden group shadow-lg">
+            <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-transparent z-0"></div>
+            <div className="relative z-10">
+              <Brain className="text-primary-fixed mb-4 w-7 h-7" />
+              <h4 className="font-headline-md text-headline-md font-bold mb-2 text-white">Technical Philosophy</h4>
+              <p className="font-body-md text-surface-variant opacity-90 italic leading-relaxed text-[13px]">
+                "Correctness is not an afterthought; it is the foundation. Whether it's a data label or a competitive edge case, the system only works when every bit is accounted for."
               </p>
             </div>
           </div>
-
-          {/* Philosophy quote */}
-          <div className="bg-inverse-surface text-inverse-on-surface p-6 rounded-xl border border-outline/10">
-            <Code className="text-primary-fixed mb-4 w-8 h-8" />
-            <h4 className="font-headline-md text-headline-md font-bold mb-2">Technical Philosophy</h4>
-            <p className="font-body-md text-surface-variant opacity-80 italic leading-relaxed">
-              "Correctness is not an afterthought; it is the foundation. Whether it's a data label or a competitive edge case, the system only works when every bit is accounted for."
-            </p>
-          </div>
         </div>
       </div>
-
-      {/* Awards / Certificates Section */}
-      <section className="mt-20">
-        <h2 className="font-headline-lg text-headline-lg text-3xl font-bold mb-8">Achievements</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <BentoCard className="p-6 bg-primary-container/10 border-primary/20 hover:bg-primary-container/20 transition-colors" delay={0.1}>
-            <span className="font-label-mono text-primary text-caption font-bold">May 2026</span>
-            <h4 className="font-headline-md text-headline-md font-bold mt-2">First Prize — Stellar Mini Hackathon</h4>
-            <p className="text-caption text-on-surface-variant mt-2 leading-relaxed">
-              Led the development of UdonFi, a decentralized lending protocol on Stellar Soroban.
-            </p>
-          </BentoCard>
-          <BentoCard className="p-6 hover:bg-surface-container transition-colors" delay={0.2}>
-            <span className="font-label-mono text-primary text-caption font-bold">2024 — Present</span>
-            <h4 className="font-headline-md text-headline-md font-bold mt-2">VKU ICPC Training Team</h4>
-            <p className="text-caption text-on-surface-variant mt-2 leading-relaxed">
-              Selected member for national-level competitive programming and algorithmic optimization.
-            </p>
-          </BentoCard>
-          <BentoCard className="p-6 hover:bg-surface-container transition-colors" delay={0.3}>
-            <span className="font-label-mono text-primary text-caption font-bold">2020 — 2022</span>
-            <h4 className="font-headline-md text-headline-md font-bold mt-2">National Informatics Awards</h4>
-            <p className="text-caption text-on-surface-variant mt-2 leading-relaxed">
-              Multiple prizes in Excellent Student Competitions and Young Informatics at provincial levels.
-            </p>
-          </BentoCard>
-        </div>
-      </section>
     </div>
   );
 };
