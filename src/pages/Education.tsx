@@ -42,15 +42,15 @@ export const Education: React.FC = () => {
           <div>
             <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
               <div className="flex gap-4 items-center">
-                <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary flex-shrink-0">
-                  <School className="w-6 h-6" />
+                <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center p-2 flex-shrink-0 shadow-sm border border-outline-variant/20">
+                  <img src="/Infor/Logo_school.png" alt="VKU Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <span className="font-label-mono text-[10px] text-primary uppercase font-bold tracking-widest block">
                     Higher Education
                   </span>
                   <h3 className="font-display text-2xl font-bold mt-0.5 text-on-surface">
-                    Vietnam - Korea University of IT and Communications
+                    Vietnam - Korea University of ICT
                   </h3>
                 </div>
               </div>
@@ -60,7 +60,7 @@ export const Education: React.FC = () => {
             </div>
             
             <p className="font-body-md text-on-surface-variant leading-relaxed mb-6">
-              Established under a strategic international partnership between the governments of **Vietnam** and **South Korea**, the Vietnam-Korea University of Information and Communication Technology (VKU) is a premier higher education institution in the Central and Central Highlands region of Vietnam. It is recognized for its high-quality curriculum, modern digital labs, and elite training programs tailored for the global software industry.
+              Vietnam - Korea University of Information and Communication Technology (VKU) is a premier public university specializing in digital technology and innovation. Through a strategic partnership between "Vietnam" and "South Korea", VKU provides an elite academic environment for the next generation of global software engineers.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-2">
@@ -71,7 +71,7 @@ export const Education: React.FC = () => {
               </div>
               <div className="p-4 bg-surface rounded-xl border border-outline-variant/40 hover:border-primary/20 transition-colors">
                 <span className="font-label-mono text-[9px] uppercase font-bold text-primary block mb-1">Key Focus Areas</span>
-                <p className="text-sm font-semibold text-on-surface">High-Performance Backend, Web3 & AI</p>
+                <p className="text-sm font-semibold text-on-surface">High-Performance Backend & AI</p>
                 <p className="text-[11px] text-on-surface-variant mt-0.5 font-label-mono">Active Student Researcher</p>
               </div>
             </div>
@@ -88,8 +88,8 @@ export const Education: React.FC = () => {
         <BentoCard className="lg:col-span-4 p-8 flex flex-col justify-between relative overflow-hidden group" delay={0.2}>
           <div className="absolute bottom-0 right-0 w-48 h-48 bg-secondary/5 rounded-full blur-2xl -mr-12 -mb-12 group-hover:bg-secondary/10 transition-colors duration-500"></div>
           <div>
-            <div className="w-12 h-12 bg-secondary/10 rounded-xl flex items-center justify-center text-secondary mb-6 group-hover:scale-105 transition-transform">
-              <Code className="w-6 h-6" />
+            <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center p-2 mb-6 group-hover:scale-105 transition-transform shadow-sm border border-outline-variant/20">
+              <img src="/Infor/Logo_CS.png" alt="Faculty of CS Logo" className="w-full h-full object-contain" />
             </div>
             <span className="font-label-mono text-[10px] text-secondary uppercase font-bold tracking-widest block">
               Department
@@ -98,17 +98,16 @@ export const Education: React.FC = () => {
               Faculty of Computer Science
             </h3>
             <p className="font-label-mono text-[11px] text-secondary-container-outline font-bold mt-0.5 mb-4 uppercase">
-              Khoa Khoa học Máy tính (KHMT)
             </p>
             
             <p className="font-body-md text-on-surface-variant text-[13px] leading-relaxed mb-6">
-              The Faculty of Computer Science at VKU is dedicated to training elite programmers and system architects. The curriculum provides a rigorous mathematical and logical foundation in data structures, algorithms, compiler design, and systems engineering, preparing students to tackle complex distributed challenges and deploy production-grade software.
+              The Faculty of Computer Science is the academic heart of VKU, fostering excellence in algorithmic logic, software architecture, and advanced computing systems. We dedicate to training elite engineers who will drive the global tech landscape.
             </p>
           </div>
 
           <div className="p-3 bg-secondary/5 rounded-lg border border-secondary/15">
             <span className="font-label-mono text-[9px] uppercase font-bold text-secondary block mb-1">Academic Core</span>
-            <p className="text-[11px] text-on-surface font-semibold leading-relaxed">Rigorous training in discrete math, algorithms design, decentralized ledgers, and deep learning architectures.</p>
+            <p className="text-[11px] text-on-surface font-semibold leading-relaxed">Focusing on competitive programming (ICPC), decentralized systems, and AI-driven architectures.</p>
           </div>
         </BentoCard>
       </section>
