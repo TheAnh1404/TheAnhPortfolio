@@ -155,3 +155,114 @@ html {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
 }
+
+/* UdonFi Branding Logo Styles */
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px border-outline-variant/30;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.udon-bowl-icon {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.bowl {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 28px;
+  height: 18px;
+  background: var(--color-primary);
+  border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0, 74, 198, 0.2);
+}
+
+.bowl .line {
+  position: absolute;
+  top: 4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.steam {
+  position: absolute;
+  top: 2px;
+  width: 2px;
+  height: 8px;
+  background: var(--color-primary);
+  opacity: 0;
+  border-radius: 2px;
+  filter: blur(1px);
+}
+
+.steam-1 { left: 14px; animation: steamUp 2s infinite 0.2s; }
+.steam-2 { left: 19px; animation: steamUp 2s infinite 0.7s; }
+.steam-3 { left: 24px; animation: steamUp 2s infinite 1.2s; }
+
+@keyframes steamUp {
+  0% { transform: translateY(0) scaleX(1); opacity: 0; }
+  15% { opacity: 0.5; }
+  50% { transform: translateY(-12px) scaleX(1.5); opacity: 0.2; }
+  100% { transform: translateY(-20px) scaleX(2); opacity: 0; }
+}
+
+.chopstick {
+  position: absolute;
+  top: 10px;
+  width: 20px;
+  height: 2px;
+  background: var(--color-on-surface);
+  border-radius: 1px;
+}
+
+.chopstick-1 {
+  right: 2px;
+  transform: rotate(-30deg);
+}
+
+.chopstick-2 {
+  right: 0px;
+  transform: rotate(-20deg);
+  top: 13px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  font-family: "Geist", sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--color-on-surface);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.brand-title .highlight {
+  color: var(--color-primary);
+  font-style: italic;
+}
+
+.brand-network {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+}

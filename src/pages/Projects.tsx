@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { BentoCard } from "../components/BentoCard";
+import { UdonLogo } from "../components/UdonLogo";
 import { 
   Terminal, Cpu, Wallet, ArrowRight,
   Sparkles, Cloud
@@ -29,15 +30,16 @@ export const Projects: React.FC = () => {
       category: "blockchain",
       title: "UdonFi",
       badge: "DeFi Infrastructure",
-      description: "Next-generation decentralized lending protocol focusing on cross-chain collateral efficiency and real-time risk assessment.",
+      description: "High-performance decentralized lending protocol on Stellar Soroban. Engineered for extreme capital efficiency using u128 bitmap packing and 2-step liquidation flows.",
       highlights: [
-        "High-frequency Liquidation Engine with <100ms latency.",
-        "Multi-signature vault architecture with cold-storage migration."
+        "u128 Bitmap packing logic (95% storage fee reduction).",
+        "Decentralized 2-Step Liquidation flow bypassing CPU limits.",
+        "Kinked APY interest model for liquidity risk governance."
       ],
-      tech: ["Rust", "Soroban", "Node.js", "Solidity"],
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuDCXW7isOSp_x8r51cSpS4f-tjiSxFszv_VuMmxqxCxtU4R5_Ix0VsUxMH8yRWjrWqLfp1dBc-LJHGT-9HiwodrKq7IGzKWE8JKQtafm69b87UZKJAs3n_CmUOHvl15IpbS67oarXwBFkezIkIjaqNANgp7487QoT0nMdBBqF0G9BRuvgyrOibwn0UEximhmoKNJ4SIa0_dSWvnN9FXPRKwFGE_IdWKPgSsAcF6NU3cWXjDaoDqvzCFcjxSpyC3db56qSZKIwgzbrj9",
+      tech: ["Rust", "Soroban", "Node.js", "React 19"],
+      image: "/Infor/udonFI/HomeUdonFi.png",
       link: "/projects/udonfi",
-      icon: <Wallet className="w-5 h-5 text-primary" />
+      icon: <UdonLogo showNetwork={false} className="!p-0 !bg-transparent border-none scale-50 -ml-4" />
     },
     {
       id: "viotune",

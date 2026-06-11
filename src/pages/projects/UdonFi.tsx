@@ -1,444 +1,441 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { BentoCard } from "../../components/BentoCard";
 import {
   ArrowLeft, Award, Link as LinkIcon, Code as CodeIcon,
-  User, Terminal, Layout, Sparkles, Database
+  User, Terminal, Layout, Sparkles, Database,
+  ShieldCheck, Zap, Activity, Cpu, BarChart3,
+  Layers, Clock, RefreshCcw
 } from "lucide-react";
 
+import { UdonLogo } from "../../components/UdonLogo";
+
 export const UdonFi: React.FC = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 }
+  };
+
   return (
-    <div className="pt-32 pb-20 max-w-7xl mx-auto px-6 md:px-8">
+    <div className="pt-32 pb-20 max-w-7xl mx-auto px-6 md:px-8 selection:bg-primary/20">
       {/* Back to Projects */}
-      <div className="mb-8">
+      <motion.div 
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        className="mb-8"
+      >
         <Link
           to="/projects"
-          className="inline-flex items-center gap-2 font-label-mono text-caption text-primary font-bold hover:underline"
+          className="inline-flex items-center gap-2 font-label-mono text-caption text-primary font-bold hover:gap-3 transition-all"
         >
           <ArrowLeft className="w-4 h-4" /> Back to Engineering Systems
         </Link>
-      </div>
+      </motion.div>
 
       {/* Hero Header */}
-      <header className="mb-20">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed-variant font-label-mono text-caption mb-6 font-bold border border-primary/20">
-              <Award className="w-4.5 h-4.5 text-primary" />
-              1st Prize Stellar Hackathon
+      <header className="mb-24">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 text-primary font-label-mono text-[11px] mb-8 font-bold border border-primary/20 shadow-sm shadow-primary/5">
+              <Award className="w-4 h-4" />
+              1ST PRIZE • STELLAR MINI HACKATHON 2026
             </div>
-            <h1 className="font-display text-display text-5xl font-bold mb-4">UdonFi</h1>
-            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
-              A high-performance Web3 lending protocol engineered for the Stellar Soroban ecosystem. UdonFi enables non-custodial asset borrowing and lending with sub-second finality and institutional-grade security.
+            <h1 className="font-display text-display text-6xl md:text-8xl font-bold mb-6 tracking-tight">
+              Udon<span className="text-primary italic">Fi</span>
+            </h1>
+            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed mb-10">
+              A high-performance Web3 lending protocol engineered for the Stellar Soroban ecosystem. Solving capital efficiency and VM constraints via u128 bitmap packing and 2-step liquidation flows.
             </p>
-          </div>
-          <div className="flex gap-4">
-            <a
-              href="https://udonfi-1404.web.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 font-label-mono text-label-mono text-on-surface border border-outline px-6 py-3 rounded-xl hover:bg-surface-container transition-all hover:scale-[1.02] font-bold"
-            >
-              <LinkIcon className="w-4.5 h-4.5" />
-              Live Demo
-            </a>
-            <a
-              href="https://github.com/TheAnh1404/UdonFi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 font-label-mono text-label-mono bg-on-surface text-surface px-6 py-3 rounded-xl hover:bg-inverse-surface transition-all hover:scale-[1.02] font-bold"
-            >
-              <CodeIcon className="w-4.5 h-4.5" />
-              View Source
-            </a>
-          </div>
+            
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="https://udonfi-1404.web.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 font-label-mono text-label-mono bg-primary text-on-primary px-8 py-4 rounded-xl hover:bg-primary-container transition-all hover:scale-[1.02] font-bold shadow-lg shadow-primary/20"
+              >
+                <LinkIcon className="w-4.5 h-4.5" />
+                Live Protocol
+              </a>
+              <a
+                href="https://www.facebook.com/share/p/14fXkQAuFGW/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 font-label-mono text-label-mono text-blue-600 border border-blue-200 bg-blue-50 px-8 py-4 rounded-xl hover:bg-blue-100 transition-all hover:scale-[1.02] font-bold"
+              >
+                <Sparkles className="w-4.5 h-4.5" />
+                Official Post
+              </a>
+              <a
+                href="https://github.com/TheAnh1404/UdonFi"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 font-label-mono text-label-mono border border-outline px-8 py-4 rounded-xl hover:bg-surface-container transition-all hover:scale-[1.02] font-bold"
+              >
+                <CodeIcon className="w-4.5 h-4.5" />
+                View Source
+              </a>
+            </div>
+          </motion.div>
+
+          {/* UdonFi Brand Logo */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="hidden lg:flex"
+          >
+             <UdonLogo className="!p-10 !rounded-[32px] bg-surface-container-low border border-outline-variant/30 shadow-xl shadow-primary/5 hover:scale-105 transition-transform cursor-pointer" />
+          </motion.div>
         </div>
 
-        <div className="mt-12 aspect-[21/9] w-full rounded-2xl overflow-hidden border border-outline-variant relative group shadow-lg">
-          <div className="absolute inset-0 bg-gradient-to-t from-on-surface/50 to-transparent z-10"></div>
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mt-16 aspect-[21/9] w-full rounded-[32px] overflow-hidden border border-outline-variant relative group shadow-2xl"
+        >
+          <div className="absolute inset-0 bg-gradient-to-t from-on-surface/60 via-transparent to-transparent z-10"></div>
           <img
             alt="UdonFi Dashboard Interface"
-            className="w-full h-full object-cover group-hover:scale-101 transition-transform duration-700"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpjV4xUtiehAyIHX7_MuLERgPFFbpHGBO7VTEWQXMQVK_ZjC07acAKYt9t6TbMDtHLE0lTlpQJt2HJnbWjB031mEwa60OT0Ahg1hub609vCrqSE8SMIzAvbLxhvSVkBKbZcsSbRly0NgipvAa7Fhu10ztitJtSa-hIKqDrvu2I8Td5e7nim_CGzeZrPM6MlQHmPvEox-2t_m27Fd3bT4nAjZMkgHYfmKXlBF_MNja0j_D1YRwGcQDcpuN8PG_ch-M008B1unlW-_Px"
+            className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-1000 ease-out"
+            src="/Infor/udonFI/HomeUdonFi.png"
           />
-          <div className="absolute bottom-8 left-8 z-20">
-            <div className="font-label-mono text-surface-bright text-label-mono opacity-80 mb-2 font-bold uppercase tracking-wider">Platform Preview</div>
-            <div className="font-headline-lg text-surface-bright text-3xl font-bold">The Future of Liquid Stellar Assets</div>
+          <div className="absolute bottom-10 left-10 z-20">
+            <div className="font-label-mono text-surface-bright/70 text-xs font-bold uppercase tracking-[0.3em] mb-3">SYSTEM PREVIEW</div>
+            <div className="font-display text-surface-bright text-4xl md:text-5xl font-bold max-w-xl leading-tight">
+              Institutional Liquidity <br />
+              <span className="text-primary-fixed-dim">on Stellar Soroban</span>
+            </div>
           </div>
-        </div>
+        </motion.div>
       </header>
 
-      {/* Value Matrix */}
-      <section className="mb-20">
-        <h2 className="font-headline-lg text-headline-lg text-3xl font-bold mb-12">Value Matrix</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-          {/* User Value */}
-          <BentoCard className="p-8 flex flex-col gap-6" delay={0.1}>
-            <div className="w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
-              <User className="w-6 h-6" />
-            </div>
-            <div>
-              <h3 className="font-headline-md text-headline-md font-bold mb-2 text-on-surface">User Experience</h3>
-              <p className="text-on-surface-variant font-body-md leading-relaxed">Seamless non-custodial lending with instant liquidations and transparent yield generation for everyday DeFi users.</p>
-            </div>
-            <ul className="space-y-3 mt-auto border-t border-outline-variant/30 pt-6">
-              <li className="flex items-center gap-2.5 font-label-mono text-caption text-on-surface-variant font-bold">
-                <span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>
-                <span>Sub-second Transaction Finality</span>
-              </li>
-              <li className="flex items-center gap-2.5 font-label-mono text-caption text-on-surface-variant font-bold">
-                <span className="material-symbols-outlined text-primary text-[18px]">check_circle</span>
-                <span>Mobile-First Dashboard UI</span>
-              </li>
-            </ul>
-          </BentoCard>
-
-          {/* Engineering Value */}
-          <BentoCard className="p-8 flex flex-col gap-6" delay={0.2}>
-            <div className="w-12 h-12 rounded-lg bg-secondary/10 text-secondary flex items-center justify-center">
-              <Terminal className="w-6 h-6" />
-            </div>
-            <div>
-              <h3 className="font-headline-md text-headline-md font-bold mb-2 text-on-surface">Engineering Rigor</h3>
-              <p className="text-on-surface-variant font-body-md leading-relaxed">Highly optimized Rust smart contracts utilizing bitmap storage patterns to minimize on-chain footprint and gas costs.</p>
-            </div>
-            <ul className="space-y-3 mt-auto border-t border-outline-variant/30 pt-6">
-              <li className="flex items-center gap-2.5 font-label-mono text-caption text-on-surface-variant font-bold">
-                <span className="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
-                <span>u128 Bitmap State packing</span>
-              </li>
-              <li className="flex items-center gap-2.5 font-label-mono text-caption text-on-surface-variant font-bold">
-                <span className="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
-                <span>Automated TTL Extensions</span>
-              </li>
-            </ul>
-          </BentoCard>
-
-          {/* Business Value */}
-          <BentoCard className="p-8 flex flex-col gap-6" delay={0.3}>
-            <div className="w-12 h-12 rounded-lg bg-tertiary/10 text-tertiary flex items-center justify-center">
-              <Layout className="w-6 h-6" />
-            </div>
-            <div>
-              <h3 className="font-headline-md text-headline-md font-bold mb-2 text-on-surface">Business Logic</h3>
-              <p className="text-on-surface-variant font-body-md leading-relaxed">Solvency protection through decentralized liquidations and optimal liquidity utilization via a kinked APY model.</p>
-            </div>
-            <ul className="space-y-3 mt-auto border-t border-outline-variant/30 pt-6">
-              <li className="flex items-center gap-2.5 font-label-mono text-caption text-on-surface-variant font-bold">
-                <span className="material-symbols-outlined text-tertiary text-[18px]">check_circle</span>
-                <span>Kinked APY Curve Model</span>
-              </li>
-              <li className="flex items-center gap-2.5 font-label-mono text-caption text-on-surface-variant font-bold">
-                <span className="material-symbols-outlined text-tertiary text-[18px]">check_circle</span>
-                <span>Solvency Risk Governance</span>
-              </li>
-            </ul>
-          </BentoCard>
-        </div>
-      </section>
-
-      {/* Core Financial Mathematics */}
-      <section className="mb-20">
-        <h2 className="font-headline-lg text-headline-lg text-3xl font-bold mb-12">Core Financial Mathematics & Risk Models</h2>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-gutter">
-          {/* Health Factor & Risk Monitoring */}
-          <BentoCard className="p-8 flex flex-col justify-between" delay={0.1}>
-            <div>
-              <h3 className="font-display text-xl font-bold text-on-surface mb-2">Health Factor (HF) Risk Governance</h3>
-              <p className="text-on-surface-variant text-[13px] leading-relaxed mb-6">
-                UdonFi monitors position safety in real-time. If a position's Health Factor drops below 1.0, the vault is immediately locked and flagged for public liquidation.
-              </p>
-
-              {/* Formula Callout */}
-              <div className="mb-8 p-4 bg-surface-container rounded-xl border border-outline-variant/30">
-                <span className="font-label-mono text-[9px] uppercase font-bold text-primary block mb-2">Health Factor Formula</span>
-                <code className="text-sm font-label-mono font-bold text-on-surface block bg-black/5 p-3 rounded-lg overflow-x-auto">
-                  HF = (Σ Collateral_i * LT_i) / (Σ Borrow_j)
-                </code>
-                <div className="flex gap-6 mt-3 font-label-mono text-[10px] text-on-surface-variant font-semibold">
-                  <span>LT (Liquidation Threshold) = 82.5%</span>
-                  <span>LTV Max = 70%</span>
-                </div>
-              </div>
-
-              {/* Visual HF Scale */}
-              <div className="space-y-4">
-                <span className="font-label-mono text-[10px] text-on-surface-variant/80 uppercase font-bold tracking-wide block">Real-time Risk Statuses</span>
-
-                {/* Safe Status */}
-                <div className="flex items-center justify-between p-3 rounded-lg bg-emerald-500/10 border border-emerald-500/20">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                    <span className="font-label-mono text-[11px] font-bold text-emerald-800">HF &gt; 1.5</span>
-                  </div>
-                  <span className="text-[12px] font-bold text-emerald-700">Safe Status (Low Volatility Risk)</span>
-                </div>
-
-                {/* Warning Status */}
-                <div className="flex items-center justify-between p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-yellow-500"></span>
-                    <span className="font-label-mono text-[11px] font-bold text-yellow-800">1.0 ≤ HF ≤ 1.5</span>
-                  </div>
-                  <span className="text-[12px] font-bold text-yellow-700">Warning (High Risk, Supply Collateral)</span>
-                </div>
-
-                {/* Liquidation Status */}
-                <div className="flex items-center justify-between p-3 rounded-lg bg-error/10 border border-error/20">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-error animate-ping"></span>
-                    <span className="font-label-mono text-[11px] font-bold text-error">HF &lt; 1.0</span>
-                  </div>
-                  <span className="text-[12px] font-bold text-error">Liquidation Triggered (Vault Locked)</span>
-                </div>
-              </div>
-            </div>
-          </BentoCard>
-
-          {/* Kinked Interest Rate Curve */}
-          <BentoCard className="p-8 flex flex-col justify-between" delay={0.2}>
-            <div>
-              <h3 className="font-display text-xl font-bold text-on-surface mb-2">Kinked Interest Rate Curve Algorithm</h3>
-              <p className="text-on-surface-variant text-[13px] leading-relaxed mb-6">
-                To optimize pool liquidity, the Borrow APY adjusts dynamically based on the utilization rate (U). When U exceeds the optimal threshold (U_opt = 80%), rates spike to protect pool solvency.
-              </p>
-
-              {/* SVG Curve Plot */}
-              <div className="h-44 bg-surface-container rounded-xl border border-outline-variant/30 relative flex items-center justify-center p-4 mb-6 overflow-hidden">
-                <svg width="100%" height="100%" viewBox="0 0 300 120" className="text-primary overflow-visible">
-                  {/* Grid Lines */}
-                  <line x1="20" y1="100" x2="280" y2="100" stroke="#c3c6d7" strokeWidth="1" strokeDasharray="2 2" />
-                  <line x1="20" y1="20" x2="20" y2="100" stroke="#c3c6d7" strokeWidth="1" strokeDasharray="2 2" />
-                  <line x1="220" y1="20" x2="220" y2="100" stroke="#c3c6d7" strokeWidth="1" strokeDasharray="2 2" />
-
-                  {/* Curve Paths */}
-                  {/* Base rate to Kink (80%) */}
-                  <line x1="20" y1="90" x2="220" y2="70" stroke="currentColor" strokeWidth="3" />
-                  {/* Kink (80%) to Scarcity (100%) */}
-                  <line x1="220" y1="70" x2="280" y2="20" stroke="#ba1a1a" strokeWidth="3" strokeDasharray="1 1" className="animate-pulse" />
-                  <line x1="220" y1="70" x2="280" y2="20" stroke="#ba1a1a" strokeWidth="2" />
-
-                  {/* Points */}
-                  <circle cx="20" cy="90" r="4" fill="currentColor" />
-                  <circle cx="220" cy="70" r="5" fill="#4b41e1" />
-                  <circle cx="280" cy="20" r="4" fill="#ba1a1a" />
-
-                  {/* Text Labels */}
-                  <text x="220" y="85" textAnchor="middle" className="fill-on-surface font-label-mono text-[8px] font-bold">Kink (80%)</text>
-                  <text x="18" y="110" className="fill-on-surface-variant font-label-mono text-[8px]">0%</text>
-                  <text x="220" y="110" textAnchor="middle" className="fill-on-surface-variant font-label-mono text-[8px]">80% Utilization</text>
-                  <text x="280" y="110" textAnchor="end" className="fill-on-surface-variant font-label-mono text-[8px]">100%</text>
-
-                  <text x="25" y="82" className="fill-primary font-label-mono text-[7px] font-bold">Slope 1: Standard Rate</text>
-                  <text x="250" y="55" textAnchor="middle" className="fill-error font-label-mono text-[7px] font-bold">Slope 2: Scarcity (90% APY)</text>
-                </svg>
-              </div>
-
-              {/* Formula details */}
-              <div className="p-3 bg-surface rounded-lg border border-outline-variant/30 flex justify-between items-center">
-                <div>
-                  <span className="font-label-mono text-[9px] uppercase font-bold text-secondary block">Supply APY Formula</span>
-                  <code className="text-[11px] font-label-mono font-bold text-on-surface">Supply APY = R_t * U * (1 - 10% Reserve Fee)</code>
-                </div>
-              </div>
-            </div>
-          </BentoCard>
-        </div>
-      </section>
-
-      {/* Soroban-Specific Technical Optimizations */}
-      <section className="mb-20">
-        <h2 className="font-headline-lg text-headline-lg text-3xl font-bold mb-12">Soroban VM Architectural Optimizations</h2>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-          {/* u128 State Bitmap Matrix */}
-          <BentoCard className="p-8 relative overflow-hidden group flex flex-col justify-between" delay={0.1}>
-            <div className="absolute -right-4 -top-4 w-24 h-24 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors"></div>
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-                  <Database className="w-5 h-5" />
-                </div>
-                <h3 className="font-display text-lg font-bold text-on-surface leading-tight">u128 State Bitmap Packing</h3>
-              </div>
-              <p className="text-on-surface-variant text-[12px] leading-relaxed mb-6">
-                Soroban ledger storage is priced per entry. Instead of using expensive Dynamic Vectors or dynamic maps, UdonFi packs all config properties and boolean flags into a single, compact <code className="bg-surface-variant px-1.5 py-0.5 rounded font-label-mono text-[10px]">u128</code> slot.
-              </p>
-              <div className="p-3 bg-surface-container rounded-lg border border-outline-variant/30 text-center font-label-mono text-[11px] font-bold text-emerald-700">
-                ⚡ SAVES ~40% ON-CHAIN GAS COSTS
-              </div>
-            </div>
-          </BentoCard>
-
-          {/* Decentralized 2-Step Liquidation */}
-          <BentoCard className="p-8 relative overflow-hidden group flex flex-col justify-between" delay={0.2}>
-            <div className="absolute -right-4 -top-4 w-24 h-24 bg-secondary/5 rounded-full blur-2xl group-hover:bg-secondary/10 transition-colors"></div>
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-secondary/10 rounded-lg flex items-center justify-center text-secondary">
-                  <Terminal className="w-5 h-5" />
-                </div>
-                <h3 className="font-display text-lg font-bold text-on-surface leading-tight">Decentralized 2-Step Flow</h3>
-              </div>
-              <p className="text-on-surface-variant text-[12px] leading-relaxed mb-6">
-                To prevent malicious front-running bots on the Stellar Network, UdonFi separates liquidations into a commit step and an execution step, forcing fair liquidation opportunities.
-              </p>
-              <div className="p-3 bg-surface-container rounded-lg border border-outline-variant/30 text-center font-label-mono text-[11px] font-bold text-secondary">
-                🛡️ FRONTRUN-RESISTANT LIQUIDATION
-              </div>
-            </div>
-          </BentoCard>
-
-          {/* Automated TTL Storage Extension */}
-          <BentoCard className="p-8 relative overflow-hidden group flex flex-col justify-between" delay={0.3}>
-            <div className="absolute -right-4 -top-4 w-24 h-24 bg-tertiary/5 rounded-full blur-2xl group-hover:bg-tertiary/10 transition-colors"></div>
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 bg-tertiary/10 rounded-lg flex items-center justify-center text-tertiary">
-                  <Sparkles className="w-5 h-5" />
-                </div>
-                <h3 className="font-display text-lg font-bold text-on-surface leading-tight">Automated TTL Sweeper</h3>
-              </div>
-              <p className="text-on-surface-variant text-[12px] leading-relaxed mb-6">
-                Ledger entries on Soroban expire if not maintained. UdonFi implements an automated sweeper logic that checks and updates the entry TTL during transactions to guarantee persistence.
-              </p>
-              <div className="p-3 bg-surface-container rounded-lg border border-outline-variant/30 text-center font-label-mono text-[11px] font-bold text-tertiary">
-                🔄 AUTO-MAINTAIN DATA PERSISTENCE
-              </div>
-            </div>
-          </BentoCard>
-        </div>
-      </section>
-
-      {/* Tech Stack */}
-      <section className="mb-20">
-        <h2 className="font-headline-lg text-headline-lg text-3xl font-bold mb-12">Architecture & Tech Stack</h2>
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-gutter">
-          <div className="lg:col-span-3">
-            <div className="bg-inverse-surface rounded-2xl p-12 relative overflow-hidden border border-outline/10">
-              <div className="absolute inset-0 opacity-10 bg-[radial-gradient(#ffffff_1px,transparent_1px)] [background-size:24px_24px]"></div>
-
-              <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
-                <div className="flex flex-col items-center gap-4">
-                  <div className="w-20 h-20 rounded-2xl bg-surface/10 border border-surface/20 flex items-center justify-center shadow-lg">
-                    <span className="material-symbols-outlined text-surface text-4xl">devices</span>
-                  </div>
-                  <div className="font-label-mono text-caption text-surface/60 font-bold uppercase tracking-wider">Client UI (Vite + React)</div>
-                </div>
-
-                <span className="material-symbols-outlined text-surface/30 hidden md:block text-2xl">arrow_forward</span>
-
-                <div className="flex flex-col items-center gap-4">
-                  <div className="px-6 py-4 rounded-xl bg-primary text-surface border border-primary-container shadow-xl">
-                    <div className="font-label-mono text-label-mono font-bold text-white">Soroban VM (Rust)</div>
-                    <div className="text-[10px] opacity-70 font-label-mono text-white/80">Smart Contracts</div>
-                  </div>
-                  <div className="font-label-mono text-caption text-surface/60 font-bold uppercase tracking-wider">Rust Core Engine</div>
-                </div>
-
-                <span className="material-symbols-outlined text-surface/30 hidden md:block text-2xl">arrow_forward</span>
-
-                <div className="flex flex-col items-center gap-4">
-                  <div className="w-20 h-20 rounded-2xl bg-surface/10 border border-surface/20 flex items-center justify-center shadow-lg">
-                    <span className="material-symbols-outlined text-surface text-4xl">database</span>
-                  </div>
-                  <div className="font-label-mono text-caption text-surface/60 font-bold uppercase tracking-wider">Node.js Indexer (Firebase)</div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="lg:col-span-1 space-y-4">
-            <div className="p-4 rounded-xl border border-outline-variant">
-              <div className="font-label-mono text-caption text-outline mb-2 font-bold">CORE CONTRACTS</div>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-2.5 py-1 text-[11px] font-label-mono font-bold rounded-lg border bg-orange-500/10 text-orange-700 border-orange-500/20 hover:scale-105 transition-transform">Rust</span>
-                <span className="px-2.5 py-1 text-[11px] font-label-mono font-bold rounded-lg border bg-violet-500/10 text-violet-700 border-violet-500/20 hover:scale-105 transition-transform">Soroban SDK</span>
-              </div>
-            </div>
-            <div className="p-4 rounded-xl border border-outline-variant">
-              <div className="font-label-mono text-caption text-outline mb-2 font-bold">REALTIME DATA</div>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-2.5 py-1 text-[11px] font-label-mono font-bold rounded-lg border bg-teal-500/10 text-teal-700 border-teal-500/20 hover:scale-105 transition-transform">Node.js</span>
-                <span className="px-2.5 py-1 text-[11px] font-label-mono font-bold rounded-lg border bg-indigo-500/10 text-indigo-700 border-indigo-500/20 hover:scale-105 transition-transform">Socket.io</span>
-              </div>
-            </div>
-            <div className="p-4 rounded-xl border border-outline-variant">
-              <div className="font-label-mono text-caption text-outline mb-2 font-bold">CLOUD STORAGE</div>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-2.5 py-1 text-[11px] font-label-mono font-bold rounded-lg border bg-amber-500/10 text-amber-700 border-amber-500/20 hover:scale-105 transition-transform">Firestore</span>
-                <span className="px-2.5 py-1 text-[11px] font-label-mono font-bold rounded-lg border bg-sky-500/10 text-sky-700 border-sky-500/20 hover:scale-105 transition-transform">Vercel</span>
-              </div>
-            </div>
+      {/* Core Architectural Flow */}
+      <section className="mb-32">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-16">
+          <div className="max-w-2xl">
+            <h2 className="font-display text-headline-lg text-4xl font-bold mb-4">System Architecture</h2>
+            <p className="text-on-surface-variant font-body-md leading-relaxed">
+              UdonFi integrates high-speed smart contracts with a real-time indexing layer to bridge the gap between blockchain finality and responsive UI.
+            </p>
           </div>
         </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+           <BentoCard className="p-8 flex flex-col gap-6 bg-surface-container-low" delay={0.1}>
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shadow-inner">
+                <Cpu className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-headline-md font-bold mb-2">Smart Contracts</h3>
+                <p className="text-on-surface-variant text-sm leading-relaxed">Rust-based logic managing lending pools, reserves, and tokenizations (aTokens/debtTokens).</p>
+              </div>
+           </BentoCard>
+
+           <BentoCard className="p-8 flex flex-col gap-6 bg-surface-container-low" delay={0.2}>
+              <div className="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center shadow-inner">
+                <Activity className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-headline-md font-bold mb-2">Indexer Bot</h3>
+                <p className="text-on-surface-variant text-sm leading-relaxed">Node.js service polling on-chain events via XDR parsing to update Firestore and Socket.io.</p>
+              </div>
+           </BentoCard>
+
+           <BentoCard className="p-8 flex flex-col gap-6 bg-surface-container-low" delay={0.3}>
+              <div className="w-12 h-12 rounded-2xl bg-tertiary/10 text-tertiary flex items-center justify-center shadow-inner">
+                <Database className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-headline-md font-bold mb-2">Real-time Data</h3>
+                <p className="text-on-surface-variant text-sm leading-relaxed">Global state synchronized across Firestore and client listeners for sub-second UI updates.</p>
+              </div>
+           </BentoCard>
+
+           <BentoCard className="p-8 flex flex-col gap-6 bg-surface-container-low" delay={0.4}>
+              <div className="w-12 h-12 rounded-2xl bg-primary-fixed/20 text-primary-fixed-variant flex items-center justify-center shadow-inner">
+                <Zap className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-headline-md font-bold mb-2">Vite Client</h3>
+                <p className="text-on-surface-variant text-sm leading-relaxed">Premium React/TS frontend with Freighter wallet integration and local blockchain simulation.</p>
+              </div>
+           </BentoCard>
+        </div>
       </section>
 
-      {/* Gallery & Snippets */}
-      <section className="mb-10">
-        <h2 className="font-headline-lg text-headline-lg text-3xl font-bold mb-12">Gallery & Artifacts</h2>
+      {/* Financial Models - Mathematical Rigor */}
+      <section className="mb-32">
+        <div className="mb-16">
+          <h2 className="font-display text-headline-lg text-4xl font-bold mb-4 text-center md:text-left">Financial Engineering</h2>
+          <p className="text-on-surface-variant max-w-2xl font-body-md text-center md:text-left">Strict adherence to DeFi mathematical frameworks to guarantee capital safety.</p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
-          {/* Main Dashboard preview card */}
-          <div className="col-span-12 md:col-span-8 aspect-video rounded-2xl overflow-hidden border border-outline-variant relative group shadow-sm">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+          {/* Health Factor & Risk Matrix */}
+          <BentoCard className="lg:col-span-7 p-10 flex flex-col justify-between" delay={0.1}>
+            <div>
+              <div className="flex items-center gap-3 mb-8">
+                <ShieldCheck className="w-6 h-6 text-emerald-500" />
+                <h3 className="font-display text-2xl font-bold">Health Factor (HF) Governance</h3>
+              </div>
+              
+              <p className="text-on-surface-variant mb-10 leading-relaxed font-body-md">
+                UdonFi protects depositors via a real-time risk evaluation engine. Positions are liquidated if the Health Factor falls below the threshold, calculated from total collateral value adjusted by specific risk parameters.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+                 <div className="p-5 rounded-2xl bg-surface-container-low border border-outline-variant/30">
+                    <span className="font-label-mono text-[10px] font-bold text-primary block mb-3 uppercase tracking-widest">Risk Config</span>
+                    <div className="flex justify-between items-center mb-2">
+                       <span className="text-sm font-medium opacity-60">Max LTV</span>
+                       <span className="text-sm font-bold text-on-surface">70%</span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                       <span className="text-sm font-medium opacity-60">Liquidation Threshold</span>
+                       <span className="text-sm font-bold text-on-surface">82.5%</span>
+                    </div>
+                 </div>
+
+                 <div className="p-5 rounded-2xl bg-inverse-surface text-surface border border-outline-variant/10">
+                    <span className="font-label-mono text-[10px] font-bold text-primary-fixed-dim block mb-3 uppercase tracking-widest">Formula</span>
+                    <code className="text-[13px] font-label-mono block leading-relaxed">
+                      HF = (Σ Collateral_i * LT_i) <br />
+                      &nbsp;&nbsp;&nbsp;&nbsp; / (Σ Borrow_j)
+                    </code>
+                 </div>
+              </div>
+
+              {/* HF Status Visualization */}
+              <div className="flex flex-col gap-3">
+                 <div className="h-2 flex w-full rounded-full overflow-hidden bg-surface-container-high mb-2">
+                    <div className="w-[30%] bg-emerald-500"></div>
+                    <div className="w-[40%] bg-yellow-500"></div>
+                    <div className="w-[30%] bg-red-500"></div>
+                 </div>
+                 <div className="flex justify-between font-label-mono text-[9px] font-bold uppercase tracking-tighter opacity-60">
+                    <span>Safe (&gt;1.5)</span>
+                    <span className="text-center">High Risk (1.0-1.5)</span>
+                    <span className="text-right">Liquidatable (&lt;1.0)</span>
+                 </div>
+              </div>
+            </div>
+          </BentoCard>
+
+          {/* Kinked Interest Rate Chart */}
+          <BentoCard className="lg:col-span-5 p-10 flex flex-col justify-between bg-surface-container-low" delay={0.2}>
+             <div>
+                <div className="flex items-center gap-3 mb-8">
+                  <BarChart3 className="w-6 h-6 text-primary" />
+                  <h3 className="font-display text-2xl font-bold">Kinked APY Curve</h3>
+                </div>
+                <p className="text-on-surface-variant text-sm mb-8 leading-relaxed">
+                  Dynamic interest rates optimized for pool utilization. When utilization exceeds 80% (The Kink), borrow rates spike exponentially to restore liquidity.
+                </p>
+
+                <div className="h-48 relative mb-8">
+                   <svg viewBox="0 0 300 120" className="w-full h-full text-primary">
+                      <path d="M20 100 L220 80 L280 20" fill="none" stroke="currentColor" strokeWidth="3" />
+                      <circle cx="220" cy="80" r="5" fill="#4b41e1" className="animate-pulse" />
+                      <text x="220" y="95" textAnchor="middle" className="fill-on-surface font-label-mono text-[9px] font-bold">Kink (80%)</text>
+                      <text x="20" y="115" className="fill-on-surface-variant font-label-mono text-[8px]">Utilization %</text>
+                      <text x="280" y="115" textAnchor="end" className="fill-on-surface-variant font-label-mono text-[8px]">100%</text>
+                   </svg>
+                </div>
+
+                <div className="p-4 rounded-xl bg-white/50 border border-outline-variant/30">
+                   <div className="flex items-center justify-between">
+                      <span className="text-xs font-bold opacity-60">Max Borrow APY</span>
+                      <span className="text-lg font-bold text-red-600">90.0%</span>
+                   </div>
+                </div>
+             </div>
+          </BentoCard>
+        </div>
+      </section>
+
+      {/* Technical Deep Dive - Soroban Optimizations */}
+      <section className="mb-32">
+        <div className="max-w-3xl mb-16">
+          <h2 className="font-display text-headline-lg text-4xl font-bold mb-4 tracking-tight">Technical Deep Dive</h2>
+          <p className="text-on-surface-variant font-body-md leading-relaxed">
+            Optimizing for the unique resource constraints of the Soroban VM, from CPU instruction limits to ledger storage costs.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {/* u128 Bitmap Matrix */}
+          <BentoCard className="p-8 group hover:border-primary/30 transition-colors" delay={0.1}>
+            <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center mb-8">
+              <Layers className="w-6 h-6" />
+            </div>
+            <h3 className="font-display text-xl font-bold mb-4">u128 State Bitmap Packing</h3>
+            <p className="text-on-surface-variant text-sm leading-relaxed mb-8">
+              Replacing expensive dynamic Maps with bitwise state-packing. Reduces ledger storage footprint by 95%, significantly lowering on-chain gas costs for active users.
+            </p>
+            <div className="aspect-video bg-inverse-surface rounded-xl p-4 flex flex-col gap-2 overflow-hidden border border-white/5">
+               <div className="grid grid-cols-8 gap-1 opacity-50">
+                  {Array.from({length: 16}).map((_, i) => (
+                    <div key={i} className={`h-2 rounded-full ${i % 3 === 0 ? 'bg-primary shadow-[0_0_8px_#004ac6]' : 'bg-surface/20'}`}></div>
+                  ))}
+               </div>
+               <div className="mt-auto font-label-mono text-[10px] text-primary font-bold">BITWISE STATE STORAGE</div>
+            </div>
+          </BentoCard>
+
+          {/* 2-Step Liquidation */}
+          <BentoCard className="p-8 group hover:border-secondary/30 transition-colors" delay={0.2}>
+            <div className="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center mb-8">
+              <RefreshCcw className="w-6 h-6" />
+            </div>
+            <h3 className="font-display text-xl font-bold mb-4">2-Step Liquidation Flow</h3>
+            <p className="text-on-surface-variant text-sm leading-relaxed mb-8">
+              Bypassing the 100M CPU instruction limit by splitting intensive liquidation cycles into cryptographically linked 2-step transactions.
+            </p>
+            <div className="space-y-3">
+               <div className="flex items-center gap-3 p-3 rounded-lg bg-surface-container-high border border-outline-variant/30">
+                  <div className="w-6 h-6 rounded bg-primary/20 flex items-center justify-center text-[10px] font-bold">1</div>
+                  <span className="text-[11px] font-bold opacity-80 uppercase font-label-mono">Evaluate & Lock</span>
+               </div>
+               <div className="flex items-center gap-3 p-3 rounded-lg bg-surface-container-high border border-outline-variant/30">
+                  <div className="w-6 h-6 rounded bg-secondary/20 flex items-center justify-center text-[10px] font-bold">2</div>
+                  <span className="text-[11px] font-bold opacity-80 uppercase font-label-mono">Execute & Bonus</span>
+               </div>
+            </div>
+          </BentoCard>
+
+          {/* TTL Extension */}
+          <BentoCard className="p-8 group hover:border-tertiary/30 transition-colors" delay={0.3}>
+            <div className="w-12 h-12 rounded-2xl bg-tertiary/10 text-tertiary flex items-center justify-center mb-8">
+              <Clock className="w-6 h-6" />
+            </div>
+            <h3 className="font-display text-xl font-bold mb-4">Automated TTL Management</h3>
+            <p className="text-on-surface-variant text-sm leading-relaxed mb-8">
+              Ensuring ledger data persistence through automated TTL extensions on every protocol interaction, preventing ledger eviction of critical account state.
+            </p>
+            <div className="p-4 rounded-xl bg-surface-container-high border border-dashed border-outline-variant flex items-center justify-center gap-2">
+               <RefreshCcw className="w-4 h-4 text-tertiary animate-spin-slow" />
+               <span className="font-label-mono text-[10px] font-bold uppercase text-on-surface-variant">Persistent Lifecycle</span>
+            </div>
+          </BentoCard>
+        </div>
+      </section>
+
+      {/* Artifact Gallery */}
+      <section className="mb-32">
+        <h2 className="font-display text-headline-lg text-4xl font-bold mb-16 px-4">Artifact Gallery</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          {/* Award Image */}
+          <div className="col-span-12 md:col-span-8 aspect-video rounded-[32px] overflow-hidden border border-outline-variant relative group shadow-xl">
             <img
-              alt="Main Dashboard UI"
-              className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJ29VVOr_5fhmt_qK-h_so0sipy5nSEwDs2VCeutJS5uyAgK9otyFh1JxY3xmhDI19vxIOS6UIjMA7n-F6fAnlWvE18ysntTeiBuf166pn5-NmnX37elS72Dfm5WUgPbnOz_I1MgdeO9qi9RR6WbaJoaYfsIskSghtrK36EXTt0_6pHRnv36C0VDGKjqnw0ooAechxWhEUCk0KN6f9FLtChGGFT3qNYwZiJvbaoS80hSbd7l5w74KY9K7nnIVPVK0TZL6MpoBbb9LF"
+              alt="UdonFi Stellar Hackathon Award"
+              className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-1000 ease-out"
+              src="/Infor/udonFI/firstPr_img.jpg"
             />
-            <div className="absolute inset-0 bg-on-surface/0 group-hover:bg-on-surface/20 transition-colors flex items-center justify-center">
-              <span className="material-symbols-outlined text-surface opacity-0 group-hover:opacity-100 scale-50 group-hover:scale-100 transition-all text-5xl">fullscreen</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-10">
+               <span className="px-4 py-1.5 bg-amber-500 text-white font-label-mono text-xs font-bold rounded-full w-fit mb-4 shadow-lg shadow-amber-500/20">
+                 🏆 GLOBAL FIRST PRIZE
+               </span>
+               <h3 className="text-white text-3xl font-bold font-display">Stellar Mini Hackathon</h3>
             </div>
           </div>
 
-          {/* Code block card */}
-          <div className="col-span-12 md:col-span-4 bg-inverse-surface rounded-2xl p-6 border border-outline-variant/30 flex flex-col h-full shadow-md">
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-3 h-3 rounded-full bg-error"></div>
-              <div className="w-3 h-3 rounded-full bg-tertiary"></div>
-              <div className="w-3 h-3 rounded-full bg-primary-fixed"></div>
-              <span className="ml-2 font-label-mono text-caption text-surface/40 font-bold">lib.rs</span>
-            </div>
-
-            <pre className="font-label-mono text-[11px] leading-relaxed text-surface-variant overflow-x-auto bg-black/30 p-4 rounded-xl border border-white/5 flex-grow">
-              <span className="text-primary-fixed-dim">pub fn</span> <span className="text-secondary-fixed">repay</span>(e: Env, user: Address, amount: i128) &#123;{"\n"}
-              {"  "}user.require_auth();{"\n"}
-              {"  "}<span className="text-surface/40">// Bitmap packing logic</span>{"\n"}
-              {"  "}<span className="text-primary-fixed-dim">let mut</span> config: u128 = e.storage().instance(){"\n"}
-              {"    "}.get(&DataKey::Config).unwrap();{"\n"}
-              {"  "}{"\n"}
-              {"  "}<span className="text-primary-fixed-dim">if</span> (config & ACTIVE_MASK) != 0 &#123;{"\n"}
-              {"    "}<span className="text-surface/40">// Repayment internal flow</span>{"\n"}
-              {"    "}update_position(&e, &user, -amount);{"\n"}
-              {"  "}&#125;{"\n"}
-              &#125;
-            </pre>
-
-            <div className="mt-4 pt-4 border-t border-surface/10 font-label-mono text-[10px] text-surface/40 font-bold">
-              Rust / Soroban Smart Contract snippet
-            </div>
+          {/* High Tech Metric Card */}
+          <div className="col-span-12 md:col-span-4 rounded-[32px] bg-inverse-surface p-10 flex flex-col border border-white/5 relative overflow-hidden group shadow-2xl">
+             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[80px] rounded-full"></div>
+             <Terminal className="text-primary w-12 h-12 mb-8 group-hover:rotate-12 transition-transform" />
+             <h4 className="text-surface font-display text-2xl font-bold mb-4">Core Performance</h4>
+             <p className="text-surface-variant text-sm leading-relaxed mb-10 opacity-70">
+                Optimized for low-latency execution and minimal on-chain footprint. 
+             </p>
+             <div className="mt-auto space-y-4">
+                <div className="flex justify-between items-center py-3 border-b border-white/10">
+                   <span className="text-surface/40 text-xs font-label-mono">GAS EFFICIENCY</span>
+                   <span className="text-emerald-400 font-bold">+95%</span>
+                </div>
+                <div className="flex justify-between items-center py-3 border-b border-white/10">
+                   <span className="text-surface/40 text-xs font-label-mono">FINALITY</span>
+                   <span className="text-primary-fixed-dim font-bold">&lt;1.0s</span>
+                </div>
+             </div>
           </div>
 
-          {/* Network Topology */}
-          <div className="col-span-12 md:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden border border-outline-variant relative group">
-            <img
-              alt="Network Topology"
-              className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjrKiL4qEsnqhybfuIdcTCZvg556UR08bzF-TsvHaBUa827UFzW3g6hGSec7PEbHNWDUj3IIq1NEPPUAIVQA8MHxDllx_aytuaMLlUR9Dg6qWfGe8Y-YQXFGEGyx-wg72cytLi4r1Z3Tv6R8T-PIXjjPVIAJOLxtFi4AmBy68DquCUYZt0t4DM4JX9PKL-crOErgV_8AxtLCeadtffGtFsRk93dL_0RSkcot2-Fv2HDD2H4KRaxRvpCNa9ZnGm2NS-Vu81s36yV8Lj"
-            />
+          {/* Technical Diagrams */}
+          <div className="col-span-12 md:col-span-6 aspect-video rounded-[32px] overflow-hidden border border-outline-variant bg-white relative group">
+             <img
+               alt="Smart Contract Logic"
+               className="w-full h-full object-contain p-12 group-hover:scale-[1.02] transition-transform duration-700"
+               src="/Infor/udonFI/Function.png"
+             />
+             <div className="absolute bottom-6 left-6 z-20">
+               <span className="px-3 py-1.5 bg-on-surface/90 backdrop-blur-md text-surface font-label-mono text-[10px] font-bold rounded-lg border border-white/10">
+                 CONTRACT FLOW ARCHITECTURE
+               </span>
+             </div>
           </div>
 
-          {/* Infrastructure Detail */}
-          <div className="col-span-12 md:col-span-6 aspect-[16/10] rounded-2xl overflow-hidden border border-outline-variant relative group">
-            <img
-              alt="Infrastructure Detail"
-              className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-500"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoXRT_JRXo4PeRN2b_k_yisx0YXRKcFvvW8hMqpGk_VcR-9WGdlxy0ecSeHcCXkQ79gmIrvXINckxI67IjGKx7huiqjvYV3MLVLJPDtuxSJy0WPxwYIrTX0e9muD89MDudWsnGlhMzsZmiwPupDcx47Z2CEHFDTXlsDjvMCy1dpOz909gu0GvtszMyoaBw2ErnTNOloWuvXQO6bHN2e5A3xXRBBZ6mg9iWbiYx4cTl5bbzvJ0KYoLsURTgqtDss2plGren91SJ_WAx"
-            />
+          <div className="col-span-12 md:col-span-6 aspect-video rounded-[32px] overflow-hidden border border-outline-variant bg-white relative group">
+             <img
+               alt="Bitmap Packing Logic"
+               className="w-full h-full object-contain p-12 group-hover:scale-[1.02] transition-transform duration-700"
+               src="/Infor/udonFI/128bitMap.png"
+             />
+             <div className="absolute bottom-6 left-6 z-20">
+               <span className="px-3 py-1.5 bg-on-surface/90 backdrop-blur-md text-surface font-label-mono text-[10px] font-bold rounded-lg border border-white/10">
+                 u128 BITMAP PACKING MATRIX
+               </span>
+             </div>
           </div>
         </div>
       </section>
+
+      {/* Footer CTA */}
+      <footer className="mt-20 py-20 border-t border-outline-variant/30 text-center">
+         <motion.div
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+         >
+           <h3 className="font-display text-4xl font-bold mb-8">Ready to explore UdonFi?</h3>
+           <div className="flex flex-wrap justify-center gap-6">
+             <a
+               href="https://github.com/TheAnh1404/UdonFi"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="px-10 py-5 bg-on-surface text-surface rounded-2xl font-bold flex items-center gap-3 hover:bg-inverse-surface transition-all shadow-xl"
+             >
+               <CodeIcon className="w-5 h-5" /> Start Building
+             </a>
+             <a
+               href="https://udonfi-1404.web.app/"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="px-10 py-5 border border-outline text-on-surface rounded-2xl font-bold hover:bg-surface-container transition-all"
+             >
+               Launch Protocol
+             </a>
+           </div>
+         </motion.div>
+      </footer>
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { BentoCard } from "../components/BentoCard";
 import { TechMarquee } from "../components/TechMarquee";
+import { UdonLogo } from "../components/UdonLogo";
 import AvatarImg from "../assets/theanh_avt.jpg";
 import { 
   ArrowRight, MapPin, GraduationCap, 
@@ -384,27 +385,24 @@ export const Home: React.FC = () => {
               <img 
                 alt="UdonFi" 
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out" 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD08zdnZLLS0nR1gI6vyNEjgbCpzBqPL9qhfCNIZJELrRDS6FzVShvIRzdZ44K5vhB97O38k5X6eh41usE_cubbB5gVGIwoMA9CVcHRDFyY3aUc1MnmJpNvfkXyguwAWuxeugZit8EF0Df-oBrtQm3Fnrp0jvm-Ux0WDIUZsAo0A52x188upXddMwj8tkIWvbTBC2L57NOhcOsUT3F1RQ7qE_ZEuKORMyFW3-UG9blPbH5xh6hLdBtTh7p70MePZyRfJU0jv62kJgKI"
+                src="/Infor/udonFI/HomeUdonFi.png"
               />
               <div className="absolute top-6 left-6 z-20 flex flex-col gap-2">
-                <span className="px-3 py-1.5 bg-white/90 backdrop-blur-md text-primary font-label-mono text-[10px] font-bold rounded-lg shadow-sm border border-white/20 flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 bg-primary rounded-full animate-pulse" />
-                  STELLAR SOROBAN
-                </span>
+                <UdonLogo className="!bg-white/90 backdrop-blur-md shadow-lg scale-90 origin-top-left border border-white/20 !rounded-2xl !py-3 !px-4 hover:scale-100 transition-transform" />
               </div>
             </div>
             <div className="lg:w-2/5 p-8 md:p-12 flex flex-col justify-center relative bg-white lg:bg-transparent">
               <div className="mb-4">
                 <span className="font-label-mono text-[11px] font-bold text-amber-600 uppercase tracking-widest mb-2 block">1st Prize Winner • Stellar Hackathon</span>
-                <h3 className="font-display text-4xl font-bold text-on-surface mb-4 leading-tight">UdonFi Protocol</h3>
+              <h3 className="font-display text-4xl font-bold text-on-surface mb-4 leading-tight">UdonFi Protocol</h3>
               </div>
               <p className="text-on-surface-variant mb-8 font-body-md leading-relaxed">
-                A decentralized lending protocol engineered for extreme gas efficiency. Optimized via bitmap packing and kinked interest rate models to deliver sub-second finality on the Stellar network.
+                A high-performance lending protocol on Stellar Soroban. Optimized via u128 bitmap packing and 2-step liquidation flows to bypass VM constraints and minimize storage costs.
               </p>
               <div className="flex flex-wrap gap-2 mb-10">
+                <span className="px-3 py-1 bg-surface-container text-[11px] font-label-mono font-bold text-on-surface-variant rounded-md border border-outline-variant/30">SOROBAN</span>
                 <span className="px-3 py-1 bg-surface-container text-[11px] font-label-mono font-bold text-on-surface-variant rounded-md border border-outline-variant/30">RUST</span>
                 <span className="px-3 py-1 bg-surface-container text-[11px] font-label-mono font-bold text-on-surface-variant rounded-md border border-outline-variant/30">DEFI</span>
-                <span className="px-3 py-1 bg-surface-container text-[11px] font-label-mono font-bold text-on-surface-variant rounded-md border border-outline-variant/30">SOLVENCY MODEL</span>
               </div>
               <Link
                 to="/projects/udonfi"
