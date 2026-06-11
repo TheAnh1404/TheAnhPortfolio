@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { BentoCard } from "../components/BentoCard";
 import { UdonLogo } from "../components/UdonLogo";
-import { 
-  Terminal, Cpu, Wallet, ArrowRight,
-  Sparkles, Cloud
+import {
+  Terminal, ArrowRight,
+  Sparkles, Cloud, Brain
 } from "lucide-react";
 
 interface ProjectData {
@@ -45,29 +45,31 @@ export const Projects: React.FC = () => {
       id: "viotune",
       category: "ai",
       title: "VioTune",
-      badge: "Audio ML",
-      description: "AI-powered audio signal processing for real-time instrument correction and personalized music recommendations.",
+      badge: "Intelligent Audio",
+      description: "Music discovery platform powered by a hybrid recommendation engine. Leveraging SVD Matrix Factorization and KNN for hyper-personalized experiences.",
       highlights: [
-        "Hybrid collaborative filtering (SVD) and content filtering (KNN).",
-        "Sub-150ms prediction latency with Redis caching."
+        "Hybrid Engine: Blending SVD (latent patterns) with KNN (acoustic features).",
+        "Weighted Reciprocal Rank Scoring for high-precision discovery.",
+        "Asynchronous FastAPI backend with <150ms inference latency."
       ],
-      tech: ["PyTorch", "Python", "FastAPI", "Redis"],
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAYvKH2rcPHxlnDbGLyz0CGzXL6bvU2O7btNah8XfwTWadul--CAcoZCv-3xiX7l9MQgxT1Jq0aKCuc5iG_bkNfJjIge8E9elX4OOAK-7AeVay_2kGIS8UqM7gdXbjd9-e2QQQIqtPGlb5gJKLDPQg-T6NsaT5bTF_gnTdDV7o4Qws9fxuQKObGR1_uiUzO1zZQLZlGQqXcsE-B-5rxfkB6bosq1antkDoOM3O6VM01lHY0188ZOH_fHq--WzoTNFLRm0EcQeXjb6Nx",
+      tech: ["FastAPI", "React", "Scikit-Learn", "SVD"],
+      image: "/Infor/Viotune/Cover.png",
       link: "/projects/viotune",
-      icon: <Cpu className="w-5 h-5 text-primary" />
+      icon: <Brain className="w-5 h-5 text-secondary" />
     },
     {
       id: "labouffe",
       category: "serverless",
       title: "LaBouffe",
       badge: "Cloud Native",
-      description: "Hyper-local logistics engine optimizing last-mile delivery via serverless edge workers.",
+      description: "Hyper-local logistics engine optimizing last-mile delivery via serverless edge workers and real-time GPS interpolation.",
       highlights: [
         "Distributed reactive state machine for multi-party tracking.",
-        "Idempotent payment flows using Stripe and Firestore transactions."
+        "60fps real-time shipper movement via Linear Interpolation.",
+        "Idempotent payment flows using Stripe and Firebase ACID transactions."
       ],
-      tech: ["React Native", "Firebase", "Stripe API", "Sentry"],
-      image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAwQzKzTZUmuIBnLZlaRfHlYCVhE8Rxn_smfEwWfUZoLouwiYvMEH4Wdu64vqyhiQz1BXlM94VDW3ID95cRJoGNGqpYC3W2hx7MopboChaw5LygVV4j_EikRqOojVwebzOyJIPJylhKyVkyZ0OffqEHDn-QlxmI-xZH6HpQCezNYWc4lWqZ7ZuxfFhyI1gnSOHpAfh3D87qMEdCu_SXBQiS4oE8olIj9_2LcccxLgDKDVy0fd79vkxaTT_WZBMiXYM_AuD4CpR4XlWQ",
+      tech: ["React Native", "Expo SDK 54", "Firebase", "Stripe API"],
+      image: "/Infor/Labouffe/Group 1.png",
       link: "/projects/labouffe",
       icon: <Cloud className="w-5 h-5 text-primary" />
     }

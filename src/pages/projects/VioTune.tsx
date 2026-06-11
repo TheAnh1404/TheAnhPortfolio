@@ -1,253 +1,305 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { BentoCard } from "../../components/BentoCard";
-import { 
-  ArrowLeft, Terminal
+import {
+  ArrowLeft, Brain, Music, Sparkles,
+  Activity, Zap, Layers, Code as CodeIcon,
+  PlayCircle, Disc
 } from "lucide-react";
 
 export const VioTune: React.FC = () => {
   return (
-    <div className="pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto">
+    <div className="pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto selection:bg-secondary/20">
       {/* Back to Projects */}
-      <div className="mb-8">
+      <motion.div 
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        className="mb-8"
+      >
         <Link 
           to="/projects"
-          className="inline-flex items-center gap-2 font-label-mono text-caption text-primary font-bold hover:underline"
+          className="inline-flex items-center gap-2 font-label-mono text-caption text-secondary font-bold hover:gap-3 transition-all"
         >
           <ArrowLeft className="w-4 h-4" /> Back to Engineering Systems
         </Link>
-      </div>
+      </motion.div>
 
       {/* Hero Section */}
-      <header className="mb-20 text-center md:text-left">
-        <div className="flex items-center gap-3 mb-4 justify-center md:justify-start">
-          <span className="px-3 py-1 bg-primary-fixed text-on-primary-fixed-variant font-label-mono text-caption rounded-full font-bold border border-primary/10">
-            Case Study v1.0
-          </span>
-          <span className="text-outline">•</span>
-          <span className="font-label-mono text-caption text-on-surface-variant font-bold">
-            Machine Learning / Full Stack
-          </span>
-        </div>
-        <h1 className="font-display text-display text-5xl font-bold mb-4">VioTune</h1>
-        <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed">
-          An intelligent music discovery platform leveraging hybrid recommendation algorithms to solve the cold-start problem and deliver hyper-personalized sonic experiences.
-        </p>
-      </header>
-
-      {/* System Architecture */}
-      <section className="mb-20">
-        <h2 className="font-headline-lg text-headline-lg text-3xl font-bold mb-8">System Architecture</h2>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter items-center relative">
-          {/* Connector Line for Desktop */}
-          <div className="hidden md:block absolute top-1/2 left-0 w-full h-[1px] bg-outline-variant/50 -z-10"></div>
-          
-          <BentoCard className="p-8 flex flex-col items-center text-center">
-            <span className="material-symbols-outlined text-primary mb-4 text-4xl">devices</span>
-            <h3 className="font-headline-md text-headline-md font-bold text-on-surface mb-2">React Frontend</h3>
-            <p className="font-caption text-caption text-on-surface-variant leading-relaxed">
-              Real-time state management & player controls
+      <header className="mb-24">
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-12">
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="max-w-3xl"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary/10 text-secondary font-label-mono text-[11px] mb-8 font-bold border border-secondary/20 shadow-sm shadow-secondary/5">
+              <Sparkles className="w-4 h-4" />
+              INTELLIGENT AUDIO DISCOVERY
+            </div>
+            <h1 className="font-display text-display text-6xl md:text-8xl font-bold mb-6 tracking-tight">
+              Vio<span className="text-secondary italic">Tune</span>
+            </h1>
+            <p className="font-body-lg text-body-lg text-on-surface-variant max-w-2xl leading-relaxed mb-10">
+              A state-of-the-art music streaming platform powered by a hybrid recommendation engine. Leveraging SVD Matrix Factorization and KNN algorithms to deliver hyper-personalized auditory experiences.
             </p>
-          </BentoCard>
-          
-          <BentoCard className="p-8 flex flex-col items-center text-center">
-            <span className="material-symbols-outlined text-secondary mb-4 text-4xl">api</span>
-            <h3 className="font-headline-md text-headline-md font-bold text-on-surface mb-2">FastAPI Gateway</h3>
-            <p className="font-caption text-caption text-on-surface-variant leading-relaxed">
-              Asynchronous I/O & high-throughput request handling
-            </p>
-          </BentoCard>
-          
-          <BentoCard className="p-8 flex flex-col items-center text-center ring-2 ring-primary/20 shadow-lg">
-            <span className="material-symbols-outlined text-tertiary mb-4 text-4xl">psychology</span>
-            <h3 className="font-headline-md text-headline-md font-bold text-on-surface mb-2">Rec Engine</h3>
-            <p className="font-caption text-caption text-on-surface-variant leading-relaxed">
-              Hybrid SVD + KNN Model Processing
-            </p>
-          </BentoCard>
-          
-          <BentoCard className="p-8 flex flex-col items-center text-center">
-            <span className="material-symbols-outlined text-on-surface mb-4 text-4xl">analytics</span>
-            <h3 className="font-headline-md text-headline-md font-bold text-on-surface mb-2">Rank & Score</h3>
-            <p className="font-caption text-caption text-on-surface-variant leading-relaxed">
-              Probability thresholding & content filtering
-            </p>
-          </BentoCard>
-        </div>
-      </section>
-
-      {/* Bento Tech Stack & Stats */}
-      <section className="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-20">
-        <BentoCard className="md:col-span-2 p-8">
-          <h3 className="font-headline-lg text-headline-lg text-3xl font-bold mb-6">The Tech Stack</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
-            <div>
-              <p className="font-label-mono text-caption text-outline mb-3 font-bold uppercase tracking-wide">Backend & ML</p>
-              <ul className="space-y-2 font-body-md text-on-surface-variant">
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 bg-primary rounded-full"></span> Python (FastAPI)
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 bg-primary rounded-full"></span> Scikit-Learn
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 bg-primary rounded-full"></span> Pandas / NumPy
-                </li>
-              </ul>
-            </div>
-            <div>
-              <p className="font-label-mono text-caption text-outline mb-3 font-bold uppercase tracking-wide">Frontend</p>
-              <ul className="space-y-2 font-body-md text-on-surface-variant">
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 bg-secondary rounded-full"></span> React (Hooks)
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 bg-secondary rounded-full"></span> Tailwind CSS
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 bg-secondary rounded-full"></span> Framer Motion
-                </li>
-              </ul>
-            </div>
-            <div>
-              <p className="font-label-mono text-caption text-outline mb-3 font-bold uppercase tracking-wide">Data & Infra</p>
-              <ul className="space-y-2 font-body-md text-on-surface-variant">
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 bg-tertiary rounded-full"></span> Redis (Caching)
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 bg-tertiary rounded-full"></span> PostgreSQL
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <span className="w-1.5 h-1.5 bg-tertiary rounded-full"></span> Docker
-                </li>
-              </ul>
-            </div>
-          </div>
-        </BentoCard>
-
-        <BentoCard className="bg-primary text-on-primary p-8 flex flex-col justify-between border border-primary/20">
-          <div>
-            <span className="material-symbols-outlined mb-4 text-3xl">speed</span>
-            <h4 className="font-headline-md text-headline-md font-bold mb-2">Inference Speed</h4>
-            <p className="font-body-md opacity-80 leading-relaxed">Latency optimized for sub-150ms recommendation responses.</p>
-          </div>
-          <div className="font-display text-display text-5xl font-bold">124ms</div>
-        </BentoCard>
-      </section>
-
-      {/* Technical Deep-Dive */}
-      <section className="mb-20 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        <div>
-          <h2 className="font-headline-lg text-headline-lg text-3xl font-bold mb-6">Personalization Engine</h2>
-          <div className="space-y-6">
-            <div className="p-6 bg-surface-container-high rounded-xl border-l-4 border-primary shadow-sm border border-outline-variant/30">
-              <h4 className="font-label-mono text-label-mono font-bold mb-2 text-on-surface">Collaborative Filtering (SVD)</h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed">
-                Using Singular Value Decomposition to uncover latent features in user-item interactions, allowing for accurate discovery based on cross-user patterns.
-              </p>
-            </div>
-            <div className="p-6 bg-surface-container-high rounded-xl border-l-4 border-secondary shadow-sm border border-outline-variant/30">
-              <h4 className="font-label-mono text-label-mono font-bold mb-2 text-on-surface">Content-Based KNN</h4>
-              <p className="font-body-md text-on-surface-variant leading-relaxed">
-                Addressing the 'Cold Start' problem by utilizing K-Nearest Neighbors on track metadata (BPM, Energy, Key) to suggest songs to new users immediately.
-              </p>
-            </div>
-          </div>
-        </div>
-        
-        <div className="relative aspect-square bg-inverse-surface rounded-2xl overflow-hidden shadow-2xl group border border-outline/10">
-          <div className="absolute inset-0 bg-primary/10 mix-blend-multiply opacity-50 z-10" />
-          <img 
-            className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:scale-103 transition-transform duration-700" 
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOoeYHGq6ZP-TcAZ4IsDimthWESoyAMP_VmzZhSp011JiVwHzX9ulrVk_Dhlc9Tdynuwt6-3-Ie9TfdQipnQJLvAntE1PkIi4_oejj2N9I7PjzsYX2RsFFGVFaz3LFPERmTi0Fe9buv4v-Uq1IBOnof04BfGnxCu_z83zEcuM9YzXmyw9mhVX1O-Z4i3laQhrYwcYd8FpUCDcklBPXMvB9wCWEp4AFOd8pH0--Mx32MDPg3RVqIrdddDN9em2oJ6EUhRQZM6jpVlIc"
-            alt="Data space visualization"
-          />
-          <div className="absolute inset-0 flex items-center justify-center p-8 text-center bg-gradient-to-t from-black/80 to-transparent z-20">
-            <p className="font-label-mono text-label-mono text-surface font-bold">Visualizing the Latent Space Traversal</p>
-          </div>
-        </div>
-      </section>
-
-      {/* UI Preview */}
-      <section className="mb-20">
-        <h2 className="font-headline-lg text-headline-lg text-3xl font-bold mb-12 text-center">Interface Experience</h2>
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-gutter items-end">
-          {/* Mobile View */}
-          <div className="md:col-span-4 flex justify-center mb-8 md:mb-0">
-            <div className="w-[280px] h-[580px] bg-black rounded-[40px] border-[8px] border-outline-variant p-4 relative shadow-2xl overflow-hidden flex flex-col justify-between">
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-2xl z-20"></div>
-              <img 
-                className="absolute inset-0 w-full h-full object-cover" 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP-sh1PBYrDiXDYH7vZyGO16nrgTw-iqtBtGnKt8EesHI0VZsSLds4XIYY3Oa2-w2Cj8pH2vOAELfQiBGSq4DMpFia6mmb22CXi-SAtI99pzOTa5UWQO3e4nSAJwITF_nlJlqWodxLlyEyaLYQo2wWB-exUnhuUcoGo4EFugayUPTabkBFl643-TYeyhVApVSJ6pbWxu7gaESrGdg-WNk_5LcYvzsLsdWa_KkQTf6Zr3YsstcPsIblRXakUy7y0CLZoKmzcYRlSDc_"
-                alt="Mobile App View"
-              />
-              <div className="relative z-10 h-full flex flex-col justify-end pb-8">
-                <div className="bg-surface/20 p-4 rounded-2xl backdrop-blur-md border border-white/10">
-                  <p className="font-label-mono text-caption text-surface font-bold text-center">Mobile Optimized Discovery</p>
+            
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="https://github.com/TheAnh1404/VioTune"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-2 font-label-mono text-label-mono bg-on-surface text-surface px-8 py-4 rounded-xl hover:bg-inverse-surface transition-all hover:scale-[1.02] font-bold shadow-lg"
+              >
+                <CodeIcon className="w-4.5 h-4.5" />
+                View Source
+              </a>
+              <div className="flex items-center gap-4 px-6 py-4 rounded-xl bg-surface-container border border-outline-variant/30">
+                <div className="flex flex-col">
+                  <span className="font-label-mono text-[10px] font-bold text-secondary uppercase">ML Engine</span>
+                  <span className="font-display font-bold">Hybrid SVD + KNN</span>
+                </div>
+                <div className="w-px h-8 bg-outline-variant/30"></div>
+                <div className="flex flex-col">
+                  <span className="font-label-mono text-[10px] font-bold text-primary uppercase">Response</span>
+                  <span className="font-display font-bold">&lt; 150ms</span>
                 </div>
               </div>
             </div>
+          </motion.div>
+        </div>
+        
+        {/* Banner Image */}
+        <motion.div 
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mt-16 relative w-full h-[600px] rounded-[40px] overflow-hidden border border-outline-variant/30 bg-surface-container-highest flex items-center justify-center shadow-2xl group"
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-secondary/10 via-transparent to-primary/10 z-10" />
+          <img 
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out z-0" 
+            src="/Infor/Viotune/Cover.png" 
+            alt="VioTune Cover"
+          />
+          <div className="absolute inset-0 bg-black/20 z-10 group-hover:bg-black/10 transition-colors duration-500"></div>
+
+          <div className="absolute bottom-10 left-10 z-30">
+            <div className="font-label-mono text-white/70 text-xs font-bold uppercase tracking-[0.3em] mb-3">HYBRID AI ENGINE</div>
+            <div className="font-display text-white text-4xl md:text-5xl font-bold max-w-xl leading-tight">
+              Personalized <br />
+              <span className="text-secondary italic">Harmonies</span>
+            </div>
           </div>
-          
-          {/* Desktop View */}
-          <div className="md:col-span-8">
-            <div className="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-2xl overflow-hidden aspect-video relative group">
-              <div className="absolute top-0 w-full h-8 bg-surface-container border-b border-outline-variant flex items-center px-4 gap-2 z-20">
-                <div className="w-3 h-3 rounded-full bg-error/40"></div>
-                <div className="w-3 h-3 rounded-full bg-on-surface-variant/20"></div>
-                <div className="w-3 h-3 rounded-full bg-primary/20"></div>
+        </motion.div>
+      </header>
+
+      {/* Technical Stack */}
+      <section className="mb-32">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-16 px-4">
+          <div className="max-w-2xl">
+            <h2 className="font-display text-headline-lg text-4xl font-bold mb-4 tracking-tight">Technical Stack</h2>
+            <p className="text-on-surface-variant font-body-md leading-relaxed">
+              Decoupled architecture connecting a high-performance Python ML service with a responsive React dashboard.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-gutter">
+           <BentoCard className="p-8 flex flex-col gap-6 bg-surface-container-low" delay={0.1}>
+              <div className="w-12 h-12 rounded-2xl bg-secondary/10 text-secondary flex items-center justify-center shadow-inner">
+                <Brain className="w-6 h-6" />
               </div>
-              <img 
-                className="w-full h-full object-cover pt-8" 
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCprutWFukzkUCAwEEYEH2Ds4xL_imSRp_Z19Qt_-7ae7oF4YzfxCmESrXt2djwTJmwsj2XAo_VhpCLDQWfAbNN1q-1_D_r5Vcyn-mwD6r-Q0Fv-QTYhaJVEPnAuCJycKHvroAhZrlSQ0HEJ3jJWP25-mDnwvBRYXbYMmqL4GwikhVnnIYb-ObWnsy1PCUOdO6O10A-y7k9qvYrO8X_OmkyEF2M4f9X2cFuyXGmmsrzSwQQtjMxNY4B3ACSkK1tsR3sNUSM_cFIv3NI"
-                alt="Desktop Dashboard View"
-              />
-              <div className="absolute inset-0 bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center z-10">
-                <button 
-                  onClick={() => alert("Launching Prototype...")}
-                  className="bg-surface text-on-surface px-6 py-3 rounded-xl font-label-mono shadow-xl flex items-center gap-2 border border-outline-variant font-bold hover:bg-surface-container-low transition-colors"
-                >
-                  Launch Prototype
-                </button>
+              <div>
+                <h3 className="font-headline-md font-bold mb-2">FastAPI Backend</h3>
+                <p className="text-on-surface-variant text-sm leading-relaxed">High-concurrency asynchronous endpoints for real-time inference and data processing.</p>
+              </div>
+           </BentoCard>
+
+           <BentoCard className="p-8 flex flex-col gap-6 bg-surface-container-low" delay={0.2}>
+              <div className="w-12 h-12 rounded-2xl bg-primary/10 text-primary flex items-center justify-center shadow-inner">
+                <Layers className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-headline-md font-bold mb-2">Surprise & Scikit</h3>
+                <p className="text-on-surface-variant text-sm leading-relaxed">Leveraging SVD Matrix Factorization and KNN for sophisticated user-item interaction modeling.</p>
+              </div>
+           </BentoCard>
+
+           <BentoCard className="p-8 flex flex-col gap-6 bg-surface-container-low" delay={0.3}>
+              <div className="w-12 h-12 rounded-2xl bg-orange-500/10 text-orange-600 flex items-center justify-center shadow-inner">
+                <Zap className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-headline-md font-bold mb-2">Pandas & NumPy</h3>
+                <p className="text-on-surface-variant text-sm leading-relaxed">Vectorized data manipulations ensuring near-instantaneous recommendation generations.</p>
+              </div>
+           </BentoCard>
+
+           <BentoCard className="p-8 flex flex-col gap-6 bg-surface-container-low" delay={0.4}>
+              <div className="w-12 h-12 rounded-2xl bg-blue-500/10 text-blue-600 flex items-center justify-center shadow-inner">
+                <CodeIcon className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="font-headline-md font-bold mb-2">React Dashboard</h3>
+                <p className="text-on-surface-variant text-sm leading-relaxed">Glassmorphic UI with immersive animations designed for high user engagement.</p>
+              </div>
+           </BentoCard>
+        </div>
+      </section>
+
+      {/* Deep Dive - ML Logic */}
+      <section className="mb-32">
+        <div className="mb-16 px-4 text-center md:text-left">
+          <h2 className="font-display text-headline-lg text-4xl font-bold mb-4">Recommendation Logic</h2>
+          <p className="text-on-surface-variant max-w-2xl font-body-md">The Hybrid Reciprocal Rank Scoring system.</p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-gutter px-4">
+          {/* Collaborative Filtering */}
+          <BentoCard className="lg:col-span-6 p-10 flex flex-col justify-between" delay={0.1}>
+            <div>
+              <div className="flex items-center gap-3 mb-8">
+                <Activity className="w-6 h-6 text-secondary" />
+                <h3 className="font-display text-2xl font-bold">Collaborative Filtering (CF)</h3>
+              </div>
+              
+              <p className="text-on-surface-variant mb-10 leading-relaxed font-body-md">
+                Analyzes user interaction patterns using **SVD (Singular Value Decomposition)**. By factorizing the user-item matrix, we discover latent features that connect users with similar tastes.
+              </p>
+
+              <div className="p-6 rounded-2xl bg-inverse-surface text-surface border border-outline-variant/10">
+                 <div className="flex items-center gap-2 mb-4">
+                    <div className="w-2 h-2 rounded-full bg-secondary"></div>
+                    <span className="font-label-mono text-[10px] font-bold text-secondary uppercase tracking-widest">SVD LATENT SPACE</span>
+                 </div>
+                 <div className="grid grid-cols-4 gap-2 opacity-40">
+                    {Array.from({length: 8}).map((_, i) => (
+                      <div key={i} className="h-8 bg-surface/20 rounded border border-white/10 flex items-center justify-center text-[10px] font-label-mono">
+                        {Math.random().toFixed(2)}
+                      </div>
+                    ))}
+                 </div>
+                 <p className="mt-4 text-[11px] font-label-mono text-surface/60 italic">Dimensionality reduction discover patterns impossible for manual tagging.</p>
               </div>
             </div>
-            <p className="mt-6 font-body-md text-on-surface-variant italic text-center">
-              Comprehensive dashboard featuring real-time collaborative filtering feedback.
-            </p>
+          </BentoCard>
+
+          {/* Content-Based Filtering */}
+          <BentoCard className="lg:col-span-6 p-10 flex flex-col justify-between bg-surface-container-low" delay={0.2}>
+             <div>
+                <div className="flex items-center gap-3 mb-8">
+                  <Music className="w-6 h-6 text-primary" />
+                  <h3 className="font-display text-2xl font-bold">Content-Based (CBF)</h3>
+                </div>
+                <p className="text-on-surface-variant mb-10 leading-relaxed font-body-md">
+                  Uses **K-Nearest Neighbors (KNN)** and **Cosine Similarity** to recommend songs with similar acoustic signatures—genre, tempo, energy, and instrumentation.
+                </p>
+
+                <div className="space-y-4">
+                   {['Lofi Chill', 'Deep House', 'Neo Soul'].map((genre, i) => (
+                     <div key={genre} className="flex items-center justify-between p-4 rounded-xl bg-white border border-outline-variant/30">
+                        <span className="text-sm font-bold">{genre}</span>
+                        <div className="flex items-center gap-2">
+                           <div className="w-24 h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+                              <motion.div 
+                                initial={{ width: 0 }}
+                                whileInView={{ width: `${95 - i * 15}%` }}
+                                transition={{ duration: 1, delay: i * 0.2 }}
+                                className="h-full bg-primary" 
+                              />
+                           </div>
+                           <span className="text-[10px] font-label-mono font-bold">{(95 - i * 15) / 100}</span>
+                        </div>
+                     </div>
+                   ))}
+                </div>
+             </div>
+          </BentoCard>
+        </div>
+      </section>
+
+      {/* Artifact Gallery */}
+      <section className="mb-32">
+        <h2 className="font-display text-headline-lg text-4xl font-bold mb-16 px-4">Artifact Gallery</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 px-4">
+          {/* Main Interface */}
+          <div className="col-span-12 md:col-span-7 aspect-video rounded-[32px] overflow-hidden border border-outline-variant relative group shadow-xl bg-surface-container-low">
+            <img
+              alt="VioTune Onboarding"
+              className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-1000 ease-out"
+              src="/Infor/Viotune/Onboarding.png"
+            />
+            <div className="absolute top-6 left-6 z-20">
+               <span className="px-3 py-1.5 bg-black/60 backdrop-blur-md text-white font-label-mono text-[10px] font-bold rounded-lg border border-white/10 uppercase tracking-widest">
+                 UX Onboarding
+               </span>
+            </div>
+          </div>
+
+          {/* Feature Card */}
+          <div className="col-span-12 md:col-span-5 rounded-[32px] bg-secondary-fixed text-on-secondary-fixed p-10 flex flex-col relative overflow-hidden group shadow-2xl">
+             <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 blur-[60px] rounded-full"></div>
+             <PlayCircle className="text-on-secondary-fixed w-12 h-12 mb-8 group-hover:scale-110 transition-transform" />
+             <h4 className="font-display text-2xl font-bold mb-4 text-on-secondary-fixed">Immersive Playback</h4>
+             <p className="font-body-md text-sm leading-relaxed mb-10 opacity-80">
+                A seamless audio experience integrated with visual feedback that reacts to the genre and mood of the current track.
+             </p>
+             <div className="mt-auto flex items-center gap-4 p-4 rounded-2xl bg-white/10 border border-white/10">
+                <Disc className="w-8 h-8 animate-spin-slow" />
+                <div>
+                   <div className="text-xs font-bold uppercase tracking-widest opacity-60">Currently Analyzing</div>
+                   <div className="text-sm font-bold">Signal Correction Active</div>
+                </div>
+             </div>
+          </div>
+
+          {/* Secondary Image */}
+          <div className="col-span-12 md:col-span-12 aspect-[21/9] rounded-[32px] overflow-hidden border border-outline-variant bg-surface-container relative group">
+             <img
+               alt="VioTune Interface"
+               className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
+               src="/Infor/Viotune/engin-akyurt-Hlkuojv_P6I-unsplash (1).png"
+             />
+             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent flex items-end p-10">
+                <div>
+                   <h4 className="text-white text-2xl font-bold font-display mb-2">High-Fidelity Interaction</h4>
+                   <p className="text-white/60 text-sm max-w-lg">Responsive designs ensuring that discovery is as intuitive as it is beautiful.</p>
+                </div>
+             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA / Footer Link */}
-      <section className="bg-primary-container text-on-primary-container p-12 rounded-3xl flex flex-col md:flex-row justify-between items-center gap-8 border border-primary/10">
-        <div className="text-center md:text-left">
-          <h2 className="font-headline-lg text-headline-lg text-3xl font-bold mb-2">Interested in the logic?</h2>
-          <p className="font-body-md opacity-90 leading-relaxed">Deep-dive into the Jupyter Notebooks and API documentation on GitHub.</p>
-        </div>
-        <div className="flex gap-4">
-          <a 
-            href="#" 
-            onClick={(e) => {
-              e.preventDefault();
-              alert("Opening GitHub notebooks...");
-            }}
-            className="bg-surface text-primary px-8 py-4 rounded-xl font-label-mono flex items-center gap-2 hover:bg-surface-container-high transition-colors font-bold shadow-sm"
-          >
-            <Terminal className="w-4 h-4" /> View Source
-          </a>
-          <a 
-            href="#" 
-            onClick={(e) => {
-              e.preventDefault();
-              alert("Opening Case documentation...");
-            }}
-            className="border border-white/20 text-white px-8 py-4 rounded-xl font-label-mono hover:bg-white/10 transition-colors font-bold"
-          >
-            Case Documentation
-          </a>
-        </div>
-      </section>
+      {/* Footer CTA */}
+      <footer className="mt-20 py-20 border-t border-outline-variant/30 text-center px-4">
+         <motion.div
+           initial={{ opacity: 0, y: 20 }}
+           whileInView={{ opacity: 1, y: 0 }}
+           viewport={{ once: true }}
+         >
+           <h3 className="font-display text-4xl font-bold mb-8">Ready to hear the future?</h3>
+           <div className="flex flex-wrap justify-center gap-6">
+             <a
+               href="https://github.com/TheAnh1404/VioTune"
+               target="_blank"
+               rel="noopener noreferrer"
+               className="px-10 py-5 bg-on-surface text-surface rounded-2xl font-bold flex items-center gap-3 hover:bg-inverse-surface transition-all shadow-xl"
+             >
+               <CodeIcon className="w-5 h-5" /> Explore the Engine
+             </a>
+             <button
+               onClick={() => alert("Deployment in progress")}
+               className="px-10 py-5 border border-outline text-on-surface rounded-2xl font-bold hover:bg-surface-container transition-all"
+             >
+               Live Beta
+             </button>
+           </div>
+         </motion.div>
+      </footer>
     </div>
   );
 };

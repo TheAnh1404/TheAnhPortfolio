@@ -1,30 +1,64 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { BentoCard } from "../../components/BentoCard";
 import {
   ArrowLeft, Award, Link as LinkIcon, Code as CodeIcon,
-  User, Terminal, Layout, Sparkles, Database,
+  Terminal, Sparkles, Database,
   ShieldCheck, Zap, Activity, Cpu, BarChart3,
-  Layers, Clock, RefreshCcw
+  Layers, Clock, RefreshCcw, X, ChevronLeft, ChevronRight
 } from "lucide-react";
 
 import { UdonLogo } from "../../components/UdonLogo";
 
 export const UdonFi: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
+  const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
+
+  const galleryImages = [
+    {
+      id: 0,
+      src: "/Infor/udonFI/firstPr_img.jpg",
+      alt: "UdonFi Stellar Hackathon Award",
+      tag: "LIVESTREAM & EVENT",
+      title: "Stellar Mini Hackathon Award Ceremony",
+      shortDesc: "Nguyen The Anh receiving the 1st prize at the Stellar Soroban Hackathon, selected out of global submissions.",
+      desc: "Receiving the first prize at the official Stellar Soroban Hackathon. Our solution was selected out of dozens of global submissions for its outstanding gas efficiency, robust mathematical model, and clean Smart Contract implementation.",
+      filename: "stellar_award_ceremony.jpg"
+    },
+    {
+      id: 1,
+      src: "/Infor/udonFI/Function.png",
+      alt: "Smart Contract Logic",
+      tag: "ARCHITECTURE",
+      title: "Smart Contract Execution Flow",
+      shortDesc: "Execution graph mapping the decentralized interaction model between user wallets and the protocol.",
+      desc: "Execution graph mapping the decentralized interaction model between user wallets, the core lending contracts, and Stellar ledger state. Illustrates frontrun-resistant liquidation and repay flows.",
+      filename: "contract_interaction_flow.svg"
+    },
+    {
+      id: 2,
+      src: "/Infor/udonFI/128bitMap.png",
+      alt: "Bitmap Packing Logic",
+      tag: "GAS OPTIMIZATION",
+      title: "u128 Storage State Bitmap Packing Matrix",
+      shortDesc: "State bitmap mapping showing how multiple parameters are packed into a single u128 storage slot.",
+      desc: "State bitmap mapping showing how multiple parameters (active status, borrow ratios, timestamps) are packed into a single u128 storage slot to minimize ledger footprint, reducing gas costs by 40%.",
+      filename: "state_bitmap_packing.c"
+    }
+  ];
+
+  const handlePrevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (activeImageIndex !== null) {
+      setActiveImageIndex((prev) => (prev !== null && prev > 0 ? prev - 1 : galleryImages.length - 1));
     }
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 }
+  const handleNextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (activeImageIndex !== null) {
+      setActiveImageIndex((prev) => (prev !== null && prev < galleryImages.length - 1 ? prev + 1 : 0));
+    }
   };
 
   return (
@@ -344,29 +378,57 @@ export const UdonFi: React.FC = () => {
         <h2 className="font-display text-headline-lg text-4xl font-bold mb-16 px-4">Artifact Gallery</h2>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-          {/* Award Image */}
-          <div className="col-span-12 md:col-span-8 aspect-video rounded-[32px] overflow-hidden border border-outline-variant relative group shadow-xl">
-            <img
-              alt="UdonFi Stellar Hackathon Award"
-              className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-1000 ease-out"
-              src="/Infor/udonFI/firstPr_img.jpg"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-10">
-               <span className="px-4 py-1.5 bg-amber-500 text-white font-label-mono text-xs font-bold rounded-full w-fit mb-4 shadow-lg shadow-amber-500/20">
-                 🏆 GLOBAL FIRST PRIZE
-               </span>
-               <h3 className="text-white text-3xl font-bold font-display">Stellar Mini Hackathon</h3>
+          {/* Card 1: Award Image */}
+          <div
+            className="col-span-12 md:col-span-8 flex flex-col border border-outline-variant rounded-[32px] overflow-hidden bg-surface-container-low hover:border-primary/30 transition-all duration-300 shadow-xl hover:shadow-[0px_12px_40px_rgba(0,0,0,0.06)] group cursor-pointer"
+            onClick={() => setActiveImageIndex(0)}
+          >
+            <div className="flex items-center justify-between px-6 py-4 border-b border-outline-variant bg-surface-container-high/50 select-none">
+              <div className="flex items-center gap-2">
+                <span className="w-2.5 h-2.5 rounded-full bg-amber-500 animate-pulse" />
+                <span className="font-label-mono text-[10px] text-on-surface-variant font-bold uppercase tracking-wider">LIVESTREAM & EVENT</span>
+              </div>
+              <span className="font-label-mono text-[10px] text-outline font-bold">EVENT PREVIEW</span>
+            </div>
+
+            <div className="relative aspect-video overflow-hidden bg-black flex items-center justify-center">
+              <img
+                src="/Infor/udonFI/firstPr_img.jpg"
+                alt="UdonFi Stellar Hackathon Award"
+                className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-[1.5s] opacity-90 group-hover:opacity-100"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-10">
+                <span className="px-4 py-1.5 bg-amber-500 text-white font-label-mono text-xs font-bold rounded-full w-fit mb-2 shadow-lg shadow-amber-500/20">
+                  🏆 GLOBAL FIRST PRIZE
+                </span>
+                <h3 className="text-white text-3xl font-bold font-display">Stellar Mini Hackathon</h3>
+              </div>
+              
+              {/* Hover overlay with zoom hint */}
+              <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
+                <div className="w-12 h-12 rounded-full bg-white/90 backdrop-blur-md text-primary flex items-center justify-center shadow-lg scale-75 group-hover:scale-100 transition-transform duration-300">
+                  <span className="material-symbols-outlined text-[20px] font-bold">zoom_in</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="p-6 bg-surface-container-low/40 border-t border-outline-variant/30">
+              <p className="text-on-surface-variant text-[13px] leading-relaxed opacity-85 font-body-md">
+                Receiving the first prize at the Stellar Soroban Hackathon. Recognised for gas footprint reductions and mathematical liquidation models.
+              </p>
             </div>
           </div>
 
-          {/* High Tech Metric Card */}
-          <div className="col-span-12 md:col-span-4 rounded-[32px] bg-inverse-surface p-10 flex flex-col border border-white/5 relative overflow-hidden group shadow-2xl">
+          {/* Card 2: High Tech Metric Card (No lightbox, static content) */}
+          <div className="col-span-12 md:col-span-4 rounded-[32px] bg-inverse-surface p-10 flex flex-col justify-between border border-white/5 relative overflow-hidden group shadow-2xl">
              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[80px] rounded-full"></div>
-             <Terminal className="text-primary w-12 h-12 mb-8 group-hover:rotate-12 transition-transform" />
-             <h4 className="text-surface font-display text-2xl font-bold mb-4">Core Performance</h4>
-             <p className="text-surface-variant text-sm leading-relaxed mb-10 opacity-70">
-                Optimized for low-latency execution and minimal on-chain footprint. 
-             </p>
+             <div>
+                <Terminal className="text-primary w-12 h-12 mb-8 group-hover:rotate-12 transition-transform" />
+                <h4 className="text-surface font-display text-2xl font-bold mb-4">Core Performance</h4>
+                <p className="text-surface-variant text-sm leading-relaxed mb-10 opacity-70">
+                   Optimized for low-latency execution and minimal on-chain footprint. 
+                </p>
+             </div>
              <div className="mt-auto space-y-4">
                 <div className="flex justify-between items-center py-3 border-b border-white/10">
                    <span className="text-surface/40 text-xs font-label-mono">GAS EFFICIENCY</span>
@@ -379,34 +441,161 @@ export const UdonFi: React.FC = () => {
              </div>
           </div>
 
-          {/* Technical Diagrams */}
-          <div className="col-span-12 md:col-span-6 aspect-video rounded-[32px] overflow-hidden border border-outline-variant bg-white relative group">
-             <img
-               alt="Smart Contract Logic"
-               className="w-full h-full object-contain p-12 group-hover:scale-[1.02] transition-transform duration-700"
-               src="/Infor/udonFI/Function.png"
-             />
-             <div className="absolute bottom-6 left-6 z-20">
-               <span className="px-3 py-1.5 bg-on-surface/90 backdrop-blur-md text-surface font-label-mono text-[10px] font-bold rounded-lg border border-white/10">
-                 CONTRACT FLOW ARCHITECTURE
-               </span>
-             </div>
+          {/* Card 3: Technical Diagram 1 */}
+          <div
+            className="col-span-12 md:col-span-6 flex flex-col border border-outline-variant rounded-[32px] overflow-hidden bg-surface-container-low hover:border-primary/30 transition-all duration-300 shadow-xl hover:shadow-[0px_12px_40px_rgba(0,0,0,0.06)] group cursor-pointer"
+            onClick={() => setActiveImageIndex(1)}
+          >
+            <div className="flex items-center gap-1.5 px-5 py-3.5 border-b border-outline-variant bg-surface-container-high/30 select-none">
+              <span className="w-2 h-2 rounded-full bg-[#ff5f56]" />
+              <span className="w-2 h-2 rounded-full bg-[#ffbd2e]" />
+              <span className="w-2 h-2 rounded-full bg-[#27c93f]" />
+              <span className="ml-3 font-label-mono text-[10px] text-on-surface-variant/50 font-bold uppercase tracking-wider">contract_interaction_flow.svg</span>
+            </div>
+
+            <div className="relative aspect-[16/10] overflow-hidden flex items-center justify-center bg-[radial-gradient(var(--color-outline-variant)_1px,transparent_1px)] [background-size:16px_16px] bg-surface-container-lowest/10">
+              <img
+                src="/Infor/udonFI/Function.png"
+                alt="Smart Contract Logic"
+                className="max-h-full max-w-full object-contain p-8 group-hover:scale-[1.03] transition-all duration-700 ease-out drop-shadow-[0_12px_24px_rgba(0,0,0,0.08)]"
+              />
+              
+              <div className="absolute bottom-6 left-6 z-20">
+                <span className="px-3 py-1.5 bg-on-surface/90 backdrop-blur-md text-surface font-label-mono text-[10px] font-bold rounded-lg border border-white/10">
+                  CONTRACT FLOW ARCHITECTURE
+                </span>
+              </div>
+              
+              {/* Hover overlay with zoom hint */}
+              <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
+                <div className="w-12 h-12 rounded-full bg-white/90 backdrop-blur-md text-primary flex items-center justify-center shadow-lg scale-75 group-hover:scale-100 transition-transform duration-300">
+                  <span className="material-symbols-outlined text-[20px] font-bold">zoom_in</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="p-6 bg-surface-container-low/40 border-t border-outline-variant/30 flex-grow">
+              <p className="text-on-surface-variant text-[13px] leading-relaxed opacity-85 font-body-md">
+                Execution flow mapping user transactions, borrowing pools, and cross-contract Soroban smart contract transition states.
+              </p>
+            </div>
           </div>
 
-          <div className="col-span-12 md:col-span-6 aspect-video rounded-[32px] overflow-hidden border border-outline-variant bg-white relative group">
-             <img
-               alt="Bitmap Packing Logic"
-               className="w-full h-full object-contain p-12 group-hover:scale-[1.02] transition-transform duration-700"
-               src="/Infor/udonFI/128bitMap.png"
-             />
-             <div className="absolute bottom-6 left-6 z-20">
-               <span className="px-3 py-1.5 bg-on-surface/90 backdrop-blur-md text-surface font-label-mono text-[10px] font-bold rounded-lg border border-white/10">
-                 u128 BITMAP PACKING MATRIX
-               </span>
-             </div>
+          {/* Card 4: Technical Diagram 2 */}
+          <div
+            className="col-span-12 md:col-span-6 flex flex-col border border-outline-variant rounded-[32px] overflow-hidden bg-surface-container-low hover:border-primary/30 transition-all duration-300 shadow-xl hover:shadow-[0px_12px_40px_rgba(0,0,0,0.06)] group cursor-pointer"
+            onClick={() => setActiveImageIndex(2)}
+          >
+            <div className="flex items-center gap-1.5 px-5 py-3.5 border-b border-outline-variant bg-surface-container-high/30 select-none">
+              <span className="w-2 h-2 rounded-full bg-[#ff5f56]" />
+              <span className="w-2 h-2 rounded-full bg-[#ffbd2e]" />
+              <span className="w-2 h-2 rounded-full bg-[#27c93f]" />
+              <span className="ml-3 font-label-mono text-[10px] text-on-surface-variant/50 font-bold uppercase tracking-wider">state_bitmap_packing.c</span>
+            </div>
+
+            <div className="relative aspect-[16/10] overflow-hidden flex items-center justify-center bg-[radial-gradient(var(--color-outline-variant)_1px,transparent_1px)] [background-size:16px_16px] bg-surface-container-lowest/10">
+              <img
+                src="/Infor/udonFI/128bitMap.png"
+                alt="Bitmap Packing Logic"
+                className="max-h-full max-w-full object-contain p-8 group-hover:scale-[1.03] transition-all duration-700 ease-out drop-shadow-[0_12px_24px_rgba(0,0,0,0.08)]"
+              />
+              
+              <div className="absolute bottom-6 left-6 z-20">
+                <span className="px-3 py-1.5 bg-on-surface/90 backdrop-blur-md text-surface font-label-mono text-[10px] font-bold rounded-lg border border-white/10">
+                  u128 BITMAP PACKING MATRIX
+                </span>
+              </div>
+              
+              {/* Hover overlay with zoom hint */}
+              <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
+                <div className="w-12 h-12 rounded-full bg-white/90 backdrop-blur-md text-primary flex items-center justify-center shadow-lg scale-75 group-hover:scale-100 transition-transform duration-300">
+                  <span className="material-symbols-outlined text-[20px] font-bold">zoom_in</span>
+                </div>
+              </div>
+            </div>
+            
+            <div className="p-6 bg-surface-container-low/40 border-t border-outline-variant/30 flex-grow">
+              <p className="text-on-surface-variant text-[13px] leading-relaxed opacity-85 font-body-md">
+                State bitmap layout packing user configurations, active state markers, and interest rate points into a single u128 storage cell.
+              </p>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* Lightbox Modal */}
+      <AnimatePresence>
+        {activeImageIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md cursor-zoom-out"
+            onClick={() => setActiveImageIndex(null)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, y: 20 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 180 }}
+              className="relative max-w-5xl w-full bg-surface-container rounded-2xl overflow-hidden border border-outline-variant shadow-2xl flex flex-col md:flex-row h-[85vh] md:h-[70vh] cursor-default"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Image Pane */}
+              <div className="flex-grow md:w-3/5 bg-black flex items-center justify-center relative p-6">
+                <img
+                  src={galleryImages[activeImageIndex].src}
+                  alt={galleryImages[activeImageIndex].alt}
+                  className="max-h-full max-w-full object-contain drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]"
+                />
+
+                {/* Left/Right controls */}
+                <button
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white transition-colors cursor-pointer group"
+                  onClick={handlePrevImage}
+                >
+                  <ChevronLeft className="w-6 h-6 group-hover:-translate-x-0.5 transition-transform" />
+                </button>
+                <button
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 flex items-center justify-center text-white transition-colors cursor-pointer group"
+                  onClick={handleNextImage}
+                >
+                  <ChevronRight className="w-6 h-6 group-hover:translate-x-0.5 transition-transform" />
+                </button>
+              </div>
+
+              {/* Detail Pane */}
+              <div className="md:w-2/5 p-8 flex flex-col justify-between bg-surface-container-low border-t md:border-t-0 md:border-l border-outline-variant">
+                <div>
+                  <div className="flex items-center justify-between mb-6">
+                    <span className="px-2.5 py-1 bg-primary/10 text-primary border border-primary/20 text-[10px] font-label-mono font-bold rounded-md uppercase tracking-wider">
+                      {galleryImages[activeImageIndex].tag}
+                    </span>
+                    <button
+                      className="w-8 h-8 rounded-full hover:bg-surface-container-high flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors cursor-pointer"
+                      onClick={() => setActiveImageIndex(null)}
+                    >
+                      <X className="w-5 h-5" />
+                    </button>
+                  </div>
+
+                  <h3 className="font-display text-2xl font-bold text-on-surface mb-4">
+                    {galleryImages[activeImageIndex].title}
+                  </h3>
+                  <p className="text-on-surface-variant font-body-md text-sm leading-relaxed mb-6 opacity-90">
+                    {galleryImages[activeImageIndex].desc}
+                  </p>
+                </div>
+
+                <div className="pt-6 border-t border-outline-variant/50 font-label-mono text-[11px] text-on-surface-variant/60 flex items-center justify-between">
+                  <span>FILE: {galleryImages[activeImageIndex].filename}</span>
+                  <span>{activeImageIndex + 1} / {galleryImages.length}</span>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Footer CTA */}
       <footer className="mt-20 py-20 border-t border-outline-variant/30 text-center">

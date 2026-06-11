@@ -5,10 +5,10 @@ import { BentoCard } from "../components/BentoCard";
 import { TechMarquee } from "../components/TechMarquee";
 import { UdonLogo } from "../components/UdonLogo";
 import AvatarImg from "../assets/theanh_avt.jpg";
-import { 
-  ArrowRight, MapPin, GraduationCap, 
-  Terminal, ShieldCheck, Cpu, 
-  Database, Link2, Brain, Award 
+import {
+  ArrowRight, MapPin, GraduationCap,
+  Terminal, Cpu, Database, Link2,
+  Brain, Award
 } from "lucide-react";
 
 const roles = [
@@ -16,6 +16,261 @@ const roles = [
   "Fullstack Developer",
   "Blockchain Developer",
   "AI Enthusiast"
+];
+
+const techCategories = [
+  {
+    title: "Languages",
+    subtitle: "Core Programming & Logic",
+    description: "Foundational languages for system logic, blockchain contracts, and intelligent platforms.",
+    visual: (
+      <div className="w-full h-40 bg-surface-container-lowest rounded-xl p-4 font-mono text-[9px] text-on-surface/80 border border-outline-variant/30 overflow-hidden relative shadow-inner">
+        <div className="flex items-center justify-between border-b border-outline-variant/20 pb-2 mb-2">
+          <div className="flex gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-red-500/80"></span>
+            <span className="w-2 h-2 rounded-full bg-yellow-500/80"></span>
+            <span className="w-2 h-2 rounded-full bg-green-500/80"></span>
+          </div>
+          <span className="text-[8px] text-on-surface-variant/60 font-label-mono">Algorithm.cpp</span>
+        </div>
+        <div className="space-y-1 select-none text-left">
+          <div className="text-on-surface-variant/40">// ICPC Graph Path Optimization</div>
+          <div>
+            <span className="text-primary font-bold">int</span> <span className="text-secondary font-bold">find_min_path</span>(<span className="text-orange-600">int</span> u, <span className="text-orange-600">int</span> v) {"{"}
+          </div>
+          <div className="pl-4">
+            <span className="text-primary font-bold">if</span> (u == v) <span className="text-primary font-bold">return</span> <span className="text-teal-600">0</span>;
+          </div>
+          <div className="pl-4">
+            <span className="text-primary font-bold">if</span> (dp[u][v] != -<span className="text-teal-600">1</span>) <span className="text-primary font-bold">return</span> dp[u][v];
+          </div>
+          <div className="pl-4">
+            <span className="text-primary font-bold">int</span> ans = <span className="text-violet-600 font-bold">INF</span>;
+          </div>
+          <div className="pl-4">
+            <span className="text-primary font-bold">return</span> dp[u][v] = ans;
+          </div>
+          <div>{"}"}</div>
+        </div>
+        <div className="absolute bottom-2 right-3 bg-teal-500/10 text-teal-700 border border-teal-500/20 px-2 py-0.5 rounded text-[8px] font-label-mono font-bold">
+          C++ / TypeScript / Rust / Python
+        </div>
+      </div>
+    ),
+    skills: [
+      { name: "TypeScript/JavaScript", tooltip: "Primary language for high-fidelity frontends, NestJS backends, and test suites." },
+      { name: "Rust (Smart Contracts)", tooltip: "Used to write smart contracts on Stellar Soroban." },
+      { name: "Python (AI/ML)", tooltip: "Used for AI recommendation models and data pipelines." },
+      { name: "C++ (Algorithms)", tooltip: "Used for VKU ICPC competitive programming training." }
+    ]
+  },
+  {
+    title: "Backend",
+    subtitle: "Service Architecture",
+    description: "Designing high-throughput microservices, REST & GraphQL endpoints, and routing logic.",
+    visual: (
+      <div className="w-full h-40 bg-surface-container-lowest rounded-xl border border-outline-variant/30 flex items-center justify-center relative overflow-hidden shadow-inner p-2">
+        <svg width="340" height="130" viewBox="0 0 340 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+          <defs>
+            <pattern id="grid-pattern-backend" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-outline-variant/15" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid-pattern-backend)" />
+
+          <path d="M 50 65 H 135" stroke="currentColor" className="text-outline-variant/40" strokeWidth="2" />
+          <path d="M 175 65 H 260" stroke="currentColor" className="text-outline-variant/40" strokeWidth="2" />
+
+          <motion.path
+            d="M 50 65 H 135"
+            stroke="#004ac6"
+            strokeWidth="2"
+            fill="none"
+            strokeDasharray="8 12"
+            animate={{ strokeDashoffset: [-20, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+          />
+          <motion.path
+            d="M 175 65 H 260"
+            stroke="#004ac6"
+            strokeWidth="2"
+            fill="none"
+            strokeDasharray="8 12"
+            animate={{ strokeDashoffset: [-20, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+          />
+
+          <g transform="translate(10, 40)">
+            <rect width="40" height="50" rx="6" fill="currentColor" className="text-primary/10" stroke="#004ac6" strokeWidth="1" />
+            <text x="20" y="24" textAnchor="middle" className="fill-on-surface font-label-mono text-[8px] font-bold">CLIENT</text>
+            <text x="20" y="38" textAnchor="middle" className="fill-primary font-bold text-[6px] font-label-mono">REQUEST</text>
+          </g>
+
+          <g transform="translate(135, 30)">
+            <rect width="40" height="70" rx="6" fill="currentColor" className="text-secondary/10" stroke="#4b41e1" strokeWidth="1" />
+            <text x="20" y="24" textAnchor="middle" className="fill-on-surface font-label-mono text-[8px] font-bold">NestJS</text>
+            <text x="20" y="42" textAnchor="middle" className="fill-secondary font-bold text-[6px] font-label-mono">FastAPI</text>
+            <text x="20" y="58" textAnchor="middle" className="fill-emerald-600 font-bold text-[6px] font-label-mono">APIs</text>
+          </g>
+
+          <g transform="translate(260, 40)">
+            <rect width="50" height="50" rx="6" fill="currentColor" className="text-teal-500/10" stroke="#0f766e" strokeWidth="1" />
+            <text x="25" y="24" textAnchor="middle" className="fill-on-surface font-label-mono text-[8px] font-bold">SERVICES</text>
+            <text x="25" y="38" textAnchor="middle" className="fill-teal-700 font-bold text-[6px] font-label-mono">GRAPHQL</text>
+          </g>
+        </svg>
+      </div>
+    ),
+    skills: [
+      { name: "NestJS", tooltip: "Used to build modular, enterprise backends and microservices." },
+      { name: "Express.js", tooltip: "Used for lightweight Node.js API services." },
+      { name: "FastAPI", tooltip: "High-performance Python API framework for ML inference model serving." },
+      { name: "Microservices", tooltip: "Architecting modular, independent systems with clear data contracts." },
+      { name: "RESTful & GraphQL API Design", tooltip: "Designing clean, secure, and well-documented API contracts." }
+    ]
+  },
+  {
+    title: "Web3",
+    subtitle: "Decentralized Finance",
+    description: "Developing gas-efficient decentralized smart contracts, token economies, and secure execution flows.",
+    visual: (
+      <div className="w-full h-40 bg-surface-container-lowest rounded-xl border border-outline-variant/30 flex items-center justify-center relative overflow-hidden shadow-inner p-2">
+        <svg width="340" height="130" viewBox="0 0 340 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+          <defs>
+            <pattern id="grid-pattern-web3" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-outline-variant/15" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#grid-pattern-web3)" />
+
+          <g transform="translate(45, 65)">
+            <polygon points="0,-20 18,-10 18,10 0,20 -18,10 -18,-10" fill="currentColor" className="text-orange-500/10" stroke="#c2410c" strokeWidth="1" />
+            <text x="0" y="3" textAnchor="middle" className="fill-orange-700 font-bold text-[6px] font-label-mono">STELLAR</text>
+          </g>
+
+          <g transform="translate(145, 65)">
+            <polygon points="0,-25 22,-12 22,12 0,25 -22,12 -22,-12" fill="currentColor" className="text-secondary/10" stroke="#4b41e1" strokeWidth="1.5" />
+            <text x="0" y="3" textAnchor="middle" className="fill-secondary font-black text-[7px] font-label-mono">SOROBAN</text>
+          </g>
+
+          <g transform="translate(245, 65)">
+            <polygon points="0,-20 18,-10 18,10 0,20 -18,10 -18,-10" fill="currentColor" className="text-orange-500/10" stroke="#c2410c" strokeWidth="1" />
+            <text x="0" y="3" textAnchor="middle" className="fill-orange-700 font-bold text-[6px] font-label-mono">DEFI</text>
+          </g>
+
+          <path d="M 65 65 H 121" stroke="currentColor" className="text-outline-variant/40" strokeWidth="1.5" />
+          <path d="M 169 65 H 225" stroke="currentColor" className="text-outline-variant/40" strokeWidth="1.5" />
+
+          <motion.circle
+            r="2.5"
+            fill="#4b41e1"
+            animate={{ cx: [65, 121] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          />
+          <motion.circle
+            r="2.5"
+            fill="#c2410c"
+            animate={{ cx: [169, 225] }}
+            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut", delay: 1.5 }}
+          />
+        </svg>
+      </div>
+    ),
+    skills: [
+      { name: "Stellar Soroban", tooltip: "WASM-based smart contract execution platform on the Stellar network." },
+      { name: "DeFi Protocol Design", tooltip: "Designing collateralized lending, borrow rate curves, and liquidations." },
+      { name: "Smart Contract Security & Optimization", tooltip: "Enforcing safety checks and state footprint optimizations (e.g. u128 bitmap packing)." }
+    ]
+  },
+  {
+    title: "Databases",
+    subtitle: "Data Management Layers",
+    description: "Managing relational schemas, distributed NoSQL storage, and real-time syncing architectures.",
+    visual: (
+      <div className="w-full h-40 bg-surface-container-lowest rounded-xl border border-outline-variant/30 flex items-center justify-center relative overflow-hidden shadow-inner p-2">
+        <svg width="340" height="130" viewBox="0 0 340 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+          <g transform="translate(60, 50)">
+            <ellipse cx="0" cy="-12" rx="18" ry="5" fill="#0f766e" fillOpacity="0.2" stroke="#0f766e" strokeWidth="1" />
+            <path d="M -18 -12 V 12 A 18 5 0 0 0 18 12 V -12" fill="#0f766e" fillOpacity="0.1" stroke="#0f766e" strokeWidth="1" />
+            <ellipse cx="0" cy="0" rx="18" ry="5" fill="none" stroke="#0f766e" strokeWidth="1" strokeDasharray="2 2" />
+            <ellipse cx="0" cy="12" rx="18" ry="5" fill="none" stroke="#0f766e" strokeWidth="1" />
+            <text x="0" y="28" textAnchor="middle" className="fill-on-surface font-label-mono text-[7px] font-bold">POSTGRESQL</text>
+          </g>
+
+          <g transform="translate(170, 50)">
+            <ellipse cx="0" cy="-12" rx="18" ry="5" fill="#004ac6" fillOpacity="0.2" stroke="#004ac6" strokeWidth="1" />
+            <path d="M -18 -12 V 12 A 18 5 0 0 0 18 12 V -12" fill="#004ac6" fillOpacity="0.1" stroke="#004ac6" strokeWidth="1" />
+            <ellipse cx="0" cy="0" rx="18" ry="5" fill="none" stroke="#004ac6" strokeWidth="1" strokeDasharray="2 2" />
+            <ellipse cx="0" cy="12" rx="18" ry="5" fill="none" stroke="#004ac6" strokeWidth="1" />
+            <text x="0" y="28" textAnchor="middle" className="fill-on-surface font-label-mono text-[7px] font-bold">MONGODB</text>
+          </g>
+
+          <g transform="translate(280, 50)">
+            <ellipse cx="0" cy="-12" rx="18" ry="5" fill="#c2410c" fillOpacity="0.2" stroke="#c2410c" strokeWidth="1" />
+            <path d="M -18 -12 V 12 A 18 5 0 0 0 18 12 V -12" fill="#c2410c" fillOpacity="0.1" stroke="#c2410c" strokeWidth="1" />
+            <ellipse cx="0" cy="0" rx="18" ry="5" fill="none" stroke="#c2410c" strokeWidth="1" strokeDasharray="2 2" />
+            <ellipse cx="0" cy="12" rx="18" ry="5" fill="none" stroke="#c2410c" strokeWidth="1" />
+            <text x="0" y="28" textAnchor="middle" className="fill-on-surface font-label-mono text-[7px] font-bold">FIREBASE</text>
+          </g>
+        </svg>
+      </div>
+    ),
+    skills: [
+      { name: "PostgreSQL (Architecture)", tooltip: "Relational database schema design, transaction indexing, and queries." },
+      { name: "MongoDB", tooltip: "NoSQL document storage for horizontal scaling and flex schemas." },
+      { name: "Firebase Realtime/Firestore", tooltip: "Cloud-hosted NoSQL databases for real-time document syncing." }
+    ]
+  },
+  {
+    title: "DevOps & Tools",
+    subtitle: "Deployment & Integrations",
+    description: "Managing container runtimes, automatic checks, payments gateway, and logging.",
+    visual: (
+      <div className="w-full h-40 bg-surface-container-lowest rounded-xl border border-outline-variant/30 flex items-center justify-center relative overflow-hidden shadow-inner p-2">
+        <svg width="340" height="130" viewBox="0 0 340 130" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-full">
+          <rect x="50" y="25" width="240" height="80" rx="40" stroke="currentColor" className="text-outline-variant/30" strokeWidth="3" fill="none" />
+
+          <motion.rect
+            x="50" y="25" width="240" height="80" rx="40"
+            stroke="#be123c"
+            strokeWidth="3"
+            fill="none"
+            strokeDasharray="30 170"
+            animate={{ strokeDashoffset: [200, 0] }}
+            transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
+          />
+
+          <g transform="translate(50, 65)">
+            <circle r="12" fill="white" stroke="#be123c" strokeWidth="1.5" />
+            <text x="0" y="2.5" textAnchor="middle" className="fill-on-surface font-label-mono text-[6px] font-bold">BUILD</text>
+          </g>
+
+          <g transform="translate(170, 25)">
+            <circle r="12" fill="white" stroke="#475569" strokeWidth="1" />
+            <text x="0" y="2.5" textAnchor="middle" className="fill-on-surface font-label-mono text-[6px] font-bold">TEST</text>
+          </g>
+
+          <g transform="translate(290, 65)">
+            <circle r="12" fill="white" stroke="#475569" strokeWidth="1" />
+            <text x="0" y="2.5" textAnchor="middle" className="fill-on-surface font-label-mono text-[6px] font-bold">DEPLOY</text>
+          </g>
+
+          <g transform="translate(170, 105)">
+            <circle r="12" fill="white" stroke="#0f766e" strokeWidth="1" />
+            <text x="0" y="2.5" textAnchor="middle" className="fill-on-surface font-label-mono text-[6px] font-bold">MONITOR</text>
+          </g>
+        </svg>
+      </div>
+    ),
+    skills: [
+      { name: "Docker", tooltip: "Packaging applications and microservices into consistent, isolated container runtimes." },
+      { name: "Git/GitHub", tooltip: "Version control and collaborative workflow automation." },
+      { name: "Postman", tooltip: "API client for designing, building, and testing HTTP requests." },
+      { name: "CI/CD", tooltip: "Automated testing, lint checking, and preview deployment pipelines." },
+      { name: "Stripe", tooltip: "Integrating online payment portals and secure webhooks." },
+      { name: "Sentry", tooltip: "Real-time application error tracking and performance profiling." }
+    ]
+  }
 ];
 
 export const Home: React.FC = () => {
@@ -96,7 +351,7 @@ export const Home: React.FC = () => {
           </div>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}
@@ -104,9 +359,9 @@ export const Home: React.FC = () => {
         >
           <div className="w-full aspect-square bg-surface-container rounded-3xl overflow-hidden relative border border-outline-variant/30 flex items-center justify-center group">
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 to-secondary/10 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <img 
-              src={AvatarImg} 
-              alt="Nguyen The Anh" 
+            <img
+              src={AvatarImg}
+              alt="Nguyen The Anh"
               className="w-full h-full object-cover animate-float shadow-xl transition-transform duration-700 group-hover:scale-105"
             />
             {/* Decorative element */}
@@ -189,7 +444,7 @@ export const Home: React.FC = () => {
                 <Award className="w-14 h-14 text-primary-fixed mb-3 mx-auto drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]" />
               </motion.div>
               <div className="font-label-mono text-[11px] uppercase font-bold tracking-[0.2em] text-primary-fixed mb-1">Champion</div>
-              <div className="text-display font-display text-3xl font-black mb-1 tracking-tighter leading-tight">MINI STELLAR<br/>HACKATHON</div>
+              <div className="text-display font-display text-3xl font-black mb-1 tracking-tighter leading-tight">MINI STELLAR<br />HACKATHON</div>
               <div className="mt-4 px-3 py-1 bg-white/10 backdrop-blur-md rounded-full border border-white/20 inline-block">
                 <p className="font-label-mono text-[9px] uppercase font-bold text-white tracking-widest">Global #1 Winner</p>
               </div>
@@ -382,9 +637,9 @@ export const Home: React.FC = () => {
           <BentoCard className="md:col-span-12 flex flex-col lg:flex-row h-auto lg:h-[450px] group border-none !bg-surface-container-high overflow-hidden" delay={0.1}>
             <div className="lg:w-3/5 h-[300px] lg:h-auto overflow-hidden relative">
               <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent z-10 opacity-40" />
-              <img 
-                alt="UdonFi" 
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out" 
+              <img
+                alt="UdonFi"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000 ease-out"
                 src="/Infor/udonFI/HomeUdonFi.png"
               />
               <div className="absolute top-6 left-6 z-20 flex flex-col gap-2">
@@ -394,7 +649,7 @@ export const Home: React.FC = () => {
             <div className="lg:w-2/5 p-8 md:p-12 flex flex-col justify-center relative bg-white lg:bg-transparent">
               <div className="mb-4">
                 <span className="font-label-mono text-[11px] font-bold text-amber-600 uppercase tracking-widest mb-2 block">1st Prize Winner • Stellar Hackathon</span>
-              <h3 className="font-display text-4xl font-bold text-on-surface mb-4 leading-tight">UdonFi Protocol</h3>
+                <h3 className="font-display text-4xl font-bold text-on-surface mb-4 leading-tight">UdonFi Protocol</h3>
               </div>
               <p className="text-on-surface-variant mb-8 font-body-md leading-relaxed">
                 A high-performance lending protocol on Stellar Soroban. Optimized via u128 bitmap packing and 2-step liquidation flows to bypass VM constraints and minimize storage costs.
@@ -421,7 +676,7 @@ export const Home: React.FC = () => {
               <img
                 alt="VioTune"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAl7XuUjKPdaRt_HO0PHROHeAOToitjfU-l5zOnAFlF2MTZ6pkf19l7gljMQJkl1Z3swTvrzSyi_sAETk44F7xSwV42_C5tjUXj-mW58fGnLrmjM3jAoBrHIuY16sH0JdkgU1jF3g6MXrjMd_zjzaNA00FfpRWE-wLFrm5QZVP_APbPxjN9Oi9CEP3i2rAJKVq85okjbMiRF5_vrzivzIFp8m0Q-fVkWcrT2pTDj4dRYv9UZ3TPqSYg8aR4ClfTrdrVw0HxYRwfvDmp"
+                src="/Infor/Viotune/Cover.png"
               />
               <div className="absolute bottom-4 left-4 z-20">
                 <span className="px-3 py-1.5 bg-black/60 backdrop-blur-md text-white font-label-mono text-[10px] font-bold rounded-lg border border-white/10">
@@ -431,9 +686,9 @@ export const Home: React.FC = () => {
             </div>
             <div className="p-10 flex flex-col flex-grow">
               <div className="flex-grow">
-                <h3 className="font-display text-2xl font-bold text-on-surface mb-3 group-hover:text-primary transition-colors">VioTune AI</h3>
+                <h3 className="font-display text-2xl font-bold text-on-surface mb-3 group-hover:text-secondary transition-colors">VioTune AI</h3>
                 <p className="text-on-surface-variant text-sm leading-relaxed mb-6 font-body-md opacity-80">
-                  Developing hybrid recommendation systems using SVD and KNN models. Bridging FastAPI backends with real-time inference pipelines for personalized user discovery.
+                  Developing hybrid recommendation systems using SVD Matrix Factorization and KNN models. Bridging FastAPI backends with real-time inference for hyper-personalized discovery.
                 </p>
               </div>
               <div className="pt-6 border-t border-outline-variant/30 flex justify-between items-center">
@@ -459,7 +714,7 @@ export const Home: React.FC = () => {
               <img
                 alt="LaBouffe"
                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCN4Iy37xI77VyWQMlfkQTUY7qJ_zNDIKdioekMvuodXHsTkWimAy9lkBcLyxFQAM6d-hUqCciAVfKX_DwoiZF-ccRq9AIBBsodirsVwOx5RP-upL69pPuUnavHGeJjD8kRpqVNoRR2z90FDWDDesGmGzGBVwFRF1wcMHlRU2hDZNiG5L4ct35VYgY94W6jqQ2G-9WcykGgcwqgOsiyTAREAc_Gm8JK1d4o09lmEbhd0YGcDiEkIwSVhQWmhR6lc_cZXVTEMaTIibKW"
+                src="/Infor/Labouffe/Group 1.png"
               />
               <div className="absolute bottom-4 left-4 z-20">
                 <span className="px-3 py-1.5 bg-black/60 backdrop-blur-md text-white font-label-mono text-[10px] font-bold rounded-lg border border-white/10">
@@ -493,48 +748,53 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Technology Ecosystem */}
-      <section className="mb-10">
+      <section className="mb-24">
         <div className="text-center mb-16">
           <h2 className="font-display text-headline-lg text-3xl font-bold mb-4">Technology Ecosystem</h2>
-          <div className="h-1 w-12 bg-primary mx-auto rounded-full"></div>
+          <div className="h-1 w-12 bg-primary mx-auto rounded-full mb-4"></div>
+          <p className="text-on-surface-variant max-w-xl mx-auto text-sm font-body-md">
+            Deep technical core and architecture pillars compiled from real-world systems and competitive challenges. Hover over technologies to see where they are applied.
+          </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
-          <div className="flex flex-col items-center group">
-            <div className="w-16 h-16 rounded-2xl bg-white border border-outline-variant flex items-center justify-center mb-4 group-hover:border-primary transition-colors duration-300 shadow-sm">
-              <Terminal className="text-on-surface-variant group-hover:text-primary w-8 h-8" />
-            </div>
-            <span className="font-label-mono text-caption uppercase text-on-surface-variant font-bold">Languages</span>
-          </div>
-          <div className="flex flex-col items-center group">
-            <div className="w-16 h-16 rounded-2xl bg-white border border-outline-variant flex items-center justify-center mb-4 group-hover:border-primary transition-colors duration-300 shadow-sm">
-              <Cpu className="text-on-surface-variant group-hover:text-primary w-8 h-8" />
-            </div>
-            <span className="font-label-mono text-caption uppercase text-on-surface-variant font-bold">Frontend</span>
-          </div>
-          <div className="flex flex-col items-center group">
-            <div className="w-16 h-16 rounded-2xl bg-white border border-outline-variant flex items-center justify-center mb-4 group-hover:border-primary transition-colors duration-300 shadow-sm">
-              <Database className="text-on-surface-variant group-hover:text-primary w-8 h-8" />
-            </div>
-            <span className="font-label-mono text-caption uppercase text-on-surface-variant font-bold">Backend</span>
-          </div>
-          <div className="flex flex-col items-center group">
-            <div className="w-16 h-16 rounded-2xl bg-white border border-outline-variant flex items-center justify-center mb-4 group-hover:border-primary transition-colors duration-300 shadow-sm">
-              <ShieldCheck className="text-on-surface-variant group-hover:text-primary w-8 h-8" />
-            </div>
-            <span className="font-label-mono text-caption uppercase text-on-surface-variant font-bold">Database</span>
-          </div>
-          <div className="flex flex-col items-center group">
-            <div className="w-16 h-16 rounded-2xl bg-white border border-outline-variant flex items-center justify-center mb-4 group-hover:border-primary transition-colors duration-300 shadow-sm">
-              <Link2 className="text-on-surface-variant group-hover:text-primary w-8 h-8" />
-            </div>
-            <span className="font-label-mono text-caption uppercase text-on-surface-variant font-bold">Blockchain</span>
-          </div>
-          <div className="flex flex-col items-center group">
-            <div className="w-16 h-16 rounded-2xl bg-white border border-outline-variant flex items-center justify-center mb-4 group-hover:border-primary transition-colors duration-300 shadow-sm">
-              <Brain className="text-on-surface-variant group-hover:text-primary w-8 h-8" />
-            </div>
-            <span className="font-label-mono text-caption uppercase text-on-surface-variant font-bold">Tools</span>
-          </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
+          {techCategories.map((category, idx) => {
+            const colSpan = idx < 3 ? "md:col-span-4" : "md:col-span-6";
+            return (
+              <BentoCard
+                key={idx}
+                className={`${colSpan} p-8 flex flex-col justify-between relative group/card border-none !bg-surface-container-low/70 hover:!bg-surface-container-low transition-all duration-500 overflow-hidden`}
+                delay={0.1 * (idx + 1)}
+              >
+                <div className="mb-6">
+                  <span className="font-label-mono text-[10px] text-primary uppercase font-bold tracking-widest block mb-2">{category.subtitle}</span>
+                  <h3 className="font-display text-2xl font-bold text-on-surface mb-3">{category.title}</h3>
+                  <p className="text-on-surface-variant text-sm font-body-md leading-relaxed mb-6">{category.description}</p>
+                  {category.visual}
+                </div>
+
+                <div>
+                  <span className="font-label-mono text-[10px] text-on-surface-variant/80 uppercase font-bold tracking-wide block mb-3">Key Technologies</span>
+                  <div className="flex flex-wrap gap-2.5">
+                    {category.skills.map((skill, sIdx) => (
+                      <div key={sIdx} className="relative group/tooltip">
+                        <span className="cursor-help px-3 py-1.5 text-xs font-label-mono font-bold rounded-lg border bg-surface text-on-surface-variant border-outline-variant/30 hover:border-primary hover:text-primary transition-all inline-block hover:scale-[1.03]">
+                          {skill.name}
+                        </span>
+                        {/* Premium Hover Tooltip */}
+                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 bg-surface-container-highest border border-outline text-[10px] text-on-surface font-sans rounded-xl opacity-0 pointer-events-none group-hover/tooltip:opacity-100 transition-all duration-200 z-30 shadow-xl scale-95 group-hover/tooltip:scale-100 text-left">
+                          <div className="font-bold font-label-mono text-primary mb-1 border-b border-outline-variant/30 pb-0.5">{skill.name}</div>
+                          <div className="leading-relaxed text-[9px] text-on-surface-variant">{skill.tooltip}</div>
+                          {/* Tooltip triangle */}
+                          <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 w-2 h-2 rotate-45 bg-surface-container-highest border-r border-b border-outline"></div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </BentoCard>
+            );
+          })}
         </div>
       </section>
     </div>
